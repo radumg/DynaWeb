@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 using Dynamo.Graph.Nodes;
 using DynWWW.Properties;
 using ProtoCore.AST.AssociativeAST;
+using DSCore.Web;
 
-namespace DynWWW.NodeModels
+namespace CoreNodeModels.Web
 {
+    /*
     [NodeName("Web Request")]
     [NodeDescription("WebRequestDescription", typeof(Resources))]
     [NodeCategory(BuiltinNodeCategories.CORE_WEB)]
     [IsDesignScriptCompatible]
     [AlsoKnownAs("DSCoreNodesUI.WebRequest")]
-    public class WebRequest : NodeModel
+    public class SimpleWebRequest : NodeModel
     {
-        public WebRequest()
+        public SimpleWebRequest()
         {
             InPortData.Add(new PortData("url", Resources.WebRequestPortDataUrlToolTip));
             OutPortData.Add(new PortData("result", Resources.WebRequestPortDataResultToolTip));
@@ -27,9 +29,13 @@ namespace DynWWW.NodeModels
 
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
         {
-            var functionCall = AstFactory.BuildFunctionCall(new Func<string, string>(DynWWW.WebRequest.WebRequestByUrl), inputAstNodes);
+            var functionCall = AstFactory.BuildFunctionCall(
+                new Func<WebRequest, WebResponse>(WebRequest.Execute),
+                inputAstNodes
+                );
 
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), functionCall) };
         }
     }
+    */
 }

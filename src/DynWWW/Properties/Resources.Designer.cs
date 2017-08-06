@@ -61,6 +61,24 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient..
+        /// </summary>
+        internal static string WebRequestExecutionNetworkErrorMessage {
+            get {
+                return ResourceManager.GetString("WebRequestExecutionNetworkErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string WebRequestParameterNullMessage {
+            get {
+                return ResourceManager.GetString("WebRequestParameterNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string WebRequestPortDataResultToolTip {
@@ -75,6 +93,24 @@ namespace DynWWW.Properties {
         internal static string WebRequestPortDataUrlToolTip {
             get {
                 return ResourceManager.GetString("WebRequestPortDataUrlToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL provided is not a valid URL..
+        /// </summary>
+        internal static string WebRequestUrlInvalidMessage {
+            get {
+                return ResourceManager.GetString("WebRequestUrlInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL cannot be null..
+        /// </summary>
+        internal static string WebRequestUrlNullMessage {
+            get {
+                return ResourceManager.GetString("WebRequestUrlNullMessage", resourceCulture);
             }
         }
     }
