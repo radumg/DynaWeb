@@ -65,7 +65,7 @@ namespace DSCore.Web
         public Uri URL
         {
             get => url;
-            set => WebRequestHelpers.ParseUriFromString(value.ToString());
+            set => WebHelpers.ParseUriFromString(value.ToString());
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace DSCore.Web
         /// <returns>The request object, ready for execution.</returns>
         public WebRequest ByUrl(string url)
         {
-            var uriResult = WebRequestHelpers.ParseUriFromString(url);
+            var uriResult = WebHelpers.ParseUriFromString(url);
             this.restRequest = new RestRequest(uriResult, Method.GET);
             return this;
         }
@@ -112,7 +112,7 @@ namespace DSCore.Web
         /// <returns>The request with an updated URL.</returns>
         public WebRequest SetUrl(string url)
         {
-            this.URL = WebRequestHelpers.ParseUriFromString(url);
+            this.URL = WebHelpers.ParseUriFromString(url);
             return this;
         }
 

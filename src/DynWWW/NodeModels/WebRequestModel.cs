@@ -7,7 +7,7 @@ using Dynamo.Graph.Nodes;
 using DynWWW.Properties;
 using ProtoCore.AST.AssociativeAST;
 
-namespace DynWWW.NodeModels
+namespace DSCore.Web
 {
     [NodeName("Web Request")]
     [NodeDescription("WebRequestDescription", typeof(Resources))]
