@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="WebRequestExecutionNetworkErrorMessage" xml:space="preserve">
+    <value>A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient.</value>
+  </data>
+  <data name="WebRequestParameterNullMessage" xml:space="preserve">
+    <value />
+  </data>
   <data name="WebRequestPortDataResultToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="WebRequestPortDataUrlToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="WebRequestUrlInvalidMessage" xml:space="preserve">
+    <value>The URL provided is not a valid URL.</value>
+  </data>
+  <data name="WebRequestUrlNullMessage" xml:space="preserve">
+    <value>The URL cannot be null.</value>
   </data>
 </root>
