@@ -67,7 +67,7 @@ The `DynWWW` project relies on a few community-published NuGet packages as liste
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/radumg/DynWWW/docs/CONTRIBUTING.md) for details on how to contribute to this package. Please also read the [CODE OF CONDUCT.md](https://github.com/radumg/DynWWW/docs/CODE_OF_CONDUCT.md).
+Please read [CONTRIBUTING.md](https://github.com/radumg/DynWWW/blob/master/docs/CONTRIBUTING.md) for details on how to contribute to this package. Please also read the [CODE OF CONDUCT.md](https://github.com/radumg/DynWWW/blob/master/docs/CODE_OF_CONDUCT.md).
 
 ## Versioning & Releases
 
