@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DynWWW
 {
-    public class WebRequest
+    public class WebRequest 
     {
 
         public static string WebRequestByUrl(string url)
