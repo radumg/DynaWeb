@@ -40,12 +40,12 @@ namespace DSCore.Web
         /// <summary>
         /// The encapsulated Restsharp web request
         /// </summary>
-        private RestRequest restRequest;
+        private RestRequest restRequest = new RestRequest();
 
         /// <summary>
         /// The encapsulated response from the server
         /// </summary>
-        private WebResponse response;
+        private WebResponse response = new WebResponse(new RestResponse());
 
         private System.TimeSpan timeToComplete;
         private Uri url;
@@ -62,10 +62,10 @@ namespace DSCore.Web
         /// <summary>
         /// The URL for the request
         /// </summary>
-        public Uri URL
+        public string URL
         {
-            get => url;
-            set => WebHelpers.ParseUriFromString(value.ToString());
+            get => url.ToString();
+            set { url = WebHelpers.ParseUriFromString(value.ToString()); }
         }
 
         /// <summary>
@@ -82,24 +82,17 @@ namespace DSCore.Web
         #endregion
 
         #region constructor methods
-        /// <summary>
-        /// The standard parameter-less constructor.
-        /// </summary>
-        private WebRequest()
-        {
-
-        }
 
         /// <summary>
         /// Build a simple GET web request to the specified URL
         /// </summary>
         /// <param name="url">The URL to send the request to.</param>
         /// <returns>The request object, ready for execution.</returns>
-        public WebRequest ByUrl(string url)
+        public WebRequest(string url)
         {
-            var uriResult = WebHelpers.ParseUriFromString(url);
-            this.restRequest = new RestRequest(uriResult, Method.GET);
-            return this;
+            URL = url;
+            restRequest = new RestRequest(this.URL, Method.GET);
+            restRequest.Resource = "";
         }
         #endregion
 
@@ -112,7 +105,7 @@ namespace DSCore.Web
         /// <returns>The request with an updated URL.</returns>
         public WebRequest SetUrl(string url)
         {
-            this.URL = WebHelpers.ParseUriFromString(url);
+            this.URL = url;
             return this;
         }
 
@@ -144,7 +137,7 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="request">The web request to execute.</param>
         /// <returns>The response from the server as a WebResponse object.</returns>
-        internal static WebResponse Execute(WebRequest request)
+        public static WebResponse Execute(WebRequest request)
         {
             // build a client to execute the request, recording start & end time
             var startTime = DateTime.Now;
@@ -174,7 +167,7 @@ namespace DSCore.Web
         /// <param name="response">The response from the server that needs to be deserialised.</param>
         /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
         /// <returns>The response deserialised as same type as supplied object.</returns>
-        internal T Deserialize<T>(WebResponse response, T obj) where T : new()
+        public T Deserialize<T>(WebResponse response, T obj) where T : new()
         {
             return DeserializeObject<T>(response);
         }

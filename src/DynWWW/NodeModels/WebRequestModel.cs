@@ -10,6 +10,7 @@ using DSCore.Web;
 
 namespace CoreNodeModels.Web
 {
+    /*
     [NodeName("Web Request")]
     [NodeDescription("WebRequestDescription", typeof(Resources))]
     [NodeCategory(BuiltinNodeCategories.CORE_WEB)]
@@ -36,4 +37,5 @@ namespace CoreNodeModels.Web
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), functionCall) };
         }
     }
+    */
 }

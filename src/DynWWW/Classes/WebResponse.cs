@@ -33,7 +33,18 @@ namespace DSCore.Web
         // meta properties that have information about the response itself
         public Uri ResponseUri => this.response.ResponseUri;
         public string Server => this.response.Server;
-        public string Headers => this.response.Headers.ToString();
+        public List<List<string>> Headers
+        {
+            get
+            {
+                var headersDict = this.response.Headers.ToDictionary(x => x.Name);
+                var headers = new List<List<string>>();
+                headers.Add(headersDict.Keys.ToList());
+                headers.Add(headersDict.Values.Select(x => x.Value.ToString()).ToList());
+
+                return headers;
+            }
+        }
         public string Cookies => this.response.Cookies.ToString();
         public string ResponseStatus => this.response.ResponseStatus.ToString();
         public string ErrorException => this.response.ErrorException.ToString();

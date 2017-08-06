@@ -4,6 +4,113 @@
         <name>DynWWW</name>
     </assembly>
     <members>
+        <member name="F:DSCore.Web.WebRequest.defaultRequestTimeout">
+            <summary>
+            The default timeout to wait for a request to return, expressed in miliseconds
+            </summary>
+        </member>
+        <member name="F:DSCore.Web.WebRequest.defaultRequestAttempts">
+            <summary>
+            The default number of times to retry a failed request
+            </summary>
+        </member>
+        <member name="F:DSCore.Web.WebRequest.defaultSecurityProtocol">
+            <summary>
+            The default security protocol to default to.
+            The protocol is required for interaction with HTTPS endpoints, irrespective of using System.Net or RestSharp libraries.
+            </summary>
+        </member>
+        <member name="F:DSCore.Web.WebRequest.restRequest">
+            <summary>
+            The encapsulated Restsharp web request
+            </summary>
+        </member>
+        <member name="F:DSCore.Web.WebRequest.response">
+            <summary>
+            The encapsulated response from the server
+            </summary>
+        </member>
+        <member name="P:DSCore.Web.WebRequest.Respose">
+            <summary>
+            The response the server returned on the last execution of the request.
+            </summary>
+        </member>
+        <member name="P:DSCore.Web.WebRequest.URL">
+            <summary>
+            The URL for the request
+            </summary>
+        </member>
+        <member name="P:DSCore.Web.WebRequest.Time">
+            <summary>
+            The time it took for the request to complete
+            </summary>
+        </member>
+        <member name="F:DSCore.Web.WebRequest.ForceSecurityProtocol">
+            <summary>
+            Set this property to true to force requests to go through a security protocol (TLS1.2).
+            This is required when interacting with servers and APIs that require use of HTTPS as a protocol rather than HTTP.
+            </summary>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.#ctor(System.String)">
+            <summary>
+            Build a simple GET web request to the specified URL
+            </summary>
+            <param name="url">The URL to send the request to.</param>
+            <returns>The request object, ready for execution.</returns>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.SetUrl(System.String)">
+            <summary>
+            Sets the URL of the request.
+            </summary>
+            <param name="url">The URL to set for the request.</param>
+            <returns>The request with an updated URL.</returns>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.AddParameter(System.String,System.Object,RestSharp.ParameterType)">
+            <summary>
+            Adds a parameter to the web request
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to pass along.</param>
+            <param name="type">The type of parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.Execute(DSCore.Web.WebRequest)">
+            <summary>
+            Executes a WebRequest and returns the response from the server.
+            </summary>
+            <param name="request">The web request to execute.</param>
+            <returns>The response from the server as a WebResponse object.</returns>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.Deserialize``1(DSCore.Web.WebResponse,``0)">
+            <summary>
+            Deserialises a web response to the type of a supplied object.
+            Accepts JSON and XML as valid response contents.
+            </summary>
+            <typeparam name="T">The object type to deserialize to.</typeparam>
+            <param name="response">The response from the server that needs to be deserialised.</param>
+            <param name="obj">The object that will be used to determine what type to deserialise to.</param>
+            <returns>The response deserialised as same type as supplied object.</returns>
+        </member>
+        <member name="M:DSCore.Web.WebRequest.DeserializeObject``1(DSCore.Web.WebResponse)">
+            <summary>
+            Deserialises a web response the specified type.
+            </summary>
+            <typeparam name="T">The object type to deserialize to.</typeparam>
+            <param name="response">The response from the server that needs to be deserialised.</param>
+            <returns>The deserialised object.</returns>
+        </member>
+        <member name="T:DSCore.Web.WebResponse">
+            <summary>
+            The response returned from a server after a WebRequest was executed
+            </summary>
+        </member>
+        <member name="M:DynWWW.Helpers.WebHelpers.ParseUriFromString(System.String)">
+            <summary>
+            Constructs a valid URI from a supplied string URL. Use this to both check and ensure URLs are valid
+            </summary>
+            <param name="url">The URL to check.</param>
+            <returns>A valid URI if the string URL is valid, throws Exception if not.</returns>
+        </member>
         <member name="T:DynWWW.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -20,6 +127,16 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage">
+            <summary>
+              Looks up a localized string similar to A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient..
+            </summary>
+        </member>
+        <member name="P:DynWWW.Properties.Resources.WebRequestParameterNullMessage">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
         <member name="P:DynWWW.Properties.Resources.WebRequestPortDataResultToolTip">
             <summary>
               Looks up a localized string similar to .
@@ -28,6 +145,16 @@
         <member name="P:DynWWW.Properties.Resources.WebRequestPortDataUrlToolTip">
             <summary>
               Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:DynWWW.Properties.Resources.WebRequestUrlInvalidMessage">
+            <summary>
+              Looks up a localized string similar to The URL provided is not a valid URL..
+            </summary>
+        </member>
+        <member name="P:DynWWW.Properties.Resources.WebRequestUrlNullMessage">
+            <summary>
+              Looks up a localized string similar to The URL cannot be null..
             </summary>
         </member>
     </members>
