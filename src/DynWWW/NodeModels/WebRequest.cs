@@ -27,7 +27,7 @@ namespace DynWWW.NodeModels
 
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
         {
-            var functionCall = AstFactory.BuildFunctionCall(new Func<string, string>(Request.WebRequestByUrl), inputAstNodes);
+            var functionCall = AstFactory.BuildFunctionCall(new Func<string, string>(DynWWW.WebRequest.WebRequestByUrl), inputAstNodes);
 
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), functionCall) };
         }
