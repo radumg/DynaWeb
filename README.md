@@ -54,7 +54,7 @@ If you don't already have a Github account or don't want one (why wouldn't you ?
     - `%appdata\Dynamo\Dynamo Revit\1.2\packages` for Dynamo for Revit, replacing `1.2` with your version of Dynamo
 ```
 
-After you have the project saved to your development machine, navigate to the `DynWWW\src` folder and open the `DynWWW.sln` solution to access the full Visual Studio solution and source code. 
+After you have the project saved to your development machine, navigate to the `DynWWW\src\DynWWW\` folder and open the `DynWWW.sln` solution to access the full Visual Studio solution and source code. 
 
 Build the project before making any changes to make sure the environment is properly set up, as the project relies on a few NuGet packages, see list below.
 
