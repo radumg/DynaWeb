@@ -235,8 +235,7 @@ namespace DSCore.Web
             {
                 throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestParameterNullMessage);
             }
-            if (string.IsNullOrEmpty(contentType)) contentType = "text/json";
-            this.restRequest.AddParameter(name, value, contentType, type);
+            this.restRequest.AddParameter(name, value, type);
 
             return this;
         }
