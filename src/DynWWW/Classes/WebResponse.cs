@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using Autodesk.DesignScript.Runtime;
+using Newtonsoft.Json;
 
 namespace DSCore.Web
 {
@@ -56,6 +58,33 @@ namespace DSCore.Web
         {
             this.response = res;
         }
+        #endregion
+
+        #region deserialisation
+
+        /// <summary>
+        /// Deserialises a web response to the type of a supplied object.
+        /// Accepts JSON and XML as valid response contents.
+        /// </summary>
+        /// <typeparam name="T">The object type to deserialize to.</typeparam>
+        /// <param name="response">The response from the server that needs to be deserialised.</param>
+        /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
+        /// <returns>The response deserialised as same type as supplied object.</returns>
+        [CanUpdatePeriodically(true)]
+        public static dynamic DeserializeAsObject(WebResponse response, object obj) 
+        {
+            var responseData = response.Content;
+
+            /// We don't want the deserialisation to break if some properties are empty.
+            /// So we need to specify the behaviour when such values are encountered.
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            var type = obj.GetType();
+
+            return JsonConvert.DeserializeObject(responseData, type, settings);
+        }
+
         #endregion
     }
 }

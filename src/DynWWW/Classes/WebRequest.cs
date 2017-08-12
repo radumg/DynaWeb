@@ -368,6 +368,7 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="request">The web request to execute.</param>
         /// <returns>The response from the server as a WebResponse object.</returns>
+        [CanUpdatePeriodically(true)]
         public static WebResponse Execute(WebRequest request)
         {
             // build a client to execute the request, recording start & end time
@@ -390,38 +391,6 @@ namespace DSCore.Web
             request.timeToComplete = endTime - startTime;
 
             return request.response;
-        }
-
-        /// <summary>
-        /// Deserialises a web response to the type of a supplied object.
-        /// Accepts JSON and XML as valid response contents.
-        /// </summary>
-        /// <typeparam name="T">The object type to deserialize to.</typeparam>
-        /// <param name="response">The response from the server that needs to be deserialised.</param>
-        /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
-        /// <returns>The response deserialised as same type as supplied object.</returns>
-        public T Deserialize<T>(WebResponse response, T obj) where T : new()
-        {
-            return DeserializeObject<T>(response);
-        }
-
-        /// <summary>
-        /// Deserialises a web response the specified type.
-        /// </summary>
-        /// <typeparam name="T">The object type to deserialize to.</typeparam>
-        /// <param name="response">The response from the server that needs to be deserialised.</param>
-        /// <returns>The deserialised object.</returns>
-        private T DeserializeObject<T>(WebResponse response) where T : new()
-        {
-            var responseData = response.Content;
-
-            /// We don't want the deserialisation to break if some properties are empty.
-            /// So we need to specify the behaviour when such values are encountered.
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.NullValueHandling = NullValueHandling.Ignore;
-            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
-
-            return JsonConvert.DeserializeObject<T>(responseData, settings);
         }
 
         #endregion
