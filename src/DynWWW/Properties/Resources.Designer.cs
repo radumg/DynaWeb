@@ -61,6 +61,15 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The base URL for the client cannot be null..
+        /// </summary>
+        internal static string WebClientUrlNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientUrlNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient..
         /// </summary>
         internal static string WebRequestExecutionNetworkErrorMessage {
