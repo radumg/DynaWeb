@@ -10,11 +10,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp.Serializers;
+using System.Reflection;
 
 namespace DSCore.Web
 {
     //[IsVisibleInDynamoLibrary(false)]
-    public class WebRequest : IRestRequest
+    public class WebRequest
     {
         #region constants
 
@@ -245,11 +246,25 @@ namespace DSCore.Web
         #region extension methods
 
         /// <summary>
+        /// Sets the HTTP method to use for the request.
+        /// Valid input : GET, DELETE, HEAD, OPTIONS, POST, PUT, MERGE
+        /// Note : input is not case-sensitive.
+        /// </summary>
+        /// <param name="method">The string that represents the http method.</param>
+        /// <returns>The WebRequest updated with set method if input was valid, the unchanged WebRequest otherwise.</returns>
+        public WebRequest SetMethod(string method)
+        {
+            if (Enum.TryParse<Method>(method, true, out Method reqMethod))
+                this.restRequest.Method = reqMethod;
+            return this;
+        }
+
+        /// <summary>
         /// Sets the URL of the request.
         /// </summary>
         /// <param name="url">The URL to set for the request.</param>
         /// <returns>The request with an updated URL.</returns>
-        public WebRequest CustomSetUrl(string url)
+        public WebRequest SetUrl(string url)
         {
             this.URL = url;
             return this;
@@ -262,66 +277,96 @@ namespace DSCore.Web
         /// <param name="value">The value of the parameter to pass along.</param>
         /// <param name="type">The type of parameter.</param>
         /// <returns></returns>
-        public WebRequest CustomAddParameter(string name, object value, ParameterType type)
+        public WebRequest AddParameter(string name, object value, ParameterType type)
         {
             if (System.String.IsNullOrEmpty(name) || value == null)
             {
                 throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestParameterNullMessage);
             }
-
-            this.restRequest.AddParameter(name, value, type);
+            if (string.IsNullOrEmpty(contentType)) contentType = "text/json";
+            this.restRequest.AddParameter(name, value, contentType, type);
 
             return this;
         }
 
-        public IRestRequest AddFile(string name, string path, string contentType = null)
+        /// <summary>
+        /// Adds a file to the Files collection to be included with a POST or PUT request (other methods do not support file uploads).
+        /// </summary>
+        /// <param name="name">The parameter name to use in the request</param>
+        /// <param name="path">Full path to file to upload</param>
+        /// <param name="contentType">The MIME type of the file to upload</param>
+        /// <returns>This request</returns>
+        public WebRequest AddFile(string name, string path, string contentType = null)
         {
+            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
+                throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
+
             restRequest.AddFile(name, path, contentType);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddFile(string name, byte[] bytes, string fileName, string contentType = null)
+        public WebRequest AddFile(string name, byte[] bytes, string fileName, string contentType = null)
         {
+            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
+                throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
+
             restRequest.AddFile(name, bytes, fileName, contentType);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddFile(string name, Action<Stream> writer, string fileName, string contentType = null)
+        public WebRequest AddFile(string name, Action<Stream> writer, string fileName, string contentType = null)
         {
+            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
+                throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
+
             restRequest.AddFile(name, writer, fileName, contentType);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddFileBytes(string name, byte[] bytes, string filename, string contentType = "application/x-gzip")
+        public WebRequest AddFileBytes(string name, byte[] bytes, string filename, string contentType = "application/x-gzip")
         {
+            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
+                throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
+
             restRequest.AddFileBytes(name, bytes, filename, contentType);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddBody(object obj, string xmlNamespace)
+        public WebRequest AddBody(object obj, string xmlNamespace)
         {
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+
             restRequest.AddBody(obj, xmlNamespace);
             return this;
         }
 
-        [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddBody(object obj)
+        /// <summary>
+        /// Serializes obj to data format specified by RequestFormat and adds it to the request body.
+        /// The default format is XML. Change RequestFormat if you wish to use a different serialization format.
+        /// </summary>
+        /// <param name="obj">The object to serialize</param>
+        /// <returns>This request</returns>
+        public WebRequest AddBody(object obj)
         {
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+
             restRequest.AddBody(obj);
             return this;
-       }
+        }
 
         /// <summary>
         /// Serializes obj to JSON format and adds it to the request body.
         /// </summary>
         /// <param name="obj">The object to serialize</param>
         /// <returns>This request</returns>
-        public IRestRequest AddJsonBody(object obj)
+        public WebRequest AddJsonBody(object obj)
         {
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+
             restRequest.AddJsonBody(obj);
             return this;
         }
@@ -331,35 +376,39 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="obj">The object to serialize</param>
         /// <returns>This request</returns>
-        public IRestRequest AddXmlBody(object obj)
+        public WebRequest AddXmlBody(object obj)
         {
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+
             restRequest.AddXmlBody(obj);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddXmlBody(object obj, string xmlNamespace)
+        public WebRequest AddXmlBody(object obj, string xmlNamespace)
         {
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+
             restRequest.AddXmlBody(obj, xmlNamespace);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddObject(object obj, params string[] includedProperties)
+        public WebRequest AddObject(object obj, params string[] includedProperties)
         {
             restRequest.AddObject(obj, includedProperties);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddObject(object obj)
+        public WebRequest AddObject(object obj)
         {
             restRequest.AddObject(obj);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddParameter(Parameter p)
+        public WebRequest AddParameter(Parameter p)
         {
             restRequest.AddParameter(p);
             return this;
@@ -372,21 +421,14 @@ namespace DSCore.Web
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>
         /// <returns></returns>
-        public IRestRequest AddParameter(string name, object value)
+        public WebRequest AddParameter(string name, object value)
         {
             restRequest.AddParameter(name, value);
             return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        IRestRequest IRestRequest.AddParameter(string name, object value, ParameterType type)
-        {
-            restRequest.AddParameter(name, value, type);
-            return this;
-        }
-
-        [IsVisibleInDynamoLibrary(false)]
-        public IRestRequest AddParameter(string name, object value, string contentType, ParameterType type)
+        public WebRequest AddParameter(string name, object value, string contentType, ParameterType type)
         {
             restRequest.AddParameter(name, value, contentType, type);
             return this;
@@ -398,7 +440,7 @@ namespace DSCore.Web
         /// <param name="name">Name of the header to add</param>
         /// <param name="value">Value of the header to add</param>
         /// <returns></returns>
-        public IRestRequest AddHeader(string name, string value)
+        public WebRequest AddHeader(string name, string value)
         {
             restRequest.AddHeader(name, value);
             return this;
@@ -410,7 +452,7 @@ namespace DSCore.Web
         /// <param name="name">Name of the cookie to add</param>
         /// <param name="value">Value of the cookie to add</param>
         /// <returns></returns>
-        public IRestRequest AddCookie(string name, string value)
+        public WebRequest AddCookie(string name, string value)
         {
             restRequest.AddCookie(name, value);
             return this;
@@ -422,7 +464,7 @@ namespace DSCore.Web
         /// <param name="name">Name of the segment to add</param>
         /// <param name="value">Value of the segment to add</param>
         /// <returns></returns>
-        public IRestRequest AddUrlSegment(string name, string value)
+        public WebRequest AddUrlSegment(string name, string value)
         {
             restRequest.AddUrlSegment(name, value);
             return this;
@@ -434,7 +476,7 @@ namespace DSCore.Web
         /// <param name="name">Name of the parameter to add</param>
         /// <param name="value">Value of the parameter to add</param>
         /// <returns></returns>
-        public IRestRequest AddQueryParameter(string name, string value)
+        public WebRequest AddQueryParameter(string name, string value)
         {
             restRequest.AddQueryParameter(name, value);
             return this;
@@ -460,6 +502,8 @@ namespace DSCore.Web
             // build a client to execute the request, recording start & end time
             var startTime = DateTime.Now;
             var client = new RestClient(request.URL);
+            client.UserAgent = "DynamoDS";
+
             var responseFromServer = client.Execute(request.restRequest);
             var endTime = DateTime.Now;
 
