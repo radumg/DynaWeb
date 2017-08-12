@@ -225,7 +225,7 @@ namespace DSCore.Web
             set => ((IRestRequest)restRequest).OnBeforeDeserialization = value;
         }
 
-#endregion
+        #endregion
 
         #region constructor methods
 
@@ -249,7 +249,7 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="url">The URL to set for the request.</param>
         /// <returns>The request with an updated URL.</returns>
-        public WebRequest SetUrl(string url)
+        public WebRequest CustomSetUrl(string url)
         {
             this.URL = url;
             return this;
@@ -262,7 +262,7 @@ namespace DSCore.Web
         /// <param name="value">The value of the parameter to pass along.</param>
         /// <param name="type">The type of parameter.</param>
         /// <returns></returns>
-        public WebRequest AddParameter(string name, object value, ParameterType type)
+        public WebRequest CustomAddParameter(string name, object value, ParameterType type)
         {
             if (System.String.IsNullOrEmpty(name) || value == null)
             {
@@ -276,38 +276,44 @@ namespace DSCore.Web
 
         public IRestRequest AddFile(string name, string path, string contentType = null)
         {
-            return ((IRestRequest)restRequest).AddFile(name, path, contentType);
+            restRequest.AddFile(name, path, contentType);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddFile(string name, byte[] bytes, string fileName, string contentType = null)
         {
-            return ((IRestRequest)restRequest).AddFile(name, bytes, fileName, contentType);
+            restRequest.AddFile(name, bytes, fileName, contentType);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddFile(string name, Action<Stream> writer, string fileName, string contentType = null)
         {
-            return ((IRestRequest)restRequest).AddFile(name, writer, fileName, contentType);
+            restRequest.AddFile(name, writer, fileName, contentType);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddFileBytes(string name, byte[] bytes, string filename, string contentType = "application/x-gzip")
         {
-            return ((IRestRequest)restRequest).AddFileBytes(name, bytes, filename, contentType);
+            restRequest.AddFileBytes(name, bytes, filename, contentType);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddBody(object obj, string xmlNamespace)
         {
-            return ((IRestRequest)restRequest).AddBody(obj, xmlNamespace);
+            restRequest.AddBody(obj, xmlNamespace);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddBody(object obj)
         {
-            return ((IRestRequest)restRequest).AddBody(obj);
-        }
+            restRequest.AddBody(obj);
+            return this;
+       }
 
         /// <summary>
         /// Serializes obj to JSON format and adds it to the request body.
@@ -316,7 +322,8 @@ namespace DSCore.Web
         /// <returns>This request</returns>
         public IRestRequest AddJsonBody(object obj)
         {
-            return ((IRestRequest)restRequest).AddJsonBody(obj);
+            restRequest.AddJsonBody(obj);
+            return this;
         }
 
         /// <summary>
@@ -326,31 +333,36 @@ namespace DSCore.Web
         /// <returns>This request</returns>
         public IRestRequest AddXmlBody(object obj)
         {
-            return ((IRestRequest)restRequest).AddXmlBody(obj);
+            restRequest.AddXmlBody(obj);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddXmlBody(object obj, string xmlNamespace)
         {
-            return ((IRestRequest)restRequest).AddXmlBody(obj, xmlNamespace);
+            restRequest.AddXmlBody(obj, xmlNamespace);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddObject(object obj, params string[] includedProperties)
         {
-            return ((IRestRequest)restRequest).AddObject(obj, includedProperties);
+            restRequest.AddObject(obj, includedProperties);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddObject(object obj)
         {
-            return ((IRestRequest)restRequest).AddObject(obj);
+            restRequest.AddObject(obj);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddParameter(Parameter p)
         {
-            return ((IRestRequest)restRequest).AddParameter(p);
+            restRequest.AddParameter(p);
+            return this;
         }
 
         /// <summary>
@@ -362,19 +374,22 @@ namespace DSCore.Web
         /// <returns></returns>
         public IRestRequest AddParameter(string name, object value)
         {
-            return ((IRestRequest)restRequest).AddParameter(name, value);
+            restRequest.AddParameter(name, value);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         IRestRequest IRestRequest.AddParameter(string name, object value, ParameterType type)
         {
-            return ((IRestRequest)restRequest).AddParameter(name, value, type);
+            restRequest.AddParameter(name, value, type);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public IRestRequest AddParameter(string name, object value, string contentType, ParameterType type)
         {
-            return ((IRestRequest)restRequest).AddParameter(name, value, contentType, type);
+            restRequest.AddParameter(name, value, contentType, type);
+            return this;
         }
 
         /// <summary>
@@ -385,7 +400,8 @@ namespace DSCore.Web
         /// <returns></returns>
         public IRestRequest AddHeader(string name, string value)
         {
-            return ((IRestRequest)restRequest).AddHeader(name, value);
+            restRequest.AddHeader(name, value);
+            return this;
         }
 
         /// <summary>
@@ -396,7 +412,8 @@ namespace DSCore.Web
         /// <returns></returns>
         public IRestRequest AddCookie(string name, string value)
         {
-            return ((IRestRequest)restRequest).AddCookie(name, value);
+            restRequest.AddCookie(name, value);
+            return this;
         }
 
         /// <summary>
@@ -407,7 +424,8 @@ namespace DSCore.Web
         /// <returns></returns>
         public IRestRequest AddUrlSegment(string name, string value)
         {
-            return ((IRestRequest)restRequest).AddUrlSegment(name, value);
+            restRequest.AddUrlSegment(name, value);
+            return this;
         }
 
         /// <summary>
@@ -418,13 +436,14 @@ namespace DSCore.Web
         /// <returns></returns>
         public IRestRequest AddQueryParameter(string name, string value)
         {
-            return ((IRestRequest)restRequest).AddQueryParameter(name, value);
+            restRequest.AddQueryParameter(name, value);
+            return this;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public void IncreaseNumAttempts()
         {
-            ((IRestRequest)restRequest).IncreaseNumAttempts();
+            restRequest.IncreaseNumAttempts();
         }
 
         #endregion
