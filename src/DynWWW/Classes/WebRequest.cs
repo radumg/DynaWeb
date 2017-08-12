@@ -223,6 +223,18 @@ namespace DSCore.Web
         }
 
         /// <summary>
+        /// Sets the value of the ForceSecurityProtocol property.
+        /// Use this property to foce use of TLS1.2, required when interacting over HTTPS.
+        /// </summary>
+        /// <param name="forceSecurity">True or False</param>
+        /// <returns>The request</returns>
+        public WebRequest SetSecurityProtocol(bool forceSecurity)
+        {
+            this.ForceSecurityProtocol = forceSecurity;
+            return this;
+        }
+
+        /// <summary>
         /// Adds a file to the Files collection to be included with a POST or PUT request (other methods do not support file uploads).
         /// </summary>
         /// <param name="name">The parameter name to use in the request</param>
@@ -379,8 +391,14 @@ namespace DSCore.Web
             var responseFromServer = client.Execute(request.restRequest);
             var endTime = DateTime.Now;
 
-            // if a network error occured, the request never reached the recipient server
-            // in that case, expose the error in the UI through an Exception
+            if (request.ForceSecurityProtocol)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.DefaultConnectionLimit *= 10;
+            }
+
+            /// if a network error occured, the request never reached the recipient server
+            /// in that case, expose the error in the UI through an Exception
             if (responseFromServer.ResponseStatus == ResponseStatus.Error)
             {
                 throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);
