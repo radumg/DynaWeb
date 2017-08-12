@@ -88,12 +88,12 @@ namespace DSCore.Web
         /// Container of all HTTP parameters to be passed with the request.
         /// See <see cref="AddParameter(Parameter)"/> for explanation of the types of parameters that can be passed
         /// </summary>
-        public List<Parameter> Parameters => ((IRestRequest)restRequest).Parameters;
+        public List<Parameter> Parameters => restRequest.Parameters;
 
         /// <summary>
         /// Container of all the files to be uploaded with the request.
         /// </summary>
-        public List<FileParameter> Files => ((IRestRequest)restRequest).Files;
+        public List<FileParameter> Files => restRequest.Files;
 
         /// <summary>
         /// Determines what HTTP method to use for this request.
@@ -102,8 +102,8 @@ namespace DSCore.Web
         /// </summary>
         public Method Method
         {
-            get => ((IRestRequest)restRequest).Method;
-            set => ((IRestRequest)restRequest).Method = value;
+            get => restRequest.Method;
+            set => restRequest.Method = value;
         }
 
         /// <summary>
@@ -113,8 +113,8 @@ namespace DSCore.Web
         /// </summary>
         public string Resource
         {
-            get => ((IRestRequest)restRequest).Resource;
-            set => ((IRestRequest)restRequest).Resource = value;
+            get => restRequest.Resource;
+            set => restRequest.Resource = value;
         }
 
         /// <summary>
@@ -124,8 +124,8 @@ namespace DSCore.Web
         /// </summary>
         public string RootElement
         {
-            get => ((IRestRequest)restRequest).RootElement;
-            set => ((IRestRequest)restRequest).RootElement = value;
+            get => restRequest.RootElement;
+            set => restRequest.RootElement = value;
         }
 
         /// <summary>
@@ -134,8 +134,8 @@ namespace DSCore.Web
         /// </summary>
         public int Timeout
         {
-            get => ((IRestRequest)restRequest).Timeout;
-            set => ((IRestRequest)restRequest).Timeout = value;
+            get => restRequest.Timeout;
+            set => restRequest.Timeout = value;
         }
 
         /// <summary>
@@ -144,8 +144,8 @@ namespace DSCore.Web
         /// </summary>
         public int ReadWriteTimeout
         {
-            get => ((IRestRequest)restRequest).ReadWriteTimeout;
-            set => ((IRestRequest)restRequest).ReadWriteTimeout = value;
+            get => restRequest.ReadWriteTimeout;
+            set => restRequest.ReadWriteTimeout = value;
         }
 
         /// <summary>
@@ -153,76 +153,76 @@ namespace DSCore.Web
         /// This Number is incremented each time the web client sends the request.
         /// Useful when using Asynchronous Execution with Callbacks
         /// </summary>
-        public int Attempts => ((IRestRequest)restRequest).Attempts;
+        public int Attempts => restRequest.Attempts;
 
         [IsVisibleInDynamoLibrary(false)]
         public bool AlwaysMultipartFormData
         {
-            get => ((IRestRequest)restRequest).AlwaysMultipartFormData;
-            set => ((IRestRequest)restRequest).AlwaysMultipartFormData = value;
+            get => restRequest.AlwaysMultipartFormData;
+            set => restRequest.AlwaysMultipartFormData = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public ISerializer JsonSerializer
         {
-            get => ((IRestRequest)restRequest).JsonSerializer;
-            set => ((IRestRequest)restRequest).JsonSerializer = value;
+            get => restRequest.JsonSerializer;
+            set => restRequest.JsonSerializer = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public ISerializer XmlSerializer
         {
-            get => ((IRestRequest)restRequest).XmlSerializer;
-            set => ((IRestRequest)restRequest).XmlSerializer = value;
+            get => restRequest.XmlSerializer;
+            set => restRequest.XmlSerializer = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public Action<Stream> ResponseWriter
         {
-            get => ((IRestRequest)restRequest).ResponseWriter;
-            set => ((IRestRequest)restRequest).ResponseWriter = value;
+            get => restRequest.ResponseWriter;
+            set => restRequest.ResponseWriter = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public DataFormat RequestFormat
         {
-            get => ((IRestRequest)restRequest).RequestFormat;
-            set => ((IRestRequest)restRequest).RequestFormat = value;
+            get => restRequest.RequestFormat;
+            set => restRequest.RequestFormat = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public string DateFormat
         {
-            get => ((IRestRequest)restRequest).DateFormat;
-            set => ((IRestRequest)restRequest).DateFormat = value;
+            get => restRequest.DateFormat;
+            set => restRequest.DateFormat = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public string XmlNamespace
         {
-            get => ((IRestRequest)restRequest).XmlNamespace;
-            set => ((IRestRequest)restRequest).XmlNamespace = value;
+            get => restRequest.XmlNamespace;
+            set => restRequest.XmlNamespace = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public ICredentials Credentials
         {
-            get => ((IRestRequest)restRequest).Credentials;
-            set => ((IRestRequest)restRequest).Credentials = value;
+            get => restRequest.Credentials;
+            set => restRequest.Credentials = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public bool UseDefaultCredentials
         {
-            get => ((IRestRequest)restRequest).UseDefaultCredentials;
-            set => ((IRestRequest)restRequest).UseDefaultCredentials = value;
+            get => restRequest.UseDefaultCredentials;
+            set => restRequest.UseDefaultCredentials = value;
         }
 
         [IsVisibleInDynamoLibrary(false)]
         public Action<IRestResponse> OnBeforeDeserialization
         {
-            get => ((IRestRequest)restRequest).OnBeforeDeserialization;
-            set => ((IRestRequest)restRequest).OnBeforeDeserialization = value;
+            get => restRequest.OnBeforeDeserialization;
+            set => restRequest.OnBeforeDeserialization = value;
         }
 
         #endregion
