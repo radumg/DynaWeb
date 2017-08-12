@@ -141,6 +141,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\WebClient.cs" />
     <Compile Include="Classes\WebRequest.cs" />
     <Compile Include="Classes\WebResponse.cs" />
     <Compile Include="Helpers\WebHelpers.cs" />
