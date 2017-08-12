@@ -1,5 +1,4 @@
 ﻿using Autodesk.DesignScript.Runtime;
-using DynWWW.Helpers;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -67,7 +66,7 @@ namespace DSCore.Web
         public string URL
         {
             get => url.ToString();
-            set { url = WebHelpers.ParseUriFromString(value.ToString()); }
+            set { url = Helpers.ParseUriFromString(value.ToString()); }
         }
 
         /// <summary>
@@ -219,6 +218,18 @@ namespace DSCore.Web
         public WebRequest SetUrl(string url)
         {
             this.URL = url;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the value of the ForceSecurityProtocol property.
+        /// Use this property to foce use of TLS1.2, required when interacting over HTTPS.
+        /// </summary>
+        /// <param name="forceSecurity">True or False</param>
+        /// <returns>The request</returns>
+        public WebRequest SetSecurityProtocol(bool forceSecurity)
+        {
+            this.ForceSecurityProtocol = forceSecurity;
             return this;
         }
 
@@ -379,8 +390,14 @@ namespace DSCore.Web
             var responseFromServer = client.Execute(request.restRequest);
             var endTime = DateTime.Now;
 
-            // if a network error occured, the request never reached the recipient server
-            // in that case, expose the error in the UI through an Exception
+            if (request.ForceSecurityProtocol)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.DefaultConnectionLimit *= 10;
+            }
+
+            /// if a network error occured, the request never reached the recipient server
+            /// in that case, expose the error in the UI through an Exception
             if (responseFromServer.ResponseStatus == ResponseStatus.Error)
             {
                 throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);

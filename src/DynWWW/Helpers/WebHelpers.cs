@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DynWWW.Properties;
+using Autodesk.DesignScript.Runtime;
+using DSCore.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace DynWWW.Helpers
+namespace DSCore.Web
 {
-    internal static class WebHelpers
+    public static class Helpers
     {
         /// <summary>
         /// Constructs a valid URI from a supplied string URL. Use this to both check and ensure URLs are valid
@@ -18,7 +22,7 @@ namespace DynWWW.Helpers
         {
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentException(Properties.Resources.WebRequestUrlNullMessage);
+                throw new ArgumentException(DynWWW.Properties.Resources.WebRequestUrlNullMessage);
             }
 
             Uri uriResult;
@@ -28,11 +32,67 @@ namespace DynWWW.Helpers
 
             if (!result)
             {
-                throw new UriFormatException(Properties.Resources.WebRequestUrlInvalidMessage); 
+                throw new UriFormatException(DynWWW.Properties.Resources.WebRequestUrlInvalidMessage);
             }
 
             return uriResult;
         }
+
+        #region deserialisation
+
+        /// <summary>
+        /// Deserialises a JSON string to the type of a supplied object.
+        /// </summary>
+        /// <typeparam name="T">The object type to deserialize to.</typeparam>
+        /// <param name="json">The JSON string that needs to be deserialised.</param>
+        /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
+        /// <returns>The response deserialised as same type as supplied object.</returns>
+        public static dynamic DeserializeAsObject(string json, object obj)
+        {
+            /// We don't want the deserialisation to break if some properties are empty.
+            /// So we need to specify the behaviour when such values are encountered.
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            var type = obj.GetType();
+
+            return JsonConvert.DeserializeObject(json, type, settings);
+        }
+
+        /// <summary>
+        /// Deserialises a JSON string into a dictionary of string keys and object values.
+        /// Note : Does not handle deserialisation of nested objects.
+        /// </summary>
+        /// <param name="json">The JSON string to deserialise</param>
+        /// <returns>A dictionary<string,object> of the responses's JSON content.</string></returns>
+        [MultiReturn(new[] { "properties", "values" })]
+        public static Dictionary<string, object> DeserialiseAsDictionary(string json)
+        {
+            JObject jsonObj = JObject.Parse(json);
+
+            var props = jsonObj.Properties().Select(x => x.Name).ToList();
+            var values = jsonObj.Values().Select(x => x.ToString()).ToList();
+
+            return new Dictionary<string, object>
+                {
+                    { "properties", props },
+                    { "values", values }
+                };
+        }
+
+        /// <summary>
+        /// Builds a new JSON string from the given root of an existing JSON object.
+        /// </summary>
+        /// <param name="json">The existing JSON</param>
+        /// <param name="root">The name of the root object to return as JSON.</param>
+        /// <returns>The new JSON string</returns>
+        public static string SelectJsonRoot(string json, string root)
+        {
+            if (string.IsNullOrEmpty(json) || string.IsNullOrEmpty(root)) throw new ArgumentNullException();
+            return JObject.Parse(json).SelectToken(root).ToString();
+        }
+
+        #endregion
 
     }
 }
