@@ -223,24 +223,6 @@ namespace DSCore.Web
         }
 
         /// <summary>
-        /// Adds a parameter to the web request
-        /// </summary>
-        /// <param name="name">The name of the parameter to add.</param>
-        /// <param name="value">The value of the parameter to pass along.</param>
-        /// <param name="type">The type of parameter.</param>
-        /// <returns></returns>
-        public WebRequest AddParameter(string name, object value, ParameterType type)
-        {
-            if (System.String.IsNullOrEmpty(name) || value == null)
-            {
-                throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestParameterNullMessage);
-            }
-            this.restRequest.AddParameter(name, value, type);
-
-            return this;
-        }
-
-        /// <summary>
         /// Adds a file to the Files collection to be included with a POST or PUT request (other methods do not support file uploads).
         /// </summary>
         /// <param name="name">The parameter name to use in the request</param>
