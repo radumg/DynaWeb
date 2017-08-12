@@ -8,6 +8,7 @@ using System.Net;
 using Autodesk.DesignScript.Runtime;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace DSCore.Web
 {
@@ -91,20 +92,29 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="response">The response to deserialise</param>
         /// <returns>A dictionatry<string,object> of the responses's JSON content.</string></returns>
-        public static Dictionary<string, string> DeserialiseJsonToDictionary(WebResponse response)
+        [MultiReturn(new[] { "properties", "values" })]
+        public static Dictionary<string, object> DeserialiseJsonToDictionary(WebResponse response, string jsonRoot = null)
         {
             var responseData = response.Content;
 
-            /// We don't want the deserialisation to break if some properties are empty.
-            /// So we need to specify the behaviour when such values are encountered.
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.NullValueHandling = NullValueHandling.Ignore;
-            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            string jsonData = "";
+            if (string.IsNullOrEmpty(jsonRoot) == false)
+            {
+                JObject o = JObject.Parse(response.Content);
+                jsonData = o.SelectToken(jsonRoot).ToString();
+            }
+            else jsonData = response.Content;
 
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(responseData, settings);
+            JObject jsonObj = JObject.Parse(jsonData);
 
-            JObject jsonObj = JObject.Parse(responseData);
-            return jsonObj.ToObject<Dictionary<string, string>>();
+            var props = jsonObj.Properties().Select(x => x.Name).ToList();
+            var values = jsonObj.Values().Select(x => x.ToString()).ToList();
+
+            return new Dictionary<string, object>
+                {
+                    { "properties", props },
+                    { "values", values }
+                };
         }
 
         #endregion
