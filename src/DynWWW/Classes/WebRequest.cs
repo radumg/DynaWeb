@@ -1,5 +1,4 @@
 ﻿using Autodesk.DesignScript.Runtime;
-using DynWWW.Helpers;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -67,7 +66,7 @@ namespace DSCore.Web
         public string URL
         {
             get => url.ToString();
-            set { url = WebHelpers.ParseUriFromString(value.ToString()); }
+            set { url = Helpers.ParseUriFromString(value.ToString()); }
         }
 
         /// <summary>
