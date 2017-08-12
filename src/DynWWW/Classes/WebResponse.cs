@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using Autodesk.DesignScript.Runtime;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DSCore.Web
 {
@@ -83,6 +84,27 @@ namespace DSCore.Web
             var type = obj.GetType();
 
             return JsonConvert.DeserializeObject(responseData, type, settings);
+        }
+
+        /// <summary>
+        /// Deserialises the JSON content of a WebResponse into a dictionary of string keys and object values.
+        /// </summary>
+        /// <param name="response">The response to deserialise</param>
+        /// <returns>A dictionatry<string,object> of the responses's JSON content.</string></returns>
+        public static Dictionary<string, string> DeserialiseJsonToDictionary(WebResponse response)
+        {
+            var responseData = response.Content;
+
+            /// We don't want the deserialisation to break if some properties are empty.
+            /// So we need to specify the behaviour when such values are encountered.
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(responseData, settings);
+
+            JObject jsonObj = JObject.Parse(responseData);
+            return jsonObj.ToObject<Dictionary<string, string>>();
         }
 
         #endregion
