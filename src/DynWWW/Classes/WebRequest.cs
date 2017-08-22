@@ -61,7 +61,8 @@ namespace DSCore.Web
         public WebResponse Respose => this.response;
 
         /// <summary>
-        /// The URL for the request
+        /// The URL for the request.
+        /// This is ignored when the request is executed by a WebClient node, use the WebRequest "resource" in that case.
         /// </summary>
         public string URL
         {
@@ -108,6 +109,7 @@ namespace DSCore.Web
 
         /// <summary>
         /// The Resource URL to make the request against, should not include the scheme or domain.
+        /// Ignored when the WebRequest is not executed through a WebClient. 
         /// Do not include leading slash. Combined with web client BaseUrl to assemble final URL:
         /// {BaseUrl}/{Resource} (BaseUrl is scheme + domain, e.g. http://example.com)
         /// </summary>
@@ -181,6 +183,46 @@ namespace DSCore.Web
         }
         #endregion
 
+        #region Execution
+
+        /// <summary>
+        /// Executes a WebRequest and returns the response from the server.
+        /// </summary>
+        /// <param name="request">The web request to execute.</param>
+        /// <returns>The response from the server as a WebResponse object.</returns>
+        [CanUpdatePeriodically(true)]
+        public static WebResponse Execute(WebRequest request)
+        {
+            // build a client to execute the request, recording start & end time
+            var startTime = DateTime.Now;
+            var client = new RestClient(request.URL);
+            client.UserAgent = "DynamoDS";
+
+            var responseFromServer = client.Execute(request.restRequest);
+            var endTime = DateTime.Now;
+
+            if (request.ForceSecurityProtocol)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.DefaultConnectionLimit *= 10;
+            }
+
+            /// if a network error occured, the request never reached the recipient server
+            /// in that case, expose the error in the UI through an Exception
+            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
+            {
+                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+            }
+
+            // update the request properties with response data
+            request.response = new WebResponse(responseFromServer);
+            request.timeToComplete = endTime - startTime;
+
+            return request.response;
+        }
+
+        #endregion
+
         #region extension methods
 
         /// <summary>
@@ -218,6 +260,18 @@ namespace DSCore.Web
         public WebRequest SetUrl(string url)
         {
             this.URL = url;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the resource of the request. Ignored when not executed through a WebClient. 
+        /// This is combined with a WebClient base URL to form a complete request URL.
+        /// </summary>
+        /// <param name="resource">The resource to set for the request.</param>
+        /// <returns>The request with an updated URL.</returns>
+        public WebRequest SetResource(string resource)
+        {
+            this.Resource = resource;
             return this;
         }
 
@@ -383,45 +437,6 @@ namespace DSCore.Web
         }
         #endregion
 
-        #region Execution
-
-        /// <summary>
-        /// Executes a WebRequest and returns the response from the server.
-        /// </summary>
-        /// <param name="request">The web request to execute.</param>
-        /// <returns>The response from the server as a WebResponse object.</returns>
-        [CanUpdatePeriodically(true)]
-        public static WebResponse Execute(WebRequest request)
-        {
-            // build a client to execute the request, recording start & end time
-            var startTime = DateTime.Now;
-            var client = new RestClient(request.URL);
-            client.UserAgent = "DynamoDS";
-
-            var responseFromServer = client.Execute(request.restRequest);
-            var endTime = DateTime.Now;
-
-            if (request.ForceSecurityProtocol)
-            {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                ServicePointManager.DefaultConnectionLimit *= 10;
-            }
-
-            /// if a network error occured, the request never reached the recipient server
-            /// in that case, expose the error in the UI through an Exception
-            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
-            {
-                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
-            }
-
-            // update the request properties with response data
-            request.response = new WebResponse(responseFromServer);
-            request.timeToComplete = endTime - startTime;
-
-            return request.response;
-        }
-
-        #endregion
 
 
     }
