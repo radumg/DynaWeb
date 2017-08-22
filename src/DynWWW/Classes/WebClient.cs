@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using DSCore.Web;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,11 +68,13 @@ namespace DynWWW.Classes
         #endregion
 
 
-        #region constructor
+        #region constructors
 
-        public WebClient(string baseUrl):this(baseUrl,"")
+        public WebClient(string baseUrl)
         {
             if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
+
+            Initialize(baseUrl, "");
         }
 
         public WebClient(string baseUrl, string token)
@@ -79,14 +82,30 @@ namespace DynWWW.Classes
             if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
             if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTokenNullMessage);
 
-            restClient = new RestClient(baseUrl);
-            this.authToken = token;
+            Initialize(baseUrl, token);
+        }
 
+        private void Initialize(string baseUrl, string token)
+        {
+            this.restClient = new RestClient(baseUrl);
+            this.authToken = token;
         }
 
         #endregion
 
         #region methods
+
+        /// <summary>
+        /// Assembles the URL to call based on parameters, method and resource.
+        /// Not needed to run the request, but useful for debugging purposes.
+        /// </summary>
+        /// <param name="request">The request to execute</param>
+        /// <returns>A string representation of the assembly Uri</returns>
+        public string BuildUri(WebRequest request) {
+            if (request == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
+
+            return this.restClient.BuildUri(request.GetInternalRequest()).ToString();
+        }
 
         #endregion
     }

@@ -372,6 +372,17 @@ namespace DSCore.Web
 
         #endregion
 
+        #region internal helpers
+        /// <summary>
+        /// Returns the wrapped RestRequest. Only for internal use.
+        /// </summary>
+        /// <returns></returns>
+        internal RestRequest GetInternalRequest()
+        {
+            return this.restRequest;
+        }
+        #endregion
+
         #region Execution
 
         /// <summary>

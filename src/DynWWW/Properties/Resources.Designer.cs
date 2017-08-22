@@ -61,6 +61,15 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided request cannot be null..
+        /// </summary>
+        internal static string WebClientRequestNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientRequestNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The token cannot be null..
         /// </summary>
         internal static string WebClientTokenNullMessage {
