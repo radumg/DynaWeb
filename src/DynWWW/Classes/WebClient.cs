@@ -1,8 +1,10 @@
-﻿using DSCore.Web;
+﻿using Autodesk.DesignScript.Runtime;
+using DSCore.Web;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,17 +61,25 @@ namespace DynWWW.Classes
         /// Optional UserAgent to use for requests made by this client instance. (ex: Dynamo1.3)
         /// Used by the server to record where the request is coming from.
         /// </summary>
-        public string UserAgent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string UserAgent { get => restClient.UserAgent; set => restClient.UserAgent = value; }
 
         /// <summary>
         /// Specify the timeout in milliseconds to use for requests made by this client instance
         /// </summary>
-        public int Timeout { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Timeout { get => restClient.Timeout; set => restClient.Timeout = value; }
         #endregion
 
 
         #region constructors
 
+        /// <summary>
+        /// Build a new WebClient using the specified URL as its base.
+        /// A web client is used to translate request objects into HTTP requests and process the server response.
+        /// The web client also represents a uniquely configured connection to a server or service.
+        /// </summary>
+        /// <param name="baseUrl">The URL to use for all future requests made by this client.
+        /// Should include scheme (ex: http://) and domain (ex: www.dynamobim.org) without trailing slash (/).
+        /// </param>
         public WebClient(string baseUrl)
         {
             if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
@@ -77,6 +87,17 @@ namespace DynWWW.Classes
             Initialize(baseUrl, "");
         }
 
+        /// <summary>
+        /// Build a new WebClient using the specified URL as its base.
+        /// A web client is used to translate request objects into HTTP requests and process the server response.
+        /// The web client also represents a uniquely configured connection to a server or service.
+        /// </summary>
+        /// <param name="baseUrl">The URL to use for all future requests made by this client.
+        /// Should include scheme (ex: http://) and domain (ex: www.dynamobim.org) without trailing slash (/).
+        /// </param>
+        /// <param name="token">The auth token is used to authenticate requests made by the client.
+        /// Use it as the private store for OAuth tokens for example.
+        /// Once the client is created, this cannot be changed.</param>
         public WebClient(string baseUrl, string token)
         {
             if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
@@ -89,11 +110,49 @@ namespace DynWWW.Classes
         {
             this.restClient = new RestClient(baseUrl);
             this.authToken = token;
+            this.UserAgent = "DynamoDS";
         }
 
         #endregion
 
         #region methods
+
+        /// <summary>
+        /// Executes a WebRequest in the context of the client and returns the response from the server.
+        /// </summary>
+        /// <param name="request">The web request to execute.</param>
+        /// <returns>The response from the server as a WebResponse object.</returns>
+        [CanUpdatePeriodically(true)]
+        public DSCore.Web.WebResponse Execute(DSCore.Web.WebRequest request)
+        {
+            // build a client to execute the request, recording start & end time
+            var startTime = DateTime.Now;
+            
+
+            var responseFromServer = client.Execute(request.GetInternalRequest());
+            var endTime = DateTime.Now;
+
+            if (request.ForceSecurityProtocol)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.DefaultConnectionLimit *= 10;
+            }
+
+            // if a network error occured, the request never reached the recipient server
+            // in that case, expose the error in the UI through an Exception
+            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
+            {
+                throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);
+            }
+
+            // update the request properties with response data
+            request.response = new DSCore.Web.WebResponse(responseFromServer);
+            request.timeToComplete = endTime - startTime;
+
+            return request.response;
+        }
+
+
 
         /// <summary>
         /// Assembles the URL to call based on parameters, method and resource.

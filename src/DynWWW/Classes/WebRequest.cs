@@ -36,7 +36,7 @@ namespace DSCore.Web
 
         #endregion
 
-        #region private properties
+        #region private/internal properties
 
         /// <summary>
         /// The encapsulated Restsharp web request
@@ -46,10 +46,10 @@ namespace DSCore.Web
         /// <summary>
         /// The encapsulated response from the server
         /// </summary>
-        private WebResponse response = new WebResponse(new RestResponse());
+        internal WebResponse response = new WebResponse(new RestResponse());
 
-        private System.TimeSpan timeToComplete;
-        private Uri url;
+        internal System.TimeSpan timeToComplete;
+        internal Uri url;
 
         #endregion
 
