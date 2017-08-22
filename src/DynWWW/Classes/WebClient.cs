@@ -1,14 +1,9 @@
 ﻿using Autodesk.DesignScript.Runtime;
-using DSCore.Web;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DynWWW.Classes
+namespace DSCore.Web
 {
     /// <summary>
     /// A web client is used to translate request objects into HTTP requests and process the server response.
