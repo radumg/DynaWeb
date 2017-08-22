@@ -20,6 +20,21 @@ namespace DynWWW.Classes
         /// </summary>
         private RestClient restClient;
 
+        /// <summary>
+        /// This auth token is used to authenticate requests made by the client.
+        /// Use it as the private store for OAuth tokens for example.
+        /// </summary>
+        private string authToken;
+
+        /// <summary>
+        /// This auth code is used during OAuth authentication flows.
+        /// </summary>
+        private string authCode;
+
+        /// <summary>
+        /// This string is used to verify responses from the server during authentication flows.
+        /// </summary>
+        private string authVerification;
         #endregion
 
         #region public members
