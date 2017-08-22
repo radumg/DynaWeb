@@ -61,11 +61,38 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient..
+        ///   Looks up a localized string similar to Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource..
         /// </summary>
-        internal static string WebRequestExecutionNetworkErrorMessage {
+        internal static string WebClientBuildUrlFailed {
             get {
-                return ResourceManager.GetString("WebRequestExecutionNetworkErrorMessage", resourceCulture);
+                return ResourceManager.GetString("WebClientBuildUrlFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided request cannot be null..
+        /// </summary>
+        internal static string WebClientRequestNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientRequestNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The token cannot be null..
+        /// </summary>
+        internal static string WebClientTokenNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientTokenNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The base URL for the client cannot be null..
+        /// </summary>
+        internal static string WebClientUrlNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientUrlNullMessage", resourceCulture);
             }
         }
         
@@ -111,6 +138,42 @@ namespace DynWWW.Properties {
         internal static string WebRequestUrlNullMessage {
             get {
                 return ResourceManager.GetString("WebRequestUrlNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The web request was aborted before it could be completed. Data may or may not have reached the remote server..
+        /// </summary>
+        internal static string WebResponseAbortedMessage {
+            get {
+                return ResourceManager.GetString("WebResponseAbortedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient..
+        /// </summary>
+        internal static string WebResponseNetworkErrorMessage {
+            get {
+                return ResourceManager.GetString("WebResponseNetworkErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The web request did not return a valid response status..
+        /// </summary>
+        internal static string WebResponseNoneMessage {
+            get {
+                return ResourceManager.GetString("WebResponseNoneMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The web request timed out and did not complete. Data may or may not have reached the remote server..
+        /// </summary>
+        internal static string WebResponseTimedOutMessage {
+            get {
+                return ResourceManager.GetString("WebResponseTimedOutMessage", resourceCulture);
             }
         }
     }

@@ -141,6 +141,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Execution.cs" />
+    <Compile Include="Classes\WebClient.cs" />
     <Compile Include="Classes\WebRequest.cs" />
     <Compile Include="Classes\WebResponse.cs" />
     <Compile Include="Helpers\WebHelpers.cs" />
@@ -166,4 +168,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>robocopy $(OutDir) C:\users\radug\desktop\testing /W:3 /R:3 /IT /IS</PostBuildEvent>
+  </PropertyGroup>
 </Project>

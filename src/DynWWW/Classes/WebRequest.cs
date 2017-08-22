@@ -36,7 +36,7 @@ namespace DSCore.Web
 
         #endregion
 
-        #region private properties
+        #region private/internal properties
 
         /// <summary>
         /// The encapsulated Restsharp web request
@@ -46,10 +46,10 @@ namespace DSCore.Web
         /// <summary>
         /// The encapsulated response from the server
         /// </summary>
-        private WebResponse response = new WebResponse(new RestResponse());
+        internal WebResponse response = new WebResponse(new RestResponse());
 
-        private System.TimeSpan timeToComplete;
-        private Uri url;
+        internal System.TimeSpan timeToComplete;
+        internal Uri url;
 
         #endregion
 
@@ -61,7 +61,8 @@ namespace DSCore.Web
         public WebResponse Respose => this.response;
 
         /// <summary>
-        /// The URL for the request
+        /// The URL for the request.
+        /// This is ignored when the request is executed by a WebClient node, use the WebRequest "resource" in that case.
         /// </summary>
         public string URL
         {
@@ -108,6 +109,7 @@ namespace DSCore.Web
 
         /// <summary>
         /// The Resource URL to make the request against, should not include the scheme or domain.
+        /// Ignored when the WebRequest is not executed through a WebClient. 
         /// Do not include leading slash. Combined with web client BaseUrl to assemble final URL:
         /// {BaseUrl}/{Resource} (BaseUrl is scheme + domain, e.g. http://example.com)
         /// </summary>
@@ -181,6 +183,46 @@ namespace DSCore.Web
         }
         #endregion
 
+        #region Execution
+
+        /// <summary>
+        /// Executes a WebRequest and returns the response from the server.
+        /// </summary>
+        /// <param name="request">The web request to execute.</param>
+        /// <returns>The response from the server as a WebResponse object.</returns>
+        [CanUpdatePeriodically(true)]
+        public static WebResponse Execute(WebRequest request)
+        {
+            // build a client to execute the request, recording start & end time
+            var startTime = DateTime.Now;
+            var client = new RestClient(request.URL);
+            client.UserAgent = "DynamoDS";
+
+            var responseFromServer = client.Execute(request.restRequest);
+            var endTime = DateTime.Now;
+
+            if (request.ForceSecurityProtocol)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.DefaultConnectionLimit *= 10;
+            }
+
+            /// if a network error occured, the request never reached the recipient server
+            /// in that case, expose the error in the UI through an Exception
+            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
+            {
+                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+            }
+
+            // update the request properties with response data
+            request.response = new WebResponse(responseFromServer);
+            request.timeToComplete = endTime - startTime;
+
+            return request.response;
+        }
+
+        #endregion
+
         #region extension methods
 
         /// <summary>
@@ -218,6 +260,18 @@ namespace DSCore.Web
         public WebRequest SetUrl(string url)
         {
             this.URL = url;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the resource of the request. Ignored when not executed through a WebClient. 
+        /// This is combined with a WebClient base URL to form a complete request URL.
+        /// </summary>
+        /// <param name="resource">The resource to set for the request.</param>
+        /// <returns>The request with an updated URL.</returns>
+        public WebRequest SetResource(string resource)
+        {
+            this.Resource = resource;
             return this;
         }
 
@@ -372,45 +426,17 @@ namespace DSCore.Web
 
         #endregion
 
-        #region Execution
-
+        #region internal helpers
         /// <summary>
-        /// Executes a WebRequest and returns the response from the server.
+        /// Returns the wrapped RestRequest. Only for internal use.
         /// </summary>
-        /// <param name="request">The web request to execute.</param>
-        /// <returns>The response from the server as a WebResponse object.</returns>
-        [CanUpdatePeriodically(true)]
-        public static WebResponse Execute(WebRequest request)
+        /// <returns></returns>
+        internal RestRequest GetInternalRequest()
         {
-            // build a client to execute the request, recording start & end time
-            var startTime = DateTime.Now;
-            var client = new RestClient(request.URL);
-            client.UserAgent = "DynamoDS";
-
-            var responseFromServer = client.Execute(request.restRequest);
-            var endTime = DateTime.Now;
-
-            if (request.ForceSecurityProtocol)
-            {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                ServicePointManager.DefaultConnectionLimit *= 10;
-            }
-
-            /// if a network error occured, the request never reached the recipient server
-            /// in that case, expose the error in the UI through an Exception
-            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
-            {
-                throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);
-            }
-
-            // update the request properties with response data
-            request.response = new WebResponse(responseFromServer);
-            request.timeToComplete = endTime - startTime;
-
-            return request.response;
+            return this.restRequest;
         }
-
         #endregion
+
 
 
     }

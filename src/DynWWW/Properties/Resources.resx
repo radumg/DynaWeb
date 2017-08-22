@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WebRequestExecutionNetworkErrorMessage" xml:space="preserve">
-    <value>A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient.</value>
+  <data name="WebClientBuildUrlFailed" xml:space="preserve">
+    <value>Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource.</value>
+  </data>
+  <data name="WebClientRequestNullMessage" xml:space="preserve">
+    <value>The provided request cannot be null.</value>
+  </data>
+  <data name="WebClientTokenNullMessage" xml:space="preserve">
+    <value>The token cannot be null.</value>
+  </data>
+  <data name="WebClientUrlNullMessage" xml:space="preserve">
+    <value>The base URL for the client cannot be null.</value>
   </data>
   <data name="WebRequestParameterNullMessage" xml:space="preserve">
     <value />
@@ -134,5 +143,17 @@
   </data>
   <data name="WebRequestUrlNullMessage" xml:space="preserve">
     <value>The URL cannot be null.</value>
+  </data>
+  <data name="WebResponseAbortedMessage" xml:space="preserve">
+    <value>The web request was aborted before it could be completed. Data may or may not have reached the remote server.</value>
+  </data>
+  <data name="WebResponseNetworkErrorMessage" xml:space="preserve">
+    <value>A network transport error occured. Possible causes include network is down, failed DNS lookup, etc. This also means the request did not reach the intended recipient.</value>
+  </data>
+  <data name="WebResponseNoneMessage" xml:space="preserve">
+    <value>The web request did not return a valid response status.</value>
+  </data>
+  <data name="WebResponseTimedOutMessage" xml:space="preserve">
+    <value>The web request timed out and did not complete. Data may or may not have reached the remote server.</value>
   </data>
 </root>

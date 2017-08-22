@@ -13,6 +13,7 @@ namespace DSCore.Web
 {
     public static class Helpers
     {
+        #region URL & Uri handling
         /// <summary>
         /// Constructs a valid URI from a supplied string URL. Use this to both check and ensure URLs are valid
         /// </summary>
@@ -37,6 +38,20 @@ namespace DSCore.Web
 
             return uriResult;
         }
+
+        /// <summary>Check the URI is valid</summary>
+        /// <param name="uriToCheck">The URI to check</param>
+        /// <returns>True if is valid, False otherwise</returns>
+        public static Boolean CheckURI(Uri uriToCheck)
+        {
+            if (uriToCheck.IsFile || uriToCheck.IsUnc) throw new Exception("URI is file or is UNC pointing to internal network");
+
+            if (!Uri.CheckSchemeName(uriToCheck.Scheme))
+                return false;
+            return true;
+        }
+
+        #endregion
 
         #region deserialisation
 
