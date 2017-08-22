@@ -16,7 +16,7 @@ namespace DSCore.Web
         /// <summary>
         /// This is the wrapped RestSharp RestClient.
         /// </summary>
-        private RestClient restClient;
+        internal RestClient restClient;
 
         /// <summary>
         /// This auth token is used to authenticate requests made by the client.
