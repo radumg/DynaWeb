@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DSCore.Web
 {
-    internal static class Execution
+    public static class Execution
     {
-        internal static WebResponse Execute(WebClient webClient, WebRequest webRequest)
+        public static WebResponse Execute(WebClient webClient, WebRequest webRequest)
         {
             if (webRequest == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
             WebClient client;
