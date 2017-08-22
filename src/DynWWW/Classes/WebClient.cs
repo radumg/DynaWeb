@@ -122,9 +122,9 @@ namespace DSCore.Web
         {
             // build a client to execute the request, recording start & end time
             var startTime = DateTime.Now;
-            
 
-            var responseFromServer = client.Execute(request.GetInternalRequest());
+
+            var responseFromServer = this.restClient.Execute(request.GetInternalRequest());
             var endTime = DateTime.Now;
 
             if (request.ForceSecurityProtocol)
@@ -137,7 +137,7 @@ namespace DSCore.Web
             // in that case, expose the error in the UI through an Exception
             if (responseFromServer.ResponseStatus == ResponseStatus.Error)
             {
-                throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);
+                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
             }
 
             // update the request properties with response data
@@ -155,7 +155,8 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="request">The request to execute</param>
         /// <returns>A string representation of the assembly Uri</returns>
-        public string BuildUri(WebRequest request) {
+        public string BuildUri(WebRequest request)
+        {
             if (request == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
 
             return this.restClient.BuildUri(request.GetInternalRequest()).ToString();

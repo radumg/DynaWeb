@@ -411,7 +411,7 @@ namespace DSCore.Web
             /// in that case, expose the error in the UI through an Exception
             if (responseFromServer.ResponseStatus == ResponseStatus.Error)
             {
-                throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestExecutionNetworkErrorMessage);
+                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
             }
 
             // update the request properties with response data
