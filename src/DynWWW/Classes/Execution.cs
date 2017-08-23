@@ -8,17 +8,30 @@ using System.Threading.Tasks;
 
 namespace DSCore.Web
 {
-    public static class Execution
+    /// <summary>
+    /// Provides support for executing WebRequests
+    /// </summary>
+    internal static class Execution
     {
-        public static WebResponse Execute(WebClient webClient, WebRequest webRequest)
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied.
+        /// </summary>
+        /// <param name="webClient">The client that will execute the request.
+        /// Note : the WebClient can be NULL when executing a WebRequest directly.</param>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <returns>The WebResponse from the server.</returns>
+        internal static WebResponse ByClientRequest(WebClient webClient, WebRequest webRequest)
         {
             if (webRequest == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
+            // build a client & request to execute
             WebClient client;
             WebRequest request = webRequest;
 
-            // build a client to execute the request, recording start & end time
+            // check if client is null : this will be the case when executing a WebRequest directly
             if (webClient == null)
             {
+                // in that case, an empty WebClient will be constructed with the WebRequest URL as its baseUrl.
+                // the request Resource also needs to be reset, otherwise the URL would be concatenating to itself.
                 client = new WebClient(webRequest.URL);
                 request.Resource = "";
             }
