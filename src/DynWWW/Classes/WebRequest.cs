@@ -174,13 +174,49 @@ namespace DSCore.Web
         /// Build a simple GET web request to the specified URL
         /// </summary>
         /// <param name="url">The URL to send the request to.</param>
+        /// <param name="resource">The endpoint, or resource, used in conjunction with a WebClient base URL.</param>
         /// <returns>The request object, ready for execution.</returns>
-        public WebRequest(string url)
+        private WebRequest(string url, string resource)
+        {
+            Initialize(url, resource);
+        }
+
+        /// <summary>
+        /// Private constructor
+        /// </summary>
+        /// <param name="url">The URL to use for the request.</param>
+        /// <param name="resource">The resource to use for the request.</param>
+        private void Initialize(string url, string resource)
         {
             URL = url;
             restRequest = new RestRequest(this.URL, Method.GET);
-            restRequest.Resource = "";
+            restRequest.Resource = resource;
         }
+
+        /// <summary>
+        /// Build a simple GET web request to the specified URL
+        /// </summary>
+        /// <param name="url">The URL to send the request to.</param>
+        /// <returns>The request object, ready for execution.</returns>
+        public static WebRequest ByUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestUrlNullMessage);
+            return new WebRequest(url, null);
+        }
+
+        /// <summary>
+        /// Build a simple GET web request to the specified URL
+        /// </summary>
+        /// <param name="endpoint">The resource (or endpoint) to use for the request.
+        /// This will be used in conjunction with a WebClient base URL to form the full request URL.
+        /// ex : "users".</param>
+        /// <returns>The request object, ready for execution.</returns>
+        public static WebRequest ByEndpoint(string endpoint)
+        {
+            if (string.IsNullOrEmpty(endpoint)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestEndpointNullMessage);
+            return new WebRequest(null, endpoint);
+        }
+
         #endregion
 
         #region Execution
