@@ -56,6 +56,27 @@ namespace DSCore.Web
         #region deserialisation
 
         /// <summary>
+        /// Recursively parse a JSON token into native data types.
+        /// This includes all children of the JSON object, regardless of how many levels of nesting there are.
+        /// </summary>
+        /// <param name="json">The JSON token (object) to parse.</param>
+        /// <returns>The parsed object</returns>
+        public static object Deserialise(string json)
+        {
+            return ParseObject(JToken.Parse(json));
+        }
+
+        public static dynamic DeserializeAsAnonObject(string json, object obj)
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            settings.CheckAdditionalContent = true;
+
+            return JsonConvert.DeserializeAnonymousType(json, obj, settings);
+        }
+
+        /// <summary>
         /// Deserialises a JSON string to the type of a supplied object.
         /// </summary>
         /// <typeparam name="T">The object type to deserialize to.</typeparam>
@@ -69,6 +90,7 @@ namespace DSCore.Web
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
             settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            settings.CheckAdditionalContent = true;
             var type = obj.GetType();
 
             return JsonConvert.DeserializeObject(json, type, settings);
@@ -105,6 +127,28 @@ namespace DSCore.Web
         {
             if (string.IsNullOrEmpty(json) || string.IsNullOrEmpty(root)) throw new ArgumentNullException();
             return JObject.Parse(json).SelectToken(root).ToString();
+        }
+
+        /// <summary>
+        /// This method will recursively parse a JSON token into native .NET types.
+        /// </summary>
+        /// <param name="token">The JSON token (object) to parse.</param>
+        /// <returns>The parsed object.</returns>
+        private static object ParseObject(JToken token)
+        {
+            switch (token.Type)
+            {
+                case JTokenType.Object:
+                    return token.Children<JProperty>()
+                                .ToDictionary(prop => prop.Name,
+                                              prop => ParseObject(prop.Value));
+
+                case JTokenType.Array:
+                    return token.Select(ParseObject).ToList();
+
+                default:
+                    return ((JValue)token).Value;
+            }
         }
 
         #endregion

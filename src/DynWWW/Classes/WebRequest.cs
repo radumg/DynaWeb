@@ -193,31 +193,7 @@ namespace DSCore.Web
         [CanUpdatePeriodically(true)]
         public static WebResponse Execute(WebRequest request)
         {
-            // build a client to execute the request, recording start & end time
-            var startTime = DateTime.Now;
-            var client = new RestClient(request.URL);
-            client.UserAgent = "DynamoDS";
-
-            var responseFromServer = client.Execute(request.restRequest);
-            var endTime = DateTime.Now;
-
-            if (request.ForceSecurityProtocol)
-            {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                ServicePointManager.DefaultConnectionLimit *= 10;
-            }
-
-            /// if a network error occured, the request never reached the recipient server
-            /// in that case, expose the error in the UI through an Exception
-            if (responseFromServer.ResponseStatus == ResponseStatus.Error)
-            {
-                throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
-            }
-
-            // update the request properties with response data
-            request.response = new WebResponse(responseFromServer);
-            request.timeToComplete = endTime - startTime;
-
+            request.response = Execution.ByClientRequest(null, request);
             return request.response;
         }
 
