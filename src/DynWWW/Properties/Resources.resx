@@ -129,8 +129,11 @@
   <data name="WebClientUrlNullMessage" xml:space="preserve">
     <value>The base URL for the client cannot be null.</value>
   </data>
+  <data name="WebRequestEndpointNullMessage" xml:space="preserve">
+    <value>The resource/endpoint provided cannot be null.</value>
+  </data>
   <data name="WebRequestParameterNullMessage" xml:space="preserve">
-    <value />
+    <value>The parameter provided cannot be null.</value>
   </data>
   <data name="WebRequestPortDataResultToolTip" xml:space="preserve">
     <value />

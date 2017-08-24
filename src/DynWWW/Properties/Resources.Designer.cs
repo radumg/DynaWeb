@@ -97,7 +97,16 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The resource/endpoint provided cannot be null..
+        /// </summary>
+        internal static string WebRequestEndpointNullMessage {
+            get {
+                return ResourceManager.GetString("WebRequestEndpointNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter provided cannot be null..
         /// </summary>
         internal static string WebRequestParameterNullMessage {
             get {

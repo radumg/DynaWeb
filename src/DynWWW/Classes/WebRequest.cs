@@ -34,6 +34,12 @@ namespace DSCore.Web
         /// </summary>
         private const SecurityProtocolType defaultSecurityProtocol = SecurityProtocolType.Tls12;
 
+        /// <summary>
+        /// The default URL to use when constructing a WebRequest by endpoint only.
+        /// This then gets disregarded by the WebClient during execution.
+        /// </summary>
+        private const string defaultUrl = "http://www.dynamobim.org";
+
         #endregion
 
         #region private/internal properties
@@ -171,16 +177,57 @@ namespace DSCore.Web
         #region constructor methods
 
         /// <summary>
+        /// Private constructor : Build a simple GET web request to the specified URL
+        /// </summary>
+        /// <param name="url">The URL to send the request to.</param>
+        /// <param name="resource">The endpoint, or resource, used in conjunction with a WebClient base URL.</param>
+        /// <returns>The request object, ready for execution.</returns>
+        private WebRequest(string url, string resource)
+        {
+            Initialize(url, resource);
+        }
+
+        /// <summary>
+        /// Private backing constructor
+        /// </summary>
+        /// <param name="url">The URL to use for the request.</param>
+        /// <param name="resource">The resource to use for the request.</param>
+        private void Initialize(string url, string resource)
+        {
+            // handle the case where only endpoint is needed, 
+            // but a valid URL is still required for the RestSharp request constructor
+            if (string.IsNullOrEmpty(url) && !string.IsNullOrEmpty(resource))
+                URL = defaultUrl;
+            else URL = url;
+
+            restRequest = new RestRequest(this.URL, Method.GET);
+            restRequest.Resource = resource;
+        }
+
+        /// <summary>
         /// Build a simple GET web request to the specified URL
         /// </summary>
         /// <param name="url">The URL to send the request to.</param>
         /// <returns>The request object, ready for execution.</returns>
-        public WebRequest(string url)
+        public static WebRequest ByUrl(string url)
         {
-            URL = url;
-            restRequest = new RestRequest(this.URL, Method.GET);
-            restRequest.Resource = "";
+            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestUrlNullMessage);
+            return new WebRequest(url, null);
         }
+
+        /// <summary>
+        /// Build a simple GET web request to the specified URL
+        /// </summary>
+        /// <param name="endpoint">The resource (or endpoint) to use for the request.
+        /// This will be used in conjunction with a WebClient base URL to form the full request URL.
+        /// ex : "users".</param>
+        /// <returns>The request object, ready for execution.</returns>
+        public static WebRequest ByEndpoint(string endpoint)
+        {
+            if (string.IsNullOrEmpty(endpoint)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestEndpointNullMessage);
+            return new WebRequest(null, endpoint);
+        }
+
         #endregion
 
         #region Execution
