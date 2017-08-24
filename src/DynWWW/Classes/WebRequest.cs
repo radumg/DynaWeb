@@ -34,6 +34,12 @@ namespace DSCore.Web
         /// </summary>
         private const SecurityProtocolType defaultSecurityProtocol = SecurityProtocolType.Tls12;
 
+        /// <summary>
+        /// The default URL to use when constructing a WebRequest by endpoint only.
+        /// This then gets disregarded by the WebClient during execution.
+        /// </summary>
+        private const string defaultUrl = "http://www.dynamobim.org";
+
         #endregion
 
         #region private/internal properties
@@ -171,7 +177,7 @@ namespace DSCore.Web
         #region constructor methods
 
         /// <summary>
-        /// Build a simple GET web request to the specified URL
+        /// Private constructor : Build a simple GET web request to the specified URL
         /// </summary>
         /// <param name="url">The URL to send the request to.</param>
         /// <param name="resource">The endpoint, or resource, used in conjunction with a WebClient base URL.</param>
@@ -182,13 +188,18 @@ namespace DSCore.Web
         }
 
         /// <summary>
-        /// Private constructor
+        /// Private backing constructor
         /// </summary>
         /// <param name="url">The URL to use for the request.</param>
         /// <param name="resource">The resource to use for the request.</param>
         private void Initialize(string url, string resource)
         {
-            URL = url;
+            // handle the case where only endpoint is needed, 
+            // but a valid URL is still required for the RestSharp request constructor
+            if (string.IsNullOrEmpty(url) && !string.IsNullOrEmpty(resource))
+                URL = defaultUrl;
+            else URL = url;
+
             restRequest = new RestRequest(this.URL, Method.GET);
             restRequest.Resource = resource;
         }
