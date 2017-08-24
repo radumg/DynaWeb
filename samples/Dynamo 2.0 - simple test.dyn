@@ -1,0 +1,749 @@
+{
+  "Uuid": "2e557306-8b1b-4845-b1a3-a2ba63aac533",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Home",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.WebRequest@string",
+      "Id": "3475e5f5-14ef-49a4-9813-4214328e003a",
+      "Inputs": [
+        {
+          "Id": "56898900-9dc9-42b5-8ee1-a821fa3fddec",
+          "Name": "url",
+          "Description": "The URL to send the request to.\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5b9babfa-8da2-48ff-b326-cebdd31cf0d5",
+          "Name": "WebRequest",
+          "Description": "The request object, ready for execution.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Build a simple GET web request to the specified URL\n\nWebRequest.WebRequest (url: string): WebRequest"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "http://www.mocky.io/v2/5185415ba171ea3a00704eed",
+      "Id": "b0069ec7-ce93-4460-9ccf-f25e5ddbc020",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b7969edc-fd3b-498b-bbef-52439a1ff70e",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "http://www.google.com/",
+      "Id": "054ef25a-ffb5-4cb7-8d2d-c550b232622f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "439680ce-e0a1-4909-9425-c05476496d36",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.URL",
+      "Id": "8563c7c9-b62f-405e-a1f5-6c17e862594f",
+      "Inputs": [
+        {
+          "Id": "1df5ce54-6dd6-49a3-a85c-7873a5b10320",
+          "Name": "webRequest",
+          "Description": "DSCore.Web.WebRequest",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "183c5504-3283-45ad-9c15-b765c8779788",
+          "Name": "string",
+          "Description": "string",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "The URL for the request\n\nWebRequest.URL: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.Time",
+      "Id": "005c4e7a-9699-4cc0-bb6b-8e333f8e3d65",
+      "Inputs": [
+        {
+          "Id": "5e3cd5c9-d256-4232-954d-546345d2ca66",
+          "Name": "webRequest",
+          "Description": "DSCore.Web.WebRequest",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5baf394b-e242-41fd-92be-34135aac1c58",
+          "Name": "var",
+          "Description": "var",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "The time it took for the request to complete\n\nWebRequest.Time: var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.Execute@var",
+      "Id": "e93dda94-b242-44d2-8f58-e19001fe42b9",
+      "Inputs": [
+        {
+          "Id": "22cc1179-6466-472d-a41c-bad268f3c8e6",
+          "Name": "request",
+          "Description": "The web request to execute.\n\nvar",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+          "Name": "var",
+          "Description": "The response from the server as a WebResponse object.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Executes a WebRequest and returns the response from the server.\n\nWebRequest.Execute (request: var): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.Content",
+      "Id": "dd8de1bb-518c-40dc-8a50-7f5ac0f736c5",
+      "Inputs": [
+        {
+          "Id": "5fcb4826-82e9-43c5-9982-9ed03449206f",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c5b51e1c-d1a4-4bc9-85a2-07b25ba9d1e2",
+          "Name": "string",
+          "Description": "string",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.Content: string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "26bf56c4-2f45-47fa-83c4-04804ffa88c9",
+      "Inputs": [
+        {
+          "Id": "5120f25c-f70d-4cae-98a5-ad46c986e1f2",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ada5766b-92fc-4a8d-b610-ffb7048e484b",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.ResponseUri",
+      "Id": "d28ef690-ab5a-457f-bcc2-1fdbb04e97ef",
+      "Inputs": [
+        {
+          "Id": "5101a2a1-7e35-41f6-8cea-f921bfd8f5a4",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "94e4d78f-1834-4272-ba1e-cf89fdc66929",
+          "Name": "var",
+          "Description": "var",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.ResponseUri: var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.Server",
+      "Id": "8d34747d-10e7-4917-bfd9-c76399962dd7",
+      "Inputs": [
+        {
+          "Id": "3b0b762b-7e81-42a9-8df4-96609448a024",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7da9ea79-884b-44b2-b9c4-823b73aa4109",
+          "Name": "string",
+          "Description": "string",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.Server: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.StatusCode",
+      "Id": "89d16582-1c30-4ebb-abda-55a33ffffcb7",
+      "Inputs": [
+        {
+          "Id": "8629601f-e6e9-4fb2-8687-c110c7571410",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e32d9633-c25f-482e-9cf4-a60683ece88b",
+          "Name": "string",
+          "Description": "string",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.StatusCode: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.Headers",
+      "Id": "6a82e8d2-005c-43be-9ebb-d3bb8d942697",
+      "Inputs": [
+        {
+          "Id": "492c00d3-30cc-42b0-a0b9-5f87a148604b",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5654835c-d398-4d9f-8f4d-25b62fc46631",
+          "Name": "string[][]",
+          "Description": "string[][]",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.Headers: string[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "f484d55d-90a6-4a01-9c42-9518cc55a746",
+      "Inputs": [
+        {
+          "Id": "5349caf8-a281-4947-84ed-207d8f00b8f5",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "47d88d63-804e-4d5a-8ee1-3af52d87407e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.WebRequest, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "9b418588-20db-420c-bb0c-c7aa6667d13e",
+      "Inputs": [
+        {
+          "Id": "f76bb5b8-dfe0-42d3-8903-5b0b56be718e",
+          "Name": "url",
+          "Description": "The url for the web request.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eadc0105-bc2c-43d9-8d39-5b81c077d039",
+          "Name": "result",
+          "Description": "The result of the web request.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Make a web request given a url."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "0f3c1307-221d-4032-8f4d-5bd18cc55c5e",
+      "Inputs": [
+        {
+          "Id": "36263935-0371-4f9a-ac5f-a3ba646b1867",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff5a9b54-819e-4526-a17a-b65077db7a1e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5b9babfa-8da2-48ff-b326-cebdd31cf0d5",
+      "End": "5e3cd5c9-d256-4232-954d-546345d2ca66",
+      "Id": "a0c77b90-f789-491f-8db0-8433d743c1f0"
+    },
+    {
+      "Start": "5b9babfa-8da2-48ff-b326-cebdd31cf0d5",
+      "End": "1df5ce54-6dd6-49a3-a85c-7873a5b10320",
+      "Id": "cc545b8d-8d5d-4f0c-8c8d-2c82cc805397"
+    },
+    {
+      "Start": "5b9babfa-8da2-48ff-b326-cebdd31cf0d5",
+      "End": "22cc1179-6466-472d-a41c-bad268f3c8e6",
+      "Id": "f3e04501-98b2-4c61-8ec7-db361719f57f"
+    },
+    {
+      "Start": "439680ce-e0a1-4909-9425-c05476496d36",
+      "End": "56898900-9dc9-42b5-8ee1-a821fa3fddec",
+      "Id": "c3f061cb-ccc0-496f-94ac-6af12881cbc4"
+    },
+    {
+      "Start": "439680ce-e0a1-4909-9425-c05476496d36",
+      "End": "f76bb5b8-dfe0-42d3-8903-5b0b56be718e",
+      "Id": "decc3f17-9094-4339-bc91-73933449a013"
+    },
+    {
+      "Start": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+      "End": "5fcb4826-82e9-43c5-9982-9ed03449206f",
+      "Id": "f7fe5ffe-f94f-4958-8bad-c507ad3fe972"
+    },
+    {
+      "Start": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+      "End": "5101a2a1-7e35-41f6-8cea-f921bfd8f5a4",
+      "Id": "9c45a829-c884-465f-9d46-0d52976d294b"
+    },
+    {
+      "Start": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+      "End": "3b0b762b-7e81-42a9-8df4-96609448a024",
+      "Id": "bbf7f026-fa78-4ae0-a48c-5c3a5466ee7b"
+    },
+    {
+      "Start": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+      "End": "8629601f-e6e9-4fb2-8687-c110c7571410",
+      "Id": "54cd14b2-5544-44f2-9cab-a5e604cb30d4"
+    },
+    {
+      "Start": "b1802a23-5547-4dbc-987e-68d56a6fc060",
+      "End": "492c00d3-30cc-42b0-a0b9-5f87a148604b",
+      "Id": "5e85ade5-38bd-416c-8e83-7a2bbbf098e7"
+    },
+    {
+      "Start": "c5b51e1c-d1a4-4bc9-85a2-07b25ba9d1e2",
+      "End": "5120f25c-f70d-4cae-98a5-ad46c986e1f2",
+      "Id": "1b864acc-66c2-4ed2-bfb2-53e88bdc51c3"
+    },
+    {
+      "Start": "5654835c-d398-4d9f-8f4d-25b62fc46631",
+      "End": "5349caf8-a281-4947-84ed-207d8f00b8f5",
+      "Id": "205dcb58-34e2-490c-9852-37d47cfdc208"
+    },
+    {
+      "Start": "eadc0105-bc2c-43d9-8d39-5b81c077d039",
+      "End": "36263935-0371-4f9a-ac5f-a3ba646b1867",
+      "Id": "3d3ef8ab-2f33-4585-ac2c-be25497af36a"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Cameras": {
+      "EyePosition": "-17,24,50",
+      "UpDirection": "0,1,0",
+      "LookDirection": "12,-13,-58",
+      "Name": "Background Preview"
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.WebRequest",
+        "Id": "3475e5f5-14ef-49a4-9813-4214328e003a",
+        "IsUpstreamVisible": true,
+        "X": 259.63922214862697,
+        "Y": 382.77156243232588
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "b0069ec7-ce93-4460-9ccf-f25e5ddbc020",
+        "IsUpstreamVisible": true,
+        "X": -199.98026648675403,
+        "Y": 456.42253283195987
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "054ef25a-ffb5-4cb7-8d2d-c550b232622f",
+        "IsUpstreamVisible": true,
+        "X": -203.04904202806844,
+        "Y": 196.60592389528892
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.URL",
+        "Id": "8563c7c9-b62f-405e-a1f5-6c17e862594f",
+        "IsUpstreamVisible": true,
+        "X": 947.935139794807,
+        "Y": 1457.7699856211909
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.Time",
+        "Id": "005c4e7a-9699-4cc0-bb6b-8e333f8e3d65",
+        "IsUpstreamVisible": true,
+        "X": 947.935139794807,
+        "Y": 1330.9316956911721
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.Execute",
+        "Id": "e93dda94-b242-44d2-8f58-e19001fe42b9",
+        "IsUpstreamVisible": true,
+        "X": 611.63393865048,
+        "Y": 538.75758268595587
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.Content",
+        "Id": "dd8de1bb-518c-40dc-8a50-7f5ac0f736c5",
+        "IsUpstreamVisible": true,
+        "X": 963.08936060343478,
+        "Y": 465.39169848652864
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "26bf56c4-2f45-47fa-83c4-04804ffa88c9",
+        "IsUpstreamVisible": true,
+        "X": 1575.3838624293426,
+        "Y": 338.775782344092
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.ResponseUri",
+        "Id": "d28ef690-ab5a-457f-bcc2-1fdbb04e97ef",
+        "IsUpstreamVisible": true,
+        "X": 963.08936060343478,
+        "Y": 559.28758348171857
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.Server",
+        "Id": "8d34747d-10e7-4917-bfd9-c76399962dd7",
+        "IsUpstreamVisible": true,
+        "X": 963.08936060343478,
+        "Y": 695.82196265194864
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.StatusCode",
+        "Id": "89d16582-1c30-4ebb-abda-55a33ffffcb7",
+        "IsUpstreamVisible": true,
+        "X": 963.08936060343478,
+        "Y": 346.22747344645558
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.Headers",
+        "Id": "6a82e8d2-005c-43be-9ebb-d3bb8d942697",
+        "IsUpstreamVisible": true,
+        "X": 963.08936060343478,
+        "Y": 817.80670362942953
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "f484d55d-90a6-4a01-9c42-9518cc55a746",
+        "IsUpstreamVisible": true,
+        "X": 1297.4787896865557,
+        "Y": 824.42202164317155
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Web Request",
+        "Id": "9b418588-20db-420c-bb0c-c7aa6667d13e",
+        "IsUpstreamVisible": true,
+        "X": 504.59760635461583,
+        "Y": 78.3470329451693
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "0f3c1307-221d-4032-8f4d-5bd18cc55c5e",
+        "IsUpstreamVisible": true,
+        "X": 1564.3878658658,
+        "Y": 83.695233159714462
+      }
+    ],
+    "Notes": [
+      {
+        "Id": "225188d1-09db-4238-aa63-3cb5856bd667",
+        "X": -199.60707939309327,
+        "Y": 357.9392925613879,
+        "Text": "I suggest using something like Mocky.io ( http://www.mocky.io/ ) to test out the package and web responses.\r\nVisit the site to generate a fresh URL, this one will likely be out of date."
+      },
+      {
+        "Id": "c88f5ec6-5f2c-4136-b79c-cde9cf2f94b2",
+        "X": 521.08913885949141,
+        "Y": 175.46145252672318,
+        "Text": "The only Dynamo node for web interaction in the core."
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "3fa6d0d7-1314-4207-9595-f4fc2443b9c6",
+        "Title": "Response metadata",
+        "Nodes": [
+          "dd8de1bb-518c-40dc-8a50-7f5ac0f736c5",
+          "d28ef690-ab5a-457f-bcc2-1fdbb04e97ef",
+          "8d34747d-10e7-4917-bfd9-c76399962dd7",
+          "89d16582-1c30-4ebb-abda-55a33ffffcb7",
+          "6a82e8d2-005c-43be-9ebb-d3bb8d942697",
+          "f484d55d-90a6-4a01-9c42-9518cc55a746"
+        ],
+        "Left": 953.08936060343478,
+        "Top": 293.22747344645558,
+        "Width": 433.38942908312094,
+        "Height": 640.19454819671591,
+        "FontSize": 36.0,
+        "InitialTop": 346.22747344645558,
+        "InitialHeight": 623.19454819671591,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "795a34b7-554b-4686-bc85-fe4fc98102ed",
+        "Title": "Request metadata",
+        "Nodes": [
+          "8563c7c9-b62f-405e-a1f5-6c17e862594f",
+          "005c4e7a-9699-4cc0-bb6b-8e333f8e3d65"
+        ],
+        "Left": 937.935139794807,
+        "Top": 1234.4316956911721,
+        "Width": 248.0,
+        "Height": 316.33828993001885,
+        "FontSize": 36.0,
+        "InitialTop": 1330.9316956911721,
+        "InitialHeight": 271.83828993001885,
+        "TextblockHeight": 86.5,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "f089908b-d8cd-43ba-8040-677b3fe5c567",
+        "Title": "Response itself",
+        "Nodes": [
+          "26bf56c4-2f45-47fa-83c4-04804ffa88c9"
+        ],
+        "Left": 1565.3838624293426,
+        "Top": 242.27578234409202,
+        "Width": 161.31666666666666,
+        "Height": 205.5,
+        "FontSize": 36.0,
+        "InitialTop": 338.775782344092,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.5,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "f9e3c2b5-de62-4b9d-868b-1f4bbd6dbd5f",
+        "Title": "Input",
+        "Nodes": [
+          "b0069ec7-ce93-4460-9ccf-f25e5ddbc020",
+          "054ef25a-ffb5-4cb7-8d2d-c550b232622f",
+          "225188d1-09db-4238-aa63-3cb5856bd667"
+        ],
+        "Left": -213.04904202806844,
+        "Top": 114.60592389528892,
+        "Width": 305.4419626349752,
+        "Height": 424.31660893667095,
+        "FontSize": 60.0,
+        "InitialTop": 196.60592389528892,
+        "InitialHeight": 404.81660893667095,
+        "TextblockHeight": 72.0,
+        "Background": "#FF48B9FF"
+      },
+      {
+        "Id": "4f01c9db-2d73-4340-b5b8-0ca6b5528abb",
+        "Title": "Build & Execute the request using this test build of the package.",
+        "Nodes": [
+          "3475e5f5-14ef-49a4-9813-4214328e003a",
+          "e93dda94-b242-44d2-8f58-e19001fe42b9"
+        ],
+        "Left": 249.63922214862697,
+        "Top": 286.27156243232588,
+        "Width": 556.494716501853,
+        "Height": 345.48602025363,
+        "FontSize": 36.0,
+        "InitialTop": 382.77156243232588,
+        "InitialHeight": 300.98602025363,
+        "TextblockHeight": 86.5,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "5e6cf565-1a80-46e8-90f0-807e42a8fcdf",
+        "Title": "Execute the request using built-in node",
+        "Nodes": [
+          "9b418588-20db-420c-bb0c-c7aa6667d13e",
+          "c88f5ec6-5f2c-4136-b79c-cde9cf2f94b2"
+        ],
+        "Left": 494.59760635461583,
+        "Top": -18.152967054830697,
+        "Width": 316.99153250487558,
+        "Height": 252.61441958155388,
+        "FontSize": 36.0,
+        "InitialTop": 78.3470329451693,
+        "InitialHeight": 237.11441958155388,
+        "TextblockHeight": 86.5,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "28403e4d-c8a8-436c-92c6-ed700b68b307",
+        "Title": "Response itself, no metadata available",
+        "Nodes": [
+          "0f3c1307-221d-4032-8f4d-5bd18cc55c5e"
+        ],
+        "Left": 1554.3878658658,
+        "Top": -185.30476684028554,
+        "Width": 148.34333333333333,
+        "Height": 378.0,
+        "FontSize": 36.0,
+        "InitialTop": 83.695233159714462,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 259.0,
+        "Background": "#FFFFAA45"
+      }
+    ],
+    "X": 161.63232711838214,
+    "Y": 98.91423907247983,
+    "Zoom": 0.41171283793262081
+  }
+}
