@@ -1,15 +1,9 @@
 ﻿using Autodesk.DesignScript.Runtime;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using RestSharp.Serializers;
-using System.Reflection;
+using System.Collections.Specialized;
 
 namespace DSCore.Web
 {
@@ -56,6 +50,9 @@ namespace DSCore.Web
 
         internal System.TimeSpan timeToComplete;
         internal Uri url;
+
+        private StringDictionary headers = new StringDictionary();
+        private Dictionary<string,object> parameters = new Dictionary<string, object>();
 
         #endregion
 
@@ -373,6 +370,10 @@ namespace DSCore.Web
         /// <returns>This request</returns>
         public WebRequest AddObject(object obj)
         {
+            var hash = obj.GetHashCode().ToString();
+            if (parameters.ContainsKey(hash)) return this;
+
+            parameters.Add(hash, obj);
             restRequest.AddObject(obj);
             return this;
         }
@@ -395,7 +396,18 @@ namespace DSCore.Web
             if (Enum.TryParse<ParameterType>(parameterType, true, out ParameterType pType) == false)
                 throw new ArgumentException("Could not parse the supplied value into a valid Parameter Type.");
 
-            restRequest.AddParameter(name, value, pType);
+            try
+            {
+                this.parameters.Add(name, value);
+                // if the item was added, we should also add it to the wrapped RestRequest
+                restRequest.AddParameter(name, value, pType);
+            }
+            catch (Exception e)
+            {
+                // the addition silently fails
+                // TODO : add warning bubble on node without throwing Exception
+                // as that would stop downstream nodes from executing
+            }
             return this;
         }
 
@@ -407,7 +419,18 @@ namespace DSCore.Web
         /// <returns></returns>
         public WebRequest AddHeader(string name, string value)
         {
-            restRequest.AddHeader(name, value);
+            try
+            {
+                this.headers.Add(name, value);
+                // if the header was added, we should also add it to the wrapped RestRequest
+                restRequest.AddHeader(name, value);
+            }
+            catch (Exception e)
+            {
+                // the addition silently fails
+                // TODO : add warning bubble on node without throwing Exception
+                // as that would stop downstream nodes from executing
+            }
             return this;
         }
 
@@ -431,8 +454,7 @@ namespace DSCore.Web
         /// <returns></returns>
         public WebRequest AddUrlSegment(string name, string value)
         {
-            restRequest.AddUrlSegment(name, value);
-            return this;
+            return AddParameter(name, value, ParameterType.UrlSegment.ToString());
         }
 
         /// <summary>
@@ -443,8 +465,7 @@ namespace DSCore.Web
         /// <returns></returns>
         public WebRequest AddQueryParameter(string name, string value)
         {
-            restRequest.AddQueryParameter(name, value);
-            return this;
+            return AddParameter(name, value, ParameterType.QueryString.ToString());
         }
 
         #endregion
