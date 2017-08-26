@@ -49,7 +49,28 @@ namespace DSCore.Web
                 return headers;
             }
         }
-        public string Cookies => this.response.Cookies.ToString();
+
+        public List<List<string>> Cookies
+        {
+            get
+            {
+                var result = new List<List<string>>();
+
+                foreach (var cookie in this.response.Cookies)
+                {
+                    var values = new List<string>();
+                    values.Add(cookie.Name);
+                    values.Add(cookie.Value);
+                    values.Add(cookie.TimeStamp.ToString());
+
+                    result.Add(new List<string>() { "Name", "Value", "TimeStamp" });
+                    result.Add(values);
+                }
+
+                return result;
+            }
+        }
+
         public string ResponseStatus => this.response.ResponseStatus.ToString();
         public string ErrorException => this.response.ErrorException.ToString();
         public string ErrorMessage => this.response.ErrorMessage;

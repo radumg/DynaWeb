@@ -169,6 +169,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>(robocopy $(OutDir) C:\users\radug\desktop\testing /W:3 /R:3 /IT /IS) ^&amp; IF %25ERRORLEVEL%25 LEQ 4 exit /B 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy $(OutDir) C:\users\radug\desktop\testing /W:3 /R:3 /IT /IS /XF *.tmp) ^&amp; IF %25ERRORLEVEL%25 LEQ 4 exit /B 0</PostBuildEvent>
   </PropertyGroup>
 </Project>
