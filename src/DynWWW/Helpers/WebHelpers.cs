@@ -8,6 +8,7 @@ using Autodesk.DesignScript.Runtime;
 using DSCore.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Reflection;
 
 namespace DSCore.Web
 {
@@ -101,7 +102,7 @@ namespace DSCore.Web
         /// Note : Does not handle deserialisation of nested objects.
         /// </summary>
         /// <param name="json">The JSON string to deserialise</param>
-        /// <returns>A dictionary<string,object> of the responses's JSON content.</string></returns>
+        /// <returns>A dictionary of the responses's JSON content.</returns>
         [MultiReturn(new[] { "properties", "values" })]
         public static Dictionary<string, object> DeserialiseAsDictionary(string json)
         {
@@ -153,5 +154,25 @@ namespace DSCore.Web
 
         #endregion
 
+        #region Type support
+
+        /// <summary>
+        /// Gets only non-null properties and their values from a Type using Reflection.
+        /// </summary>
+        /// <param name="obj">The object to extract type properties from.</param>
+        /// <returns>A dictionary of properties and their values.</returns>
+        public static Dictionary<string, string> GetValidProperties(object obj)
+        {
+            var parameters = new Dictionary<string, string>();
+            Type type = obj.GetType();
+            foreach (PropertyInfo prop in type.GetProperties())
+            {
+                var value = prop.GetValue(obj).ToString();
+                if (!string.IsNullOrEmpty(value)) parameters.Add(prop.Name, value);
+            }
+            return parameters;
+        }
+
+        #endregion
     }
 }
