@@ -84,7 +84,7 @@ namespace DSCore.Web
                     throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
                     break;
                 case ResponseStatus.TimedOut:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseTimedOutMessage);
+                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestTimedOutMessage);
                     break;
                 case ResponseStatus.Aborted:
                     throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseAbortedMessage);

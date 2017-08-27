@@ -120,14 +120,26 @@
   <data name="WebClientBuildUrlFailed" xml:space="preserve">
     <value>Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource.</value>
   </data>
+  <data name="WebClientMaxRedirectsInvalidMessage" xml:space="preserve">
+    <value>The value for MaxRedirects cannot be negative or equal to zero.</value>
+  </data>
   <data name="WebClientRequestNullMessage" xml:space="preserve">
     <value>The provided request cannot be null.</value>
+  </data>
+  <data name="WebClientTimeoutInvalidMessage" xml:space="preserve">
+    <value>The value for Timeout cannot be negative or equal to zero.</value>
   </data>
   <data name="WebClientTokenNullMessage" xml:space="preserve">
     <value>The token cannot be null.</value>
   </data>
   <data name="WebClientUrlNullMessage" xml:space="preserve">
     <value>The base URL for the client cannot be null.</value>
+  </data>
+  <data name="WebClientUserAgentNullMessage" xml:space="preserve">
+    <value>The UserAgent provided cannot be null.</value>
+  </data>
+  <data name="WebJsonTokenInvalidMessage" xml:space="preserve">
+    <value>The supplied JSON token is not valid.</value>
   </data>
   <data name="WebRequestEndpointNullMessage" xml:space="preserve">
     <value>The resource/endpoint provided cannot be null.</value>
@@ -141,11 +153,8 @@
   <data name="WebRequestPortDataUrlToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="WebRequestUrlInvalidMessage" xml:space="preserve">
-    <value>The URL provided is not a valid URL.</value>
-  </data>
-  <data name="WebRequestUrlNullMessage" xml:space="preserve">
-    <value>The URL cannot be null.</value>
+  <data name="WebRequestTimedOutMessage" xml:space="preserve">
+    <value>The web request timed out and did not complete. Data may or may not have reached the remote server.</value>
   </data>
   <data name="WebResponseAbortedMessage" xml:space="preserve">
     <value>The web request was aborted before it could be completed. Data may or may not have reached the remote server.</value>
@@ -156,7 +165,10 @@
   <data name="WebResponseNoneMessage" xml:space="preserve">
     <value>The web request did not return a valid response status.</value>
   </data>
-  <data name="WebResponseTimedOutMessage" xml:space="preserve">
-    <value>The web request timed out and did not complete. Data may or may not have reached the remote server.</value>
+  <data name="WebUrlInvalidMessage" xml:space="preserve">
+    <value>The URL provided is not a valid URL.</value>
+  </data>
+  <data name="WebUrlNullMessage" xml:space="preserve">
+    <value>The URL cannot be null.</value>
   </data>
 </root>
