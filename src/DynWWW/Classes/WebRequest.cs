@@ -60,7 +60,7 @@ namespace DSCore.Web
         /// <summary>
         /// The response the server returned on the last execution of the request.
         /// </summary>
-        public WebResponse Respose => this.response;
+        public WebResponse Response => this.response;
 
         /// <summary>
         /// The URL for the request.
