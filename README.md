@@ -1,7 +1,7 @@
 # DynaWeb
 [![Build Status](https://travis-ci.org/radumg/DynWWW.svg?branch=master)](https://travis-ci.org/radumg/DynWWW) [![GitHub version](https://badge.fury.io/gh/radumg%2FDynaWeb.svg)](https://badge.fury.io/gh/radumg%2FDynaWeb) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/radumg/DynaWeb/blob/master/CONTRIBUTING.md)
 ---
-**DynaWeb** is a [Dynamo](http://www.dynamobim.org) package providing support for interaction with the interwebz in general and with REST APIs in particular.
+__DynaWeb__ is a [Dynamo](http://www.dynamobim.org) package providing support for interaction with the interwebz in general and with REST APIs in particular.
 
 It's meant to provide building blocks so you can build Dynamo integrations with just about any web service out there. It helps you retrieve (GET) stuff from the web, send (POST) information to the web and everything in between (PUT, DELETE, PATCH, etc). The package also includes some rather nifty `deserialisation` nodes, so you can use the information you get from the web directly in Dynamo graphs, as native types.
 
@@ -35,6 +35,30 @@ The repository is only private in the sense that source code is not made availab
 Please consult the sample files provided in this repository - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation at this point on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
 Feel free to submit PR if you want to add some documentation in the meantime.
+
+## Samples
+There are 6 sample Dynamo graphs included with the package, check out the `extra` folder in the downloaded package or the [samples folder](https://github.com/radumg/DynaWeb/tree/master/samples) of this repository. Also note the DYN samples are offered in both Dynamo 1.3 file format and Dynamo 2.0 new format.
+
+The samples start from super-simple and increase in complexity :
+
+__Sample 1 - A first request__
+3 nodes, similar to out-of-the-box (OOTB) Dynamo experience today.
+
+__Sample 2 - A simple request__
+introduces the 3 stages of performing web requests and explains quite a few things. Also show how to achieve same thing with the OOTB node.
+
+__Sample 3 - Requst + benchmarking__
+same as sample 2 but with added nodes that provide more information about the request (timing, etc) and output the results to text files.
+
+__Sample 4 - REST API example__
+this introduces the use of the `WebClient` class and some of the basic priciples of interacting with REST services. Uses a REST API that is freely accessible and returns JSON reponses. Contrasts using a `WebClient` and a `WebRequest` to achieve same thing and also introduces `Deserialisation`.
+
+__Sample 5 - REST API advanced__
+Introduces POST-ing to a REST API service and handling JSON payloads. Once the request is submitted, the response is deserialised too.
+
+__Sample 6 - Comples POST request__
+further expands on the above example, building a complex `WebRequest` with 6 steps before its execution.
+
 
 ## Class structure
 There's 4 main namespaces you'll find in DynaWeb : 
@@ -76,7 +100,7 @@ Please read [CONTRIBUTING.md](https://github.com/radumg/DynWWW/blob/master/docs/
 
 ## Authors
 
-* **Radu Gidei** : [Github profile](https://github.com/radumg), [Twitter profile](https://twitter.com/radugidei)
+__Radu Gidei__ : [Github profile](https://github.com/radumg), [Twitter profile](https://twitter.com/radugidei)
 
 ## License
 
