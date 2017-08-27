@@ -32,7 +32,7 @@ The repository is only private in the sense that source code is not made availab
 - start Dynamo, the package should now be listed as `DynWWW` in the library.
 
 # Using DynaWeb
-Please consult the sample files provided in this repository - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation at this point on purpose - to see how intuitive the design of the package & nodes is to first-time users.
+Please consult the sample files provided in this repository - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
 Feel free to submit PR if you want to add some documentation in the meantime.
 
