@@ -1,5 +1,5 @@
 # DynaWeb
-[![Build Status](https://travis-ci.org/radumg/DynWWW.svg?branch=master)](https://travis-ci.org/radumg/DynWWW) [![GitHub version](https://badge.fury.io/gh/radumg%2FDynWWW.svg)](https://badge.fury.io/gh/radumg%2FDynWWW) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/radumg/DynaWeb/blob/master/CONTRIBUTING.md)
+[![Build Status](https://travis-ci.org/radumg/DynWWW.svg?branch=master)](https://travis-ci.org/radumg/DynWWW) [![GitHub version](https://badge.fury.io/gh/radumg%2FDynaWeb.svg)](https://badge.fury.io/gh/radumg%2FDynaWeb) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/radumg/DynaWeb/blob/master/CONTRIBUTING.md)
 ---
 **DynaWeb** is a [Dynamo](http://www.dynamobim.org) package providing support for interaction with the interwebz in general and with REST APIs in particular.
 
