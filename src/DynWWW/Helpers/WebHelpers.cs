@@ -9,6 +9,8 @@ using DSCore.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
+using Newtonsoft.Json.Converters;
+using System.Dynamic;
 
 namespace DSCore.Web
 {
@@ -67,14 +69,21 @@ namespace DSCore.Web
             return ParseObject(JToken.Parse(json));
         }
 
-        public static dynamic DeserializeAsAnonObject(string json, object obj)
+        /// <summary>
+        /// Deserialises a JSON string to a .NET object.
+        /// </summary>
+        /// <param name="json">The JSON string that needs to be deserialised.</param>
+        /// <returns>The response deserialised as an object.</returns>
+        public static dynamic DeserializeAsObject(string json)
         {
+            /// We don't want the deserialisation to break if some properties are empty.
+            /// So we need to specify the behaviour when such values are encountered.
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
             settings.MissingMemberHandling = MissingMemberHandling.Ignore;
             settings.CheckAdditionalContent = true;
 
-            return JsonConvert.DeserializeAnonymousType(json, obj, settings);
+            return JsonConvert.DeserializeObject(json, settings);
         }
 
         /// <summary>
@@ -84,7 +93,7 @@ namespace DSCore.Web
         /// <param name="json">The JSON string that needs to be deserialised.</param>
         /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
         /// <returns>The response deserialised as same type as supplied object.</returns>
-        public static dynamic DeserializeAsObject(string json, object obj)
+        public static dynamic DeserializeByObjectType(string json, object obj)
         {
             /// We don't want the deserialisation to break if some properties are empty.
             /// So we need to specify the behaviour when such values are encountered.
@@ -96,8 +105,7 @@ namespace DSCore.Web
 
             return JsonConvert.DeserializeObject(json, type, settings);
         }
-
-        /// <summary>
+     /// <summary>
         /// Deserialises a JSON string into a dictionary of string keys and object values.
         /// Note : Does not handle deserialisation of nested objects.
         /// </summary>
@@ -116,6 +124,24 @@ namespace DSCore.Web
                     { "properties", props },
                     { "values", values }
                 };
+        }
+
+        /// <summary>
+        /// Serialises an object string to a JSON string.
+        /// </summary>
+        /// <param name="obj">The object that will be serialised.</param>
+        /// <returns>Object serialised as JSON string.</returns>
+        public static string SerializeToJSON(object obj)
+        {
+            /// We don't want the serialisation to break if some properties are empty.
+            /// So we need to specify the behaviour when such values are encountered.
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            settings.CheckAdditionalContent = true;
+            settings.Formatting = Formatting.Indented;
+
+            return JsonConvert.SerializeObject(obj, settings);
         }
 
         /// <summary>
@@ -161,7 +187,7 @@ namespace DSCore.Web
         /// </summary>
         /// <param name="obj">The object to extract type properties from.</param>
         /// <returns>A dictionary of properties and their values.</returns>
-        public static Dictionary<string, string> GetValidProperties(object obj)
+        internal static Dictionary<string, string> GetValidProperties(object obj)
         {
             var parameters = new Dictionary<string, string>();
             Type type = obj.GetType();
@@ -173,6 +199,15 @@ namespace DSCore.Web
             return parameters;
         }
 
+        internal static dynamic WrapObject(object obj)
+        {
+            var wrapper = new
+            {
+                data = obj
+            };
+            var json = JsonConvert.SerializeObject(wrapper);
+            return ParseObject(JToken.Parse(json));
+        }
         #endregion
     }
 }
