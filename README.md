@@ -26,9 +26,9 @@ The repository is only private in the sense that source code is not made availab
 
 - Download the latest release from the [Releases page](https://github.com/radumg/DynaWeb/releases)
 - unzip the downloaded file
-- copy the contents of the unzipped folder to the location of your Dynamo packages  :
-    - `%appdata\Dynamo\Dynamo Core\1.3\packages` for Dynamo Sandbox, replacing `1.3` with your version of Dynamo
-    - `%appdata\Dynamo\Dynamo Revit\1.3\packages` for Dynamo for Revit, replacing `1.3` with your version of Dynamo
+- once unzipped, copy the `DynaWeb` folder to the location of your Dynamo packages  :
+    - `%appdata%\Dynamo\Dynamo Core\1.3\packages` for Dynamo Sandbox, replacing `1.3` with your version of Dynamo
+    - `%appdata%\Dynamo\Dynamo Revit\1.3\packages` for Dynamo for Revit, replacing `1.3` with your version of Dynamo
 - start Dynamo, the package should now be listed as `DynWWW` in the library.
 
 # Using DynaWeb
