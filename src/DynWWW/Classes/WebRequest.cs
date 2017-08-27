@@ -48,7 +48,6 @@ namespace DSCore.Web
         /// </summary>
         internal WebResponse response = new WebResponse(new RestResponse());
 
-        internal System.TimeSpan timeToComplete;
         internal Uri url;
 
         private StringDictionary headers = new StringDictionary();
@@ -72,11 +71,6 @@ namespace DSCore.Web
             get => url.ToString();
             set { url = Helpers.ParseUriFromString(value.ToString()); }
         }
-
-        /// <summary>
-        /// The time it took for the request to complete
-        /// </summary>
-        public System.TimeSpan Time { get => this.timeToComplete; }
 
         /// <summary>
         /// Set this property to true to force requests to go through a security protocol (TLS1.2).
