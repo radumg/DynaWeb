@@ -1,7 +1,6 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using RestSharp;
 using System;
-using System.Net;
 
 namespace DSCore.Web
 {
@@ -35,7 +34,8 @@ namespace DSCore.Web
         private string authVerification;
         #endregion
 
-        #region public members
+        #region public client settings
+
         /// <summary>
         /// This is the base URL for all future requests made by its client.
         /// This URL is combined with the request resource (ex: DynamoDS/Dynamo/issues) to construct the final URL for request.
@@ -45,25 +45,49 @@ namespace DSCore.Web
         public Uri BaseUrl { get => restClient.BaseUrl; set => restClient.BaseUrl = value; }
 
         /// <summary>
-        /// Use this to override which node in the JSON response is used as the root/starting point for deserialisation.
-        /// </summary>
-        public string JsonTokenOverride { get; set; }
-        #endregion
-
-        #region client settings
-
-        /// <summary>
         /// Optional UserAgent to use for requests made by this client instance. (ex: Dynamo1.3)
         /// Used by the server to record where the request is coming from.
         /// </summary>
         public string UserAgent { get => restClient.UserAgent; set => restClient.UserAgent = value; }
 
         /// <summary>
-        /// Specify the timeout in milliseconds to use for requests made by this client instance
+        /// Timeout in milliseconds to use for requests made by this client instance
         /// </summary>
         public int Timeout { get => restClient.Timeout; set => restClient.Timeout = value; }
-        #endregion
 
+        /// <summary>
+        /// Determine whether or not requests that result in HTTP status codes of 3xx should follow returned redirect. Defaults to true.
+        /// </summary>
+        public bool FollowRedirects
+        {
+            get => restClient.FollowRedirects;
+            set
+            {
+                restClient.FollowRedirects = value;
+                if (restClient.FollowRedirects == true && MaxRedirects == null)
+                    MaxRedirects = 1;
+            }
+        }
+
+        /// <summary>
+        /// Maximum number of redirects to follow if FollowRedirects is true. Defaults to 1 if not set.
+        /// </summary>
+        public int? MaxRedirects
+        {
+            get
+            {
+                if (FollowRedirects == true) return restClient.MaxRedirects;
+                else return null;
+            }
+            set => restClient.MaxRedirects = value;
+        }
+
+        /// <summary>
+        /// Use this to override which node in the JSON response is used as the root/starting point for deserialisation.
+        /// </summary>
+        public string JsonTokenOverride { get; set; }
+
+        #endregion
 
         #region constructors
 
@@ -110,7 +134,7 @@ namespace DSCore.Web
 
         #endregion
 
-        #region methods
+        #region execution
 
         /// <summary>
         /// Executes a WebRequest in the context of the client and returns the response from the server.
@@ -124,7 +148,9 @@ namespace DSCore.Web
             return request.response;
         }
 
+        #endregion
 
+        #region public methods
 
         /// <summary>
         /// Assembles the URL to call based on parameters, method and resource.
@@ -137,6 +163,78 @@ namespace DSCore.Web
             if (request == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
 
             return this.restClient.BuildUri(request.GetInternalRequest()).ToString();
+        }
+
+        /// <summary>
+        /// Set the base URL for this client.
+        /// </summary>
+        /// <param name="url">The value to set BaseUrl to, has to be a valid URL.</param>
+        /// <returns>The WebClient supplied with an updated BaseUrl property.</returns>
+        public WebClient SetBaseURL(string url)
+        {
+            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
+            if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynWWW.Properties.Resources.WebUrlInvalidMessage);
+            BaseUrl = Helpers.ParseUriFromString(url);
+            return this;
+        }
+
+        /// <summary>
+        /// Set the user agent communicated with requests this client sends.
+        /// </summary>
+        /// <param name="userAgent">The value to set the UserAgent to.</param>
+        /// <returns>The WebClient supplied with the an UserAgent property.</returns>
+        public WebClient SetUserAgent(string userAgent)
+        {
+            if (string.IsNullOrEmpty(userAgent)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUserAgentNullMessage);
+            UserAgent = userAgent;
+            return this;
+        }
+
+        /// <summary>
+        /// Set the timeout in milliseconds to use for requests made by this client instance
+        /// </summary>
+        /// <param name="timeout">The value to set timeout to, expressed in milliseconds.</param>
+        /// <returns>The WebClient supplied with an updated Timeout property.</returns>
+        public WebClient SetTimeout(int timeout)
+        {
+            if (timeout <= 0) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTimeoutInvalidMessage);
+            Timeout = timeout;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the FollowRedirects setting of the client. This controls whether or not requests that result in HTTP status codes of 3xx should follow returned redirect. Default is true.
+        /// </summary>
+        /// <param name="followRedirects">True to follow redirects, false to end request.</param>
+        /// <returns>The WebClient supplied with an updated FollowRedirects property.</returns>
+        public WebClient SetFollowRedirects(bool followRedirects = true)
+        {
+            FollowRedirects = followRedirects;
+            return this;
+        }
+
+        /// <summary>
+        /// Set the maximum number of redirects to follow if FollowRedirects is true.
+        /// </summary>
+        /// <param name="maxRedirects">The value to set maximum to, expressed as an integer.</param>
+        /// <returns>The WebClient supplied with an updated MaxRedirects property.</returns>
+        public WebClient SetMaxRedirects(int maxRedirects)
+        {
+            if (maxRedirects <= 0) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTimeoutInvalidMessage);
+            MaxRedirects = maxRedirects;
+            return this;
+        }
+
+        /// <summary>
+        /// Set the JsonTokenOverride that is used for deserialisation purposes.
+        /// </summary>
+        /// <param name="jsonToken">The value to set JsonTokenOverride to.</param>
+        /// <returns>The WebClient supplied with an updated JsonTokenOverride property.</returns>
+        public WebClient SetJsonTokenOverride(string jsonToken)
+        {
+            if (string.IsNullOrEmpty(jsonToken)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTokenNullMessage);
+            JsonTokenOverride = jsonToken;
+            return this;
         }
 
         #endregion

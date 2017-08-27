@@ -26,7 +26,7 @@ namespace DSCore.Web
         {
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentException(DynWWW.Properties.Resources.WebRequestUrlNullMessage);
+                throw new ArgumentException(DynWWW.Properties.Resources.WebUrlNullMessage);
             }
 
             Uri uriResult;
@@ -36,7 +36,7 @@ namespace DSCore.Web
 
             if (!result)
             {
-                throw new UriFormatException(DynWWW.Properties.Resources.WebRequestUrlInvalidMessage);
+                throw new UriFormatException(DynWWW.Properties.Resources.WebUrlInvalidMessage);
             }
 
             return uriResult;

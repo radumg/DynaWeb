@@ -70,11 +70,29 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value for MaxRedirects cannot be negative or equal to zero..
+        /// </summary>
+        internal static string WebClientMaxRedirectsInvalidMessage {
+            get {
+                return ResourceManager.GetString("WebClientMaxRedirectsInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided request cannot be null..
         /// </summary>
         internal static string WebClientRequestNullMessage {
             get {
                 return ResourceManager.GetString("WebClientRequestNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value for Timeout cannot be negative or equal to zero..
+        /// </summary>
+        internal static string WebClientTimeoutInvalidMessage {
+            get {
+                return ResourceManager.GetString("WebClientTimeoutInvalidMessage", resourceCulture);
             }
         }
         
@@ -93,6 +111,24 @@ namespace DynWWW.Properties {
         internal static string WebClientUrlNullMessage {
             get {
                 return ResourceManager.GetString("WebClientUrlNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The UserAgent provided cannot be null..
+        /// </summary>
+        internal static string WebClientUserAgentNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientUserAgentNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied JSON token is not valid..
+        /// </summary>
+        internal static string WebJsonTokenInvalidMessage {
+            get {
+                return ResourceManager.GetString("WebJsonTokenInvalidMessage", resourceCulture);
             }
         }
         
@@ -133,20 +169,11 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The URL provided is not a valid URL..
+        ///   Looks up a localized string similar to The web request timed out and did not complete. Data may or may not have reached the remote server..
         /// </summary>
-        internal static string WebRequestUrlInvalidMessage {
+        internal static string WebRequestTimedOutMessage {
             get {
-                return ResourceManager.GetString("WebRequestUrlInvalidMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The URL cannot be null..
-        /// </summary>
-        internal static string WebRequestUrlNullMessage {
-            get {
-                return ResourceManager.GetString("WebRequestUrlNullMessage", resourceCulture);
+                return ResourceManager.GetString("WebRequestTimedOutMessage", resourceCulture);
             }
         }
         
@@ -178,11 +205,20 @@ namespace DynWWW.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The web request timed out and did not complete. Data may or may not have reached the remote server..
+        ///   Looks up a localized string similar to The URL provided is not a valid URL..
         /// </summary>
-        internal static string WebResponseTimedOutMessage {
+        internal static string WebUrlInvalidMessage {
             get {
-                return ResourceManager.GetString("WebResponseTimedOutMessage", resourceCulture);
+                return ResourceManager.GetString("WebUrlInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL cannot be null..
+        /// </summary>
+        internal static string WebUrlNullMessage {
+            get {
+                return ResourceManager.GetString("WebUrlNullMessage", resourceCulture);
             }
         }
     }
