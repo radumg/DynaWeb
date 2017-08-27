@@ -1,0 +1,1152 @@
+{
+  "Uuid": "80834056-9751-497a-9466-91bc3d7f3761",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Home",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebClient.WebClient@string",
+      "Id": "10027e25-5361-40af-8a57-891af7fdee83",
+      "Inputs": [
+        {
+          "Id": "10c63325-1d1f-4c88-982f-10a87c50ffae",
+          "Name": "baseUrl",
+          "Description": "The URL to use for all future requests made by this client. Should include scheme (ex: http://) and domain (ex: www.dynamobim.org) without trailing slash (/).\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7b337c7f-c9b0-495a-84fd-0340acbcd099",
+          "Name": "WebClient",
+          "Description": "WebClient",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Build a new WebClient using the specified URL as its base. A web client is used to translate request objects into HTTP requests and process the server response. The web client also represents a uniquely configured connection to a server or service.\n\nWebClient.WebClient (baseUrl: string): WebClient"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "https://jsonplaceholder.typicode.com",
+      "Id": "2504df46-27a4-4878-934e-3f6f792accf7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7ba640c5-e6fc-4194-a785-40caa8170477",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebClient.Execute@var",
+      "Id": "cfdff6f1-b4cf-47c8-a57a-985d102dc13f",
+      "Inputs": [
+        {
+          "Id": "df94add8-ea1f-48b6-9174-60997c336cb0",
+          "Name": "webClient",
+          "Description": "DSCore.Web.WebClient",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2852cf42-44d4-47d2-ae53-16bd2608d883",
+          "Name": "request",
+          "Description": "The web request to execute.\n\nvar",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "549082be-21c4-4ef5-a376-c733ec662d9f",
+          "Name": "var",
+          "Description": "The response from the server as a WebResponse object.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Executes a WebRequest in the context of the client and returns the response from the server.\n\nWebClient.Execute (request: var): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.Content",
+      "Id": "5316d817-faef-4115-a4cd-201dfa09c254",
+      "Inputs": [
+        {
+          "Id": "8f1af0f2-3fb7-4d25-aba0-5e99a92875f5",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2a35621c-5f77-43dc-bc49-8d1cc58dd68a",
+          "Name": "string",
+          "Description": "string",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.Content: string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "53df58a3-014a-4027-8775-e94e6548880d",
+      "Inputs": [
+        {
+          "Id": "69b631cd-5465-40d8-b96f-fc9b37d9c3c6",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "34de57aa-1841-4cb8-95fc-7bff6ab9e410",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.Helpers.DeserialiseAsDictionary@string",
+      "Id": "b8f957a7-77a0-4920-abb8-13e44d664fd5",
+      "Inputs": [
+        {
+          "Id": "6fc33426-fbda-49db-a789-4062fd3703ab",
+          "Name": "json",
+          "Description": "The JSON string to deserialise\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1789b896-76ed-4aa2-a1ec-796f84e21b5c",
+          "Name": "properties",
+          "Description": "A dictionary of the responses's JSON content.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "327f9e1b-99e9-465e-878e-6adcb9f6b848",
+          "Name": "values",
+          "Description": "var",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Deserialises a JSON string into a dictionary of string keys and object values. Note : Does not handle deserialisation of nested objects.\n\nHelpers.DeserialiseAsDictionary (json: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "72886694-5bb1-49f1-8d32-a4ace7596587",
+      "Inputs": [
+        {
+          "Id": "586631fb-d925-47f4-ab20-f6abbb46edde",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "550679f7-813e-4201-afb1-fe30ac207d6e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "df7f09d9-4118-4f52-8ef4-6b7029b388af",
+      "Inputs": [
+        {
+          "Id": "b95d9537-ae6c-49f8-b1df-ca3b91baa185",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b3e9f4bc-0998-4b62-b7ce-2a0d6e43d67e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "users",
+      "Id": "b17fc468-92a2-4535-af69-39f79e8419f2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6b24d719-6cb1-4894-8299-d356d59e0a2b",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.Helpers.Deserialise@string",
+      "Id": "3fa74fa4-e959-4ee8-b65b-3e2ac266031f",
+      "Inputs": [
+        {
+          "Id": "de34912a-742e-466c-b307-c71bbc456c26",
+          "Name": "json",
+          "Description": "The JSON token (object) to parse.\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e482da69-ce24-43e5-aa3b-5be0b2109664",
+          "Name": "var[]..[]",
+          "Description": "The parsed object",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Recursively parse a JSON token into native data types. This includes all children of the JSON object, regardless of how many levels of nesting there are.\n\nHelpers.Deserialise (json: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.ByEndpoint@string",
+      "Id": "1a51dde1-4379-4eb2-b027-963bfb168b45",
+      "Inputs": [
+        {
+          "Id": "a1743c63-226f-4792-b79c-59059f4aae10",
+          "Name": "endpoint",
+          "Description": "The resource (or endpoint) to use for the request. This will be used in conjunction with a WebClient base URL to form the full request URL. ex : \"users\".\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9e73cfed-4d6f-4801-bd96-6293d974a7e6",
+          "Name": "WebRequest",
+          "Description": "The request object, ready for execution.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Build a simple GET web request to the specified URL\n\nWebRequest.ByEndpoint (endpoint: string): WebRequest"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.SetMethod@string",
+      "Id": "242d1d7a-eb4c-475d-bcce-240130bd1f3f",
+      "Inputs": [
+        {
+          "Id": "359cf166-f959-4b39-ac5d-4f59c4795025",
+          "Name": "webRequest",
+          "Description": "DSCore.Web.WebRequest",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "616168be-34a6-45f4-8dda-af3ae58ed48c",
+          "Name": "method",
+          "Description": "The string that represents the http method.\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8b1d2299-b0a6-41bb-a0a1-802794f26f97",
+          "Name": "var",
+          "Description": "The WebRequest updated with set method if input was valid, the unchanged WebRequest otherwise.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Sets the HTTP method to use for the request. Valid input : GET, DELETE, HEAD, OPTIONS, POST, PUT, MERGE Note : input is not case-sensitive.\n\nWebRequest.SetMethod (method: string): var"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "POST",
+      "Id": "bd12a885-1faa-4b78-ab5b-07134e9d9e9a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "19160197-d46b-4674-9d83-7e8099250c84",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.AddParameter@string,var,string",
+      "Id": "50d479e2-e0b9-4a3f-b5d0-6c77445d8872",
+      "Inputs": [
+        {
+          "Id": "c9acc8be-52fd-4ea0-9137-bab9bfbfcfb6",
+          "Name": "webRequest",
+          "Description": "DSCore.Web.WebRequest",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "db2ea0c0-8841-4d92-a583-49529e7125a4",
+          "Name": "name",
+          "Description": "The name of the parameter to add.\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b5295e08-859a-4aba-9e1e-81161e2cc8a9",
+          "Name": "value",
+          "Description": "The value of the parameter to add.\n\nvar",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "279dc9cd-ad2a-44e3-9822-97be95f13bc7",
+          "Name": "parameterType",
+          "Description": "The type of the parameter to add. Valid inputs: Cookie, GetOrPost, HttpHeader, QueryString, RequestBody, UrlSegment\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1b5ea9db-11e6-47f8-9fb2-6538d08a2973",
+          "Name": "var",
+          "Description": "The request with the added parameter.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Adds a HTTP parameter to the request. Uses QueryString for GET, DELETE, OPTIONS and HEAD, Encoded form for POST and PUT\n\nWebRequest.AddParameter (name: string, value: var, parameterType: string): var"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "undefined",
+      "Id": "ac90deaa-554e-4dfa-86de-efc19912bc3e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9e09599a-d383-46ff-bc96-a404a5232187",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "RequestBody",
+      "Id": "02fe194b-ec78-432e-857e-c1bb821987b4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "84fca2df-f989-4465-9957-b0482d924155",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebRequest.AddHeader@string,string",
+      "Id": "45aa13d1-5caf-4513-b8a2-04b8738967c5",
+      "Inputs": [
+        {
+          "Id": "47d1e7dc-114f-4bc9-874f-6676d7ab1fd5",
+          "Name": "webRequest",
+          "Description": "DSCore.Web.WebRequest",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd3adbfa-fa52-42bf-9c7d-2ea15a54ea72",
+          "Name": "name",
+          "Description": "Name of the header to add\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "485baffa-051c-4866-9e70-2febdd6ae7b9",
+          "Name": "value",
+          "Description": "Value of the header to add\n\nstring",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a3d9041f-e678-4369-a7e6-da78247356d0",
+          "Name": "var",
+          "Description": "var",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Shortcut to AddParameter(name, value, HttpHeader)\n\nWebRequest.AddHeader (name: string, value: string): var"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Content-Type",
+      "Id": "e05a06f6-a93b-47b9-b3da-2a250f464e15",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "371b576d-d8cf-464a-afe8-8d34e03bb26c",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "pplication/json",
+      "Id": "4d44a5c5-8411-4bdb-be63-bc9bbdcf775c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5e42122e-2fb9-497c-b373-5034a95096ea",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "{\r\n  \"data\": {\r\n    \"name\": \"Dynamo Bot\",\r\n    \"username\": \"dynamoBot\",\r\n    \"email\": \"mr.robot@dynamobim.org\",\r\n    \"address\": {\r\n      \"street\": \"17 Broadwick St\",\r\n      \"suite\": \"17\",\r\n      \"city\": \"London\",\r\n      \"zipcode\": \"W1F 0DE\",\r\n      \"geo\": {\r\n        \"lat\": \"51.51352559\",\r\n        \"lng\": \"-0.135276\"\r\n      }\r\n    },\r\n    \"phone\": \"+44-(0)-207-851-8000\",\r\n    \"website\": \"dynamobim.org\",\r\n    \"company\": {\r\n      \"name\": \"Autodesk\",\r\n      \"catchPhrase\": \"Open source graphical programming for design\",\r\n      \"bs\": \"programmind without code\"\r\n    }\r\n  }\r\n}",
+      "Id": "ce85b8d4-aa06-4f92-94a2-a8e7f7cabc69",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c0b65bc0-7c4d-439b-bff7-7c1abb2a3dce",
+          "Name": "",
+          "Description": "String",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "f09829ca-6564-4c6c-984e-44ae940aa7e8",
+      "Inputs": [
+        {
+          "Id": "8b50ff80-ac8b-4dce-bf55-4123bed595f2",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8b2cd2e2-6d26-4419-86cc-7fe9535f2e6a",
+          "Name": "",
+          "Description": "Watch contents.",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Web.WebResponse.Time",
+      "Id": "55d67fb1-b891-4c6c-a5d1-fe3619c1eecb",
+      "Inputs": [
+        {
+          "Id": "b22be483-2319-440c-ab65-5452c67f6677",
+          "Name": "webResponse",
+          "Description": "DSCore.Web.WebResponse",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c99107c-9a93-4f94-acff-65f1da006b28",
+          "Name": "var",
+          "Description": "var",
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "WebResponse.Time: var"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "7b337c7f-c9b0-495a-84fd-0340acbcd099",
+      "End": "df94add8-ea1f-48b6-9174-60997c336cb0",
+      "Id": "8063722a-0fb3-4580-a705-6523b0b3179a"
+    },
+    {
+      "Start": "7ba640c5-e6fc-4194-a785-40caa8170477",
+      "End": "10c63325-1d1f-4c88-982f-10a87c50ffae",
+      "Id": "a694f272-5b06-4fdb-bf99-45dc04e8f9ed"
+    },
+    {
+      "Start": "549082be-21c4-4ef5-a376-c733ec662d9f",
+      "End": "8f1af0f2-3fb7-4d25-aba0-5e99a92875f5",
+      "Id": "948fc385-7bb2-4c92-8971-609fbc18367d"
+    },
+    {
+      "Start": "549082be-21c4-4ef5-a376-c733ec662d9f",
+      "End": "b22be483-2319-440c-ab65-5452c67f6677",
+      "Id": "f5b27c80-622d-4549-be5e-18114a80552a"
+    },
+    {
+      "Start": "2a35621c-5f77-43dc-bc49-8d1cc58dd68a",
+      "End": "69b631cd-5465-40d8-b96f-fc9b37d9c3c6",
+      "Id": "093775f6-1577-4571-8207-a4328022f7bc"
+    },
+    {
+      "Start": "34de57aa-1841-4cb8-95fc-7bff6ab9e410",
+      "End": "6fc33426-fbda-49db-a789-4062fd3703ab",
+      "Id": "0f79b4ed-e848-47e6-a08c-054ffe21fdb6"
+    },
+    {
+      "Start": "34de57aa-1841-4cb8-95fc-7bff6ab9e410",
+      "End": "de34912a-742e-466c-b307-c71bbc456c26",
+      "Id": "2cbc9895-87e6-4ffd-96ec-bc1ddb48cc69"
+    },
+    {
+      "Start": "1789b896-76ed-4aa2-a1ec-796f84e21b5c",
+      "End": "586631fb-d925-47f4-ab20-f6abbb46edde",
+      "Id": "a4f5f16b-3efd-4a9e-8a68-6eeede9f0e6f"
+    },
+    {
+      "Start": "6b24d719-6cb1-4894-8299-d356d59e0a2b",
+      "End": "a1743c63-226f-4792-b79c-59059f4aae10",
+      "Id": "932b7908-d36a-4a8e-80d8-951410d7d20d"
+    },
+    {
+      "Start": "e482da69-ce24-43e5-aa3b-5be0b2109664",
+      "End": "b95d9537-ae6c-49f8-b1df-ca3b91baa185",
+      "Id": "1ac8ec57-2d17-4540-9ab7-af84980f2145"
+    },
+    {
+      "Start": "9e73cfed-4d6f-4801-bd96-6293d974a7e6",
+      "End": "359cf166-f959-4b39-ac5d-4f59c4795025",
+      "Id": "a1834bee-6ab4-4c9f-872d-55beb72f5b89"
+    },
+    {
+      "Start": "8b1d2299-b0a6-41bb-a0a1-802794f26f97",
+      "End": "c9acc8be-52fd-4ea0-9137-bab9bfbfcfb6",
+      "Id": "cdd2f42b-6ce2-44b9-a6f3-db57ecd41861"
+    },
+    {
+      "Start": "19160197-d46b-4674-9d83-7e8099250c84",
+      "End": "616168be-34a6-45f4-8dda-af3ae58ed48c",
+      "Id": "a51955f3-d2a6-45d2-bb57-1d3a08e93e67"
+    },
+    {
+      "Start": "1b5ea9db-11e6-47f8-9fb2-6538d08a2973",
+      "End": "47d1e7dc-114f-4bc9-874f-6676d7ab1fd5",
+      "Id": "5dbbb729-9946-4d93-b0c0-801d3c32210c"
+    },
+    {
+      "Start": "9e09599a-d383-46ff-bc96-a404a5232187",
+      "End": "db2ea0c0-8841-4d92-a583-49529e7125a4",
+      "Id": "c96c27c2-82f7-4581-8e13-310530b13aac"
+    },
+    {
+      "Start": "84fca2df-f989-4465-9957-b0482d924155",
+      "End": "279dc9cd-ad2a-44e3-9822-97be95f13bc7",
+      "Id": "a28fdfd5-e22a-4a27-b5e2-cb8f57aab809"
+    },
+    {
+      "Start": "a3d9041f-e678-4369-a7e6-da78247356d0",
+      "End": "2852cf42-44d4-47d2-ae53-16bd2608d883",
+      "Id": "da7b99ce-8cbb-4de9-adf4-777fd2902fcc"
+    },
+    {
+      "Start": "371b576d-d8cf-464a-afe8-8d34e03bb26c",
+      "End": "dd3adbfa-fa52-42bf-9c7d-2ea15a54ea72",
+      "Id": "4933f07b-2927-4313-ad8c-b499dd09e6d3"
+    },
+    {
+      "Start": "5e42122e-2fb9-497c-b373-5034a95096ea",
+      "End": "485baffa-051c-4866-9e70-2febdd6ae7b9",
+      "Id": "7af64783-c5dd-4b3f-b002-3797dda9a12c"
+    },
+    {
+      "Start": "c0b65bc0-7c4d-439b-bff7-7c1abb2a3dce",
+      "End": "8b50ff80-ac8b-4dce-bf55-4123bed595f2",
+      "Id": "02087fce-a282-40e4-965a-20f1889179c1"
+    },
+    {
+      "Start": "8b2cd2e2-6d26-4419-86cc-7fe9535f2e6a",
+      "End": "b5295e08-859a-4aba-9e1e-81161e2cc8a9",
+      "Id": "15e0e682-acb8-4bd0-8a18-00c6a4fc9363"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Cameras": {
+      "EyePosition": "-17,24,50",
+      "UpDirection": "0,1,0",
+      "LookDirection": "12,-13,-58",
+      "Name": "Background Preview"
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "WebClient.WebClient",
+        "Id": "10027e25-5361-40af-8a57-891af7fdee83",
+        "IsUpstreamVisible": true,
+        "X": 487.350541292988,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "2504df46-27a4-4878-934e-3f6f792accf7",
+        "IsUpstreamVisible": true,
+        "X": 146.4034439141,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebClient.Execute",
+        "Id": "cfdff6f1-b4cf-47c8-a57a-985d102dc13f",
+        "IsUpstreamVisible": true,
+        "X": 2293.25271965528,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.Content",
+        "Id": "5316d817-faef-4115-a4cd-201dfa09c254",
+        "IsUpstreamVisible": true,
+        "X": 2550.54604561266,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "53df58a3-014a-4027-8775-e94e6548880d",
+        "IsUpstreamVisible": true,
+        "X": 2882.02961118307,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Helpers.DeserialiseAsDictionary",
+        "Id": "b8f957a7-77a0-4920-abb8-13e44d664fd5",
+        "IsUpstreamVisible": true,
+        "X": 3072.87173522613,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch : Properties",
+        "Id": "72886694-5bb1-49f1-8d32-a4ace7596587",
+        "IsUpstreamVisible": true,
+        "X": 3348.20999436102,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch : Values",
+        "Id": "df7f09d9-4118-4f52-8ef4-6b7029b388af",
+        "IsUpstreamVisible": true,
+        "X": 3495.40952205567,
+        "Y": 710.956435791726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "b17fc468-92a2-4535-af69-39f79e8419f2",
+        "IsUpstreamVisible": true,
+        "X": 279.80089674779,
+        "Y": 907.311817679823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Helpers.Deserialise",
+        "Id": "3fa74fa4-e959-4ee8-b65b-3e2ac266031f",
+        "IsUpstreamVisible": true,
+        "X": 3072.87173522613,
+        "Y": 825.304889930493
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.ByEndpoint",
+        "Id": "1a51dde1-4379-4eb2-b027-963bfb168b45",
+        "IsUpstreamVisible": true,
+        "X": 487.350541292988,
+        "Y": 907.311817679823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.SetMethod",
+        "Id": "242d1d7a-eb4c-475d-bcce-240130bd1f3f",
+        "IsUpstreamVisible": true,
+        "X": 933.887044857869,
+        "Y": 907.311817679823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "bd12a885-1faa-4b78-ab5b-07134e9d9e9a",
+        "IsUpstreamVisible": true,
+        "X": 851.887044857869,
+        "Y": 985.02710336581
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.AddParameter",
+        "Id": "50d479e2-e0b9-4a3f-b5d0-6c77445d8872",
+        "IsUpstreamVisible": true,
+        "X": 1562.91049776558,
+        "Y": 907.311817679823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "ac90deaa-554e-4dfa-86de-efc19912bc3e",
+        "IsUpstreamVisible": true,
+        "X": 1380.25250661732,
+        "Y": 1047.97926270718
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "02fe194b-ec78-432e-857e-c1bb821987b4",
+        "IsUpstreamVisible": true,
+        "X": 1363.75250661732,
+        "Y": 986.170777088537
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebRequest.AddHeader",
+        "Id": "45aa13d1-5caf-4513-b8a2-04b8738967c5",
+        "IsUpstreamVisible": true,
+        "X": 2033.29280274483,
+        "Y": 907.311817679823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "e05a06f6-a93b-47b9-b3da-2a250f464e15",
+        "IsUpstreamVisible": true,
+        "X": 1822.99153559958,
+        "Y": 985.570406140735
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "4d44a5c5-8411-4bdb-be63-bc9bbdcf775c",
+        "IsUpstreamVisible": true,
+        "X": 1824.72737086495,
+        "Y": 1047.37889175938
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "ce85b8d4-aa06-4f92-94a2-a8e7f7cabc69",
+        "IsUpstreamVisible": true,
+        "X": 130.80089674779,
+        "Y": 1114.82976637768
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "f09829ca-6564-4c6c-984e-44ae940aa7e8",
+        "IsUpstreamVisible": true,
+        "X": 1179.25250661732,
+        "Y": 1115.43013732548
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WebResponse.Time",
+        "Id": "55d67fb1-b891-4c6c-a5d1-fe3619c1eecb",
+        "IsUpstreamVisible": true,
+        "X": 2550.27005291189,
+        "Y": 1072.16609382931
+      }
+    ],
+    "Notes": [
+      {
+        "Id": "934bf4dc-cfd6-4210-8e0b-f2b8c8e62af4",
+        "X": 48.3133107415044,
+        "Y": 502.896728434323,
+        "Text": "This sample is a practical example of interacting with a REST endpoint.\r\n\r\nIt's also a great example of how all this functionality could be wrapped into a custom node, as part of a more complete package providing integration with a specific web service.\r\n\r\nThe inputs of this graph would map to custom node inputs, as would the deserialised outputs."
+      },
+      {
+        "Id": "72ca80a0-9cc6-4782-a162-d3ea1d6c06b6",
+        "X": 3072.25061729767,
+        "Y": 933.599200977557,
+        "Text": "In this example, we're using 2 deserialisation methods, for 2 distinct purposes :\r\n\r\nDeserialise\r\n- this gets us the native values returned by the server\r\n\r\nDeserialiseAsDictionary\r\n- this gets us the names of the properties\r\n\r\nDoing this highlights that this particular endpoint on this server is returning data in the same format we POSTed it in, instead of the regular format used by its /users endpoint."
+      },
+      {
+        "Id": "f9c611cb-cc1d-41a1-913b-b7a64d110487",
+        "X": 2550.54604561266,
+        "Y": 809.987881178026,
+        "Text": "In this example, we're telling the server to create a\r\na single \"user\". \r\n\r\nThe JsonPlaceholder service only has 10 users in its database and will always return an ID of 11 for a good POST request, but the user will not actually be saved to the dabase."
+      },
+      {
+        "Id": "b7da76ff-5cda-4c93-9b76-5da82b04ad21",
+        "X": 1978.79280274483,
+        "Y": 1085.14005221642,
+        "Text": "Most REST API services will not only return this header, but also require it."
+      },
+      {
+        "Id": "ff32d7d8-7617-458d-9821-0ee01dcf5ed5",
+        "X": 1501.41049776558,
+        "Y": 1085.74042316422,
+        "Text": "Most REST API services will not only return this header, but also require it.\r\n\r\nIn this example, we're submitting a relatively complex JSON object. In most practical scenarios, you would either construct the JSON using a from a list of key/value pairs, or by serialising an existing object."
+      },
+      {
+        "Id": "6ecf3ccb-ec3a-4571-9e95-3da4fb6be6ac",
+        "X": 851.887044857869,
+        "Y": 1084.59674944149,
+        "Text": "Sending a POST request to the \"users\" endpoint is REST convention for :\r\n\r\n- we are creating a new object \r\n- that is part of the USERS collection\r\n\r\nEach REST API will obviously have its own conventions, but this is the general approach taken by REST services.\r\n\r\nNotice that POST requests do not specify the ID of the resource like the GET request in previous examples.\r\n\r\nGET    users/1\r\nPOST  users/\r\n\r\nThis is because the server is generally responsible for allocating a unique ID to the newly-created resource.\r\n\r\nIf we wanted to delete or modify the resource, we would use the DELETE and PUT methods respectively, which would require the ID specified :\r\n\r\nDELETE users/1\r\nPUT      users/1"
+      },
+      {
+        "Id": "a7762eb0-1e67-48f4-b50f-7cd278ab91c7",
+        "X": 857.886948259858,
+        "Y": 661.039809341035,
+        "Text": "We build the request to the format we require in a series of steps. Each \"Set\" or \"Add\" action node for WebRequests returns that modified request, so daisy-chaining them is easy.\r\n\r\nFor programmers, these methods overload."
+      },
+      {
+        "Id": "213a9fbd-e895-4cd2-b1ce-d88a514e3cec",
+        "X": 1954.49565205698,
+        "Y": 759.510637985233,
+        "Text": "We only execute the request once we have finished formatting it."
+      },
+      {
+        "Id": "398320d6-25eb-4d7b-91e6-f988bcf019e0",
+        "X": 3348.36683627114,
+        "Y": 660.695831953137,
+        "Text": "These 2 outputs would serve great as outputs for a custom node."
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "f32bbdab-52b5-48b7-8f8b-8b33bc24ba1f",
+        "Title": "Input\r\n",
+        "Nodes": [
+          "2504df46-27a4-4878-934e-3f6f792accf7",
+          "934bf4dc-cfd6-4210-8e0b-f2b8c8e62af4",
+          "b17fc468-92a2-4535-af69-39f79e8419f2",
+          "ce85b8d4-aa06-4f92-94a2-a8e7f7cabc69"
+        ],
+        "Left": 38.3133107415044,
+        "Top": 377.896728434323,
+        "Width": 313.4875860062856,
+        "Height": 1260.933037943357,
+        "FontSize": 48.0,
+        "InitialTop": 502.896728434323,
+        "InitialHeight": 597.794015902292,
+        "TextblockHeight": 115.0,
+        "Background": "#FF48B9FF"
+      },
+      {
+        "Id": "ebaecae3-38df-42fc-b2d9-d44218a844f3",
+        "Title": "Build WebClient &\r\nWebRequest for use with client",
+        "Nodes": [
+          "10027e25-5361-40af-8a57-891af7fdee83",
+          "1a51dde1-4379-4eb2-b027-963bfb168b45"
+        ],
+        "Left": 477.350541292988,
+        "Top": 592.956435791726,
+        "Width": 270.5,
+        "Height": 407.355381888097,
+        "FontSize": 30.0,
+        "InitialTop": 710.956435791726,
+        "InitialHeight": 123.0,
+        "TextblockHeight": 108.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "4dc63508-c084-4c0e-89e3-567a4a83d797",
+        "Title": "Response\r\n",
+        "Nodes": [
+          "5316d817-faef-4115-a4cd-201dfa09c254",
+          "53df58a3-014a-4027-8775-e94e6548880d",
+          "f9c611cb-cc1d-41a1-913b-b7a64d110487"
+        ],
+        "Left": 2540.54604561266,
+        "Top": 585.956435791726,
+        "Width": 459.48356557041006,
+        "Height": 355.0314453863,
+        "FontSize": 48.0,
+        "InitialTop": 710.956435791726,
+        "InitialHeight": 128.75,
+        "TextblockHeight": 115.0,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "32fda9c8-0600-4927-a3d1-cbe610e090c4",
+        "Title": "Execute request on WebClient\r\n",
+        "Nodes": [
+          "cfdff6f1-b4cf-47c8-a57a-985d102dc13f"
+        ],
+        "Left": 2283.25271965528,
+        "Top": 592.956435791726,
+        "Width": 218.0,
+        "Height": 237.0,
+        "FontSize": 30.0,
+        "InitialTop": 710.956435791726,
+        "InitialHeight": 149.0,
+        "TextblockHeight": 108.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "d2376dd4-c849-4deb-bd49-e511e5cf907c",
+        "Title": "time it took to execute the request",
+        "Nodes": [
+          "55d67fb1-b891-4c6c-a5d1-fe3619c1eecb"
+        ],
+        "Left": 2540.27005291189,
+        "Top": 954.16609382931006,
+        "Width": 242.0,
+        "Height": 211.0,
+        "FontSize": 30.0,
+        "InitialTop": 1072.16609382931,
+        "InitialHeight": 123.0,
+        "TextblockHeight": 108.0,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "39d28656-93eb-441e-853b-06464c45d23c",
+        "Title": "Deserialise",
+        "Nodes": [
+          "3fa74fa4-e959-4ee8-b65b-3e2ac266031f",
+          "72ca80a0-9cc6-4782-a162-d3ea1d6c06b6",
+          "df7f09d9-4118-4f52-8ef4-6b7029b388af",
+          "72886694-5bb1-49f1-8d32-a4ace7596587",
+          "b8f957a7-77a0-4920-abb8-13e44d664fd5",
+          "398320d6-25eb-4d7b-91e6-f988bcf019e0"
+        ],
+        "Left": 3062.25061729767,
+        "Top": 593.195831953137,
+        "Width": 584.61621897347,
+        "Height": 571.90336902441993,
+        "FontSize": 48.0,
+        "InitialTop": 660.695831953137,
+        "InitialHeight": 408.0,
+        "TextblockHeight": 57.5,
+        "Background": "#FFFF7BAC"
+      },
+      {
+        "Id": "289ff3b4-a48c-4c77-b26f-df93e484e811",
+        "Title": "Set the request method to POST",
+        "Nodes": [
+          "242d1d7a-eb4c-475d-bcce-240130bd1f3f",
+          "bd12a885-1faa-4b78-ab5b-07134e9d9e9a",
+          "6ecf3ccb-ec3a-4571-9e95-3da4fb6be6ac"
+        ],
+        "Left": 841.887044857869,
+        "Top": 825.311817679823,
+        "Width": 314.5,
+        "Height": 663.78493176166694,
+        "FontSize": 30.0,
+        "InitialTop": 907.311817679823,
+        "InitialHeight": 157.908605707348,
+        "TextblockHeight": 72.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "92b4eb7e-9dbe-49f8-8962-016b03fddb6f",
+        "Title": "Add the JSON object\r\nto the body of the request",
+        "Nodes": [
+          "50d479e2-e0b9-4a3f-b5d0-6c77445d8872",
+          "ac90deaa-554e-4dfa-86de-efc19912bc3e",
+          "02fe194b-ec78-432e-857e-c1bb821987b4",
+          "ff32d7d8-7617-458d-9821-0ee01dcf5ed5",
+          "f09829ca-6564-4c6c-984e-44ae940aa7e8"
+        ],
+        "Left": 1169.25250661732,
+        "Top": 825.311817679823,
+        "Width": 635.15799114826,
+        "Height": 668.118319645657,
+        "FontSize": 30.0,
+        "InitialTop": 907.311817679823,
+        "InitialHeight": 795.311535303591,
+        "TextblockHeight": 72.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "14e99109-7dca-4501-a0b1-1e01f7de2131",
+        "Title": "Tell the server we're sending JSON data",
+        "Nodes": [
+          "45aa13d1-5caf-4513-b8a2-04b8738967c5",
+          "b7da76ff-5cda-4c93-9b76-5da82b04ad21",
+          "4d44a5c5-8411-4bdb-be63-bc9bbdcf775c",
+          "e05a06f6-a93b-47b9-b3da-2a250f464e15"
+        ],
+        "Left": 1812.99153559958,
+        "Top": 825.311817679823,
+        "Width": 442.80126714525,
+        "Height": 318.82823453659694,
+        "FontSize": 30.0,
+        "InitialTop": 907.311817679823,
+        "InitialHeight": 214.030499915765,
+        "TextblockHeight": 72.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "ff5829c6-199e-4f3c-bbed-3e97647c2c91",
+        "Title": "Format the request",
+        "Nodes": [
+          "a7762eb0-1e67-48f4-b50f-7cd278ab91c7",
+          "213a9fbd-e895-4cd2-b1ce-d88a514e3cec"
+        ],
+        "Left": 847.886948259858,
+        "Top": 593.539809341035,
+        "Width": 1407.108703797122,
+        "Height": 224.97082864419792,
+        "FontSize": 48.0,
+        "InitialTop": 661.039809341035,
+        "InitialHeight": 85.2428669724698,
+        "TextblockHeight": 57.5,
+        "Background": "#FF71C6A8"
+      }
+    ],
+    "X": 13.588394216524417,
+    "Y": 43.034878261888707,
+    "Zoom": 0.33969118513289764
+  }
+}

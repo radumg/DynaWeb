@@ -1,0 +1,26 @@
+{
+"license": "AGPL-3.0",
+"file_hash": null,
+"name": "DynaWeb",
+"version": "alpha-0.5",
+"description": "DynaWeb is a Dynamo package providing support for interaction with the interwebz in general and with REST APIs in particular. It's meant to provide building blocks so you can build Dynamo integrations with just about any web service out there. It helps you retrieve (GET) stuff from the web, send (POST) information to the web and everything in between (PUT, DELETE, PATCH, etc). The package also includes some rather nifty deserialisation nodes, so you can use the information you get from the web directly in Dynamo graphs, as native types. This is an open-source package, please visit repository ( https://github.com/radumg/DynaWeb) to submit improvement requests, bug reports or to contribute. Alternatively, tweet at me @radugidei",
+"group": "radugidei",
+"keywords": [
+"DynaWeb",
+"web",
+"REST",
+"API",
+"integration",
+"deserialisation"
+],
+"dependencies": [],
+"contents": "",
+"engine_version": "2.0.0.0",
+"engine": "dynamo",
+"engine_metadata": "",
+"site_url": "www.radugidei.com",
+"repository_url": "www.github.com/radumg/DynaWeb",
+"contains_binaries": true,
+"node_libraries": [
+"DynWWW, Version=0.5.0, Culture=neutral, PublicKeyToken=null"]
+}
