@@ -5,6 +5,8 @@
 
 It's meant to provide building blocks so you can build Dynamo integrations with just about any web service out there. It helps you retrieve (GET) stuff from the web, send (POST) information to the web and everything in between (PUT, DELETE, PATCH, etc). The package also includes some rather nifty `deserialisation` nodes, so you can use the information you get from the web directly in Dynamo graphs, as native types.
 
+![DynaWeb package screenshot](https://raw.githubusercontent.com/radumg/DynaWeb/master/samples/DynaWeb.png)
+
 # Status : Alpha
 The package is in active development and currently undergoing a (semi-private) alpha testing period. 
 
