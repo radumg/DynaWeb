@@ -33,6 +33,10 @@ namespace DSCore.Web
         // properties relating to the status of the response
         public string StatusCode => this.response.StatusCode.ToString();
         public string StatusDescription => this.response.StatusDescription;
+        public string ResponseStatus => this.response.ResponseStatus.ToString();
+        public string ErrorException => this.response.ErrorException.ToString();
+        public string ErrorMessage => this.response.ErrorMessage;
+        public System.TimeSpan Time { get; internal set; }
 
         // meta properties that have information about the response itself
         public Uri ResponseUri => this.response.ResponseUri;
@@ -71,9 +75,6 @@ namespace DSCore.Web
             }
         }
 
-        public string ResponseStatus => this.response.ResponseStatus.ToString();
-        public string ErrorException => this.response.ErrorException.ToString();
-        public string ErrorMessage => this.response.ErrorMessage;
         #endregion
 
         #region constructor

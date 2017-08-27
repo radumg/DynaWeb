@@ -95,7 +95,7 @@ namespace DSCore.Web
 
             // update the request properties with response data
             webRequest.response = new WebResponse(responseFromServer);
-            webRequest.timeToComplete = endTime - startTime;
+            webRequest.response.Time = endTime - startTime;
 
             return webRequest.response;
         }
