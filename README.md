@@ -31,6 +31,13 @@ The repository is only private in the sense that source code is not made availab
     - `%appdata%\Dynamo\Dynamo Revit\1.3\packages` for Dynamo for Revit, replacing `1.3` with your version of Dynamo
 - start Dynamo, the package should now be listed as `DynWWW` in the library.
 
+## Still can't see the package in Dynamo ?
+
+As [reported](https://github.com/radumg/DynaWeb/issues/10) by users, Windows sometimes blocks `.dll` files for security reasons. To resolve this, you'll have to go through the steps below for each assembly (`.dll` file) in the package :
+  1. Right-click on `.dll` file and select properties
+  2. Tick the `Unblock` checkbox at the bottom, in the Security section.
+  3. Launch Dynamo again, the package should now load.
+
 # Using DynaWeb
 Please consult the sample files provided in this repository - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
