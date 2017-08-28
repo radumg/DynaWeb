@@ -38,6 +38,8 @@ As [reported](https://github.com/radumg/DynaWeb/issues/10) by users, Windows som
   2. Tick the `Unblock` checkbox at the bottom, in the Security section.
   3. Launch Dynamo again, the package should now load.
 
+![image](https://user-images.githubusercontent.com/15014799/29770289-3c13172a-8be6-11e7-983e-6fb3c71ad136.png)
+
 # Using DynaWeb
 Please consult the sample files provided in this repository - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
