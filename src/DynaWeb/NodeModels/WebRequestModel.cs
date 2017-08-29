@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dynamo.Graph.Nodes;
-using DynWWW.Properties;
+using DynaWeb.Properties;
 using ProtoCore.AST.AssociativeAST;
-using DSCore.Web;
+using DynaWeb;
 
 namespace CoreNodeModels.Web
 {
@@ -15,7 +15,7 @@ namespace CoreNodeModels.Web
     [NodeDescription("WebRequestDescription", typeof(Resources))]
     [NodeCategory(BuiltinNodeCategories.CORE_WEB)]
     [IsDesignScriptCompatible]
-    [AlsoKnownAs("DSCoreNodesUI.WebRequest")]
+    [AlsoKnownAs("DynaWebNodesUI.WebRequest")]
     public class SimpleWebRequest : NodeModel
     {
         public SimpleWebRequest()

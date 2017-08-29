@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Collections.Specialized;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     //[IsVisibleInDynamoLibrary(false)]
     public class WebRequest
@@ -202,7 +202,7 @@ namespace DSCore.Web
         /// <returns>The request object, ready for execution.</returns>
         public static WebRequest ByUrl(string url)
         {
-            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebUrlNullMessage);
+            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlNullMessage);
             return new WebRequest(url, null);
         }
 
@@ -215,7 +215,7 @@ namespace DSCore.Web
         /// <returns>The request object, ready for execution.</returns>
         public static WebRequest ByEndpoint(string endpoint)
         {
-            if (string.IsNullOrEmpty(endpoint)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebRequestEndpointNullMessage);
+            if (string.IsNullOrEmpty(endpoint)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebRequestEndpointNullMessage);
             return new WebRequest(null, endpoint);
         }
 

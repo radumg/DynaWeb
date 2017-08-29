@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     /// <summary>
     /// The response returned from a server after a WebRequest was executed

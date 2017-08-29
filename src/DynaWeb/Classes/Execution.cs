@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     /// <summary>
     /// Provides support for executing WebRequests
@@ -22,7 +22,7 @@ namespace DSCore.Web
         /// <returns>The WebResponse from the server.</returns>
         internal static WebResponse ByClientRequest(WebClient webClient, WebRequest webRequest)
         {
-            if (webRequest == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
+            if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
             // build a client & request to execute
             WebClient client;
             WebRequest request = webRequest;
@@ -45,7 +45,7 @@ namespace DSCore.Web
             try
             {
                 var uri = client.BuildUri(request);
-                if (string.IsNullOrEmpty(uri) || DSCore.Web.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
+                if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
                 {
                     //TODO : error handling here is limited, needs checking and expanding.  
                     throw new InvalidOperationException("Malformed URL.");
@@ -54,7 +54,7 @@ namespace DSCore.Web
             catch (Exception e)
             {
                 throw new InvalidOperationException(
-                    DynWWW.Properties.Resources.WebClientBuildUrlFailed +
+                    DynaWeb.Properties.Resources.WebClientBuildUrlFailed +
                     Environment.NewLine +
                     "Error returned was :" + Environment.NewLine +
                     e.Message);
@@ -76,18 +76,18 @@ namespace DSCore.Web
             switch (responseFromServer.ResponseStatus)
             {
                 case ResponseStatus.None:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                     break;
                 case ResponseStatus.Completed:
                     break;
                 case ResponseStatus.Error:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                     break;
                 case ResponseStatus.TimedOut:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestTimedOutMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
                     break;
                 case ResponseStatus.Aborted:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseAbortedMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
                     break;
                 default:
                     break;

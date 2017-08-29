@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DynWWW.Properties;
+using DynaWeb.Properties;
 using Autodesk.DesignScript.Runtime;
-using DSCore.Web;
+using DynaWeb;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Converters;
 using System.Dynamic;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     public static class Helpers
     {
@@ -26,7 +26,7 @@ namespace DSCore.Web
         {
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentException(DynWWW.Properties.Resources.WebUrlNullMessage);
+                throw new ArgumentException(DynaWeb.Properties.Resources.WebUrlNullMessage);
             }
 
             Uri uriResult;
@@ -36,7 +36,7 @@ namespace DSCore.Web
 
             if (!result)
             {
-                throw new UriFormatException(DynWWW.Properties.Resources.WebUrlInvalidMessage);
+                throw new UriFormatException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
             }
 
             return uriResult;
