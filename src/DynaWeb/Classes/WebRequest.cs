@@ -224,7 +224,7 @@ namespace DynaWeb
         [CanUpdatePeriodically(true)]
         public static WebResponse Execute(WebRequest request)
         {
-            request.response = Execution.ByClientRequestMethod(null, request);
+            request.response = DynaWeb.Execute.ByClientRequestMethod(null, request);
             return request.response;
         }
 
@@ -471,19 +471,5 @@ namespace DynaWeb
         }
 
         #endregion
-
-        #region internal helpers
-        /// <summary>
-        /// Returns the wrapped RestRequest. Only for internal use.
-        /// </summary>
-        /// <returns></returns>
-        internal RestRequest GetInternalRequest()
-        {
-            return this.restRequest;
-        }
-        #endregion
-
-
-
     }
 }

@@ -147,7 +147,7 @@ namespace DynaWeb
             if (client==null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientNullMessage);
             if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebRequestNullMessage);
 
-            request.response = Execution.ByClientRequestMethod(client, request);
+            request.response = DynaWeb.Execute.ByClientRequestMethod(client, request);
             return request.response;
         }
 
@@ -166,7 +166,7 @@ namespace DynaWeb
         {
             if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
 
-            return client.restClient.BuildUri(request.GetInternalRequest()).ToString();
+            return client.restClient.BuildUri(request.restRequest).ToString();
         }
 
         /// <summary>
