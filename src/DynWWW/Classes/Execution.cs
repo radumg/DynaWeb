@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     /// <summary>
     /// Provides support for executing WebRequests
@@ -45,7 +45,7 @@ namespace DSCore.Web
             try
             {
                 var uri = client.BuildUri(request);
-                if (string.IsNullOrEmpty(uri) || DSCore.Web.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
+                if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
                 {
                     //TODO : error handling here is limited, needs checking and expanding.  
                     throw new InvalidOperationException("Malformed URL.");

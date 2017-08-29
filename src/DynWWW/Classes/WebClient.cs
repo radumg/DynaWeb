@@ -2,7 +2,7 @@
 using RestSharp;
 using System;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     /// <summary>
     /// A web client is used to translate request objects into HTTP requests and process the server response.
@@ -142,7 +142,7 @@ namespace DSCore.Web
         /// <param name="request">The web request to execute.</param>
         /// <returns>The response from the server as a WebResponse object.</returns>
         [CanUpdatePeriodically(true)]
-        public DSCore.Web.WebResponse Execute(DSCore.Web.WebRequest request)
+        public DynaWeb.WebResponse Execute(DynaWeb.WebRequest request)
         {
             request.response = Execution.ByClientRequest(this, request);
             return request.response;

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Collections.Specialized;
 
-namespace DSCore.Web
+namespace DynaWeb
 {
     //[IsVisibleInDynamoLibrary(false)]
     public class WebRequest
