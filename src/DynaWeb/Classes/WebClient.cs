@@ -117,14 +117,14 @@ namespace DynaWeb
         /// Once the client is created, this cannot be changed.</param>
         public static WebClient ByUrlToken(string baseUrl, string token)
         {
+            if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
 
             return new WebClient(baseUrl, token);
         }
 
-        private WebClient(string baseUrl, string token)
+        private WebClient(string baseUrl, string token="")
         {
             if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
-            if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
 
             this.restClient = new RestClient(baseUrl);
             this.authToken = token;
