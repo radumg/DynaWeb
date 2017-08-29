@@ -101,7 +101,7 @@ namespace DynaWeb
         /// </param>
         public WebClient(string baseUrl)
         {
-            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
+            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
 
             Initialize(baseUrl, "");
         }
@@ -119,8 +119,8 @@ namespace DynaWeb
         /// Once the client is created, this cannot be changed.</param>
         public WebClient(string baseUrl, string token)
         {
-            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
-            if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTokenNullMessage);
+            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
+            if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
 
             Initialize(baseUrl, token);
         }
@@ -160,7 +160,7 @@ namespace DynaWeb
         /// <returns>A string representation of the assembly Uri</returns>
         public string BuildUri(WebRequest request)
         {
-            if (request == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
+            if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
 
             return this.restClient.BuildUri(request.GetInternalRequest()).ToString();
         }
@@ -172,8 +172,8 @@ namespace DynaWeb
         /// <returns>The WebClient supplied with an updated BaseUrl property.</returns>
         public WebClient SetBaseURL(string url)
         {
-            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUrlNullMessage);
-            if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynWWW.Properties.Resources.WebUrlInvalidMessage);
+            if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
+            if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
             BaseUrl = Helpers.ParseUriFromString(url);
             return this;
         }
@@ -185,7 +185,7 @@ namespace DynaWeb
         /// <returns>The WebClient supplied with the an UserAgent property.</returns>
         public WebClient SetUserAgent(string userAgent)
         {
-            if (string.IsNullOrEmpty(userAgent)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientUserAgentNullMessage);
+            if (string.IsNullOrEmpty(userAgent)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUserAgentNullMessage);
             UserAgent = userAgent;
             return this;
         }
@@ -197,7 +197,7 @@ namespace DynaWeb
         /// <returns>The WebClient supplied with an updated Timeout property.</returns>
         public WebClient SetTimeout(int timeout)
         {
-            if (timeout <= 0) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTimeoutInvalidMessage);
+            if (timeout <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
             Timeout = timeout;
             return this;
         }
@@ -220,7 +220,7 @@ namespace DynaWeb
         /// <returns>The WebClient supplied with an updated MaxRedirects property.</returns>
         public WebClient SetMaxRedirects(int maxRedirects)
         {
-            if (maxRedirects <= 0) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTimeoutInvalidMessage);
+            if (maxRedirects <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
             MaxRedirects = maxRedirects;
             return this;
         }
@@ -232,7 +232,7 @@ namespace DynaWeb
         /// <returns>The WebClient supplied with an updated JsonTokenOverride property.</returns>
         public WebClient SetJsonTokenOverride(string jsonToken)
         {
-            if (string.IsNullOrEmpty(jsonToken)) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientTokenNullMessage);
+            if (string.IsNullOrEmpty(jsonToken)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
             JsonTokenOverride = jsonToken;
             return this;
         }

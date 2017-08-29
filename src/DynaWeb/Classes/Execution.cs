@@ -22,7 +22,7 @@ namespace DynaWeb
         /// <returns>The WebResponse from the server.</returns>
         internal static WebResponse ByClientRequest(WebClient webClient, WebRequest webRequest)
         {
-            if (webRequest == null) throw new ArgumentNullException(DynWWW.Properties.Resources.WebClientRequestNullMessage);
+            if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
             // build a client & request to execute
             WebClient client;
             WebRequest request = webRequest;
@@ -54,7 +54,7 @@ namespace DynaWeb
             catch (Exception e)
             {
                 throw new InvalidOperationException(
-                    DynWWW.Properties.Resources.WebClientBuildUrlFailed +
+                    DynaWeb.Properties.Resources.WebClientBuildUrlFailed +
                     Environment.NewLine +
                     "Error returned was :" + Environment.NewLine +
                     e.Message);
@@ -76,18 +76,18 @@ namespace DynaWeb
             switch (responseFromServer.ResponseStatus)
             {
                 case ResponseStatus.None:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                     break;
                 case ResponseStatus.Completed:
                     break;
                 case ResponseStatus.Error:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                     break;
                 case ResponseStatus.TimedOut:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebRequestTimedOutMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
                     break;
                 case ResponseStatus.Aborted:
-                    throw new InvalidOperationException(DynWWW.Properties.Resources.WebResponseAbortedMessage);
+                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
                     break;
                 default:
                     break;

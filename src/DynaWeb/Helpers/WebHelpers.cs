@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DynWWW.Properties;
+using DynaWeb.Properties;
 using Autodesk.DesignScript.Runtime;
 using DynaWeb;
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ namespace DynaWeb
         {
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentException(DynWWW.Properties.Resources.WebUrlNullMessage);
+                throw new ArgumentException(DynaWeb.Properties.Resources.WebUrlNullMessage);
             }
 
             Uri uriResult;
@@ -36,7 +36,7 @@ namespace DynaWeb
 
             if (!result)
             {
-                throw new UriFormatException(DynWWW.Properties.Resources.WebUrlInvalidMessage);
+                throw new UriFormatException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
             }
 
             return uriResult;

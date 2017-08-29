@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dynamo.Graph.Nodes;
-using DynWWW.Properties;
+using DynaWeb.Properties;
 using ProtoCore.AST.AssociativeAST;
 using DynaWeb;
 

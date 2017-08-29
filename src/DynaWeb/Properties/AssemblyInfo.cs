@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DynWWW.Core.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DynaWeb")]
+[assembly: AssemblyDescription("DynaWeb is a Dynamo package providing support for interaction with the interwebz in general and with REST APIs in particular.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DynWWW.Core.Tests")]
+[assembly: AssemblyCompany("Radu Gidei")]
+[assembly: AssemblyProduct("DynaWeb")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("50a649c6-fb32-4c6d-a7b6-6eb99de8547d")]
+[assembly: Guid("ce19c882-1aac-434c-99af-4a285da053ba")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynWWW.Core.Tests
+namespace DynaWeb.Core.Tests
 {
     public class Class1
     {
