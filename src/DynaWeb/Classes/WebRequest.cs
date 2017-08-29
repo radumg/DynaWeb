@@ -44,7 +44,7 @@ namespace DynaWeb
         /// <summary>
         /// The encapsulated Restsharp web request
         /// </summary>
-        private RestRequest restRequest = new RestRequest();
+        internal RestRequest restRequest = new RestRequest();
 
         /// <summary>
         /// The encapsulated response from the server
@@ -54,7 +54,7 @@ namespace DynaWeb
         internal Uri url;
 
         private StringDictionary headers = new StringDictionary();
-        private Dictionary<string,object> parameters = new Dictionary<string, object>();
+        private Dictionary<string, object> parameters = new Dictionary<string, object>();
 
         #endregion
 
@@ -224,7 +224,7 @@ namespace DynaWeb
         [CanUpdatePeriodically(true)]
         public static WebResponse Execute(WebRequest request)
         {
-            request.response = Execution.ByClientRequest(null, request);
+            request.response = Execution.ByClientRequestMethod(null, request);
             return request.response;
         }
 

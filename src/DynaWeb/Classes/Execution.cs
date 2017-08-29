@@ -11,16 +11,18 @@ namespace DynaWeb
     /// <summary>
     /// Provides support for executing WebRequests
     /// </summary>
-    internal static class Execution
+    public static class Execution
     {
+        #region standard method
         /// <summary>
         /// Execute the given request, on a client if one is supplied.
         /// </summary>
         /// <param name="webClient">The client that will execute the request.
         /// Note : the WebClient can be NULL when executing a WebRequest directly.</param>
         /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="method"></param>
         /// <returns>The WebResponse from the server.</returns>
-        internal static WebResponse ByClientRequest(WebClient webClient, WebRequest webRequest)
+        public static WebResponse ByClientRequestMethod(WebClient webClient, WebRequest webRequest, string method = null)
         {
             if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
             // build a client & request to execute
@@ -32,7 +34,7 @@ namespace DynaWeb
             {
                 // in that case, an empty WebClient will be constructed with the WebRequest URL as its baseUrl.
                 // the request Resource also needs to be reset, otherwise the URL would be concatenating to itself.
-                client = new WebClient(webRequest.URL);
+                client = WebClient.ByUrl(webRequest.URL);
                 request.Resource = "";
             }
             else
@@ -41,10 +43,15 @@ namespace DynaWeb
             }
             client.UserAgent = "DynamoDS";
 
+            // initialise method with GET as default then try to parse value given (if any).
+            request.restRequest.Method = Method.GET;
+            if (!string.IsNullOrEmpty(method) && Enum.TryParse<Method>(method, true, out Method reqMethod))
+                request.restRequest.Method = reqMethod;
+
             // validate the Uri before attempting to execute the request
             try
             {
-                var uri = client.BuildUri(request);
+                var uri = WebClient.BuildUri(client, request);
                 if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
                 {
                     //TODO : error handling here is limited, needs checking and expanding.  
@@ -77,18 +84,12 @@ namespace DynaWeb
             {
                 case ResponseStatus.None:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
-                    break;
-                case ResponseStatus.Completed:
-                    break;
                 case ResponseStatus.Error:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
-                    break;
                 case ResponseStatus.TimedOut:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
-                    break;
                 case ResponseStatus.Aborted:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
-                    break;
                 default:
                     break;
             }
@@ -99,5 +100,15 @@ namespace DynaWeb
 
             return webRequest.response;
         }
+        #endregion
+
+        #region extension methods
+
+        public static WebResponse GET()
+        {
+            return null;
+        }
+
+        #endregion
     }
 }
