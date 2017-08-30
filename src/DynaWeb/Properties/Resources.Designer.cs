@@ -124,6 +124,15 @@ namespace DynaWeb.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The file provided could not be read..
+        /// </summary>
+        internal static string WebIOFileNotRead {
+            get {
+                return ResourceManager.GetString("WebIOFileNotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The supplied JSON token is not valid..
         /// </summary>
         internal static string WebJsonTokenInvalidMessage {

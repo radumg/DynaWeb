@@ -138,6 +138,9 @@
   <data name="WebClientUserAgentNullMessage" xml:space="preserve">
     <value>The UserAgent provided cannot be null.</value>
   </data>
+  <data name="WebIOFileNotRead" xml:space="preserve">
+    <value>The file provided could not be read.</value>
+  </data>
   <data name="WebJsonTokenInvalidMessage" xml:space="preserve">
     <value>The supplied JSON token is not valid.</value>
   </data>
