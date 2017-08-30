@@ -1,5 +1,5 @@
 {
-  "Uuid": "ea7ad46d-2d3d-4ca3-a616-e1e82ad7b483",
+  "Uuid": "a622fb04-f31f-4b18-bb3c-e79d07078648",
   "IsCustomNode": false,
   "Description": "",
   "Name": "Home",
@@ -10,11 +10,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebRequest.Execute@var",
+      "FunctionSignature": "DynaWeb.WebRequest.Execute@var",
       "Id": "ec7e3928-7085-4d32-880b-cf1a08652ff3",
       "Inputs": [
         {
-          "Id": "dabe9693-e4c0-47f9-96af-81191ee50e38",
+          "Id": "1cd0777b-b8bf-439f-bea3-1dc6494fba1d",
           "Name": "request",
           "Description": "The web request to execute.\n\nvar",
           "Level": 2,
@@ -24,7 +24,7 @@
       ],
       "Outputs": [
         {
-          "Id": "8b8b7af2-d4f7-4ea8-b737-ef56572900eb",
+          "Id": "6925ab2a-5e47-4565-b541-f4ca100ece34",
           "Name": "var",
           "Description": "The response from the server as a WebResponse object.",
           "Level": 2,
@@ -38,13 +38,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Content",
+      "FunctionSignature": "DynaWeb.WebResponse.Content",
       "Id": "1f333422-c596-4bf2-82f6-29cb5ed54940",
       "Inputs": [
         {
-          "Id": "94b9a14f-e531-4ce7-a5ca-9c57c8537fbb",
+          "Id": "ad8ae025-d72e-465f-8763-2100edbbcb1a",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -52,7 +52,7 @@
       ],
       "Outputs": [
         {
-          "Id": "a7fab3d8-f1ca-409b-90ec-3e34b1864a4f",
+          "Id": "bcab06bf-d923-4352-ac47-b8cc826b0834",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -69,7 +69,7 @@
       "Id": "3066a7d4-7762-4861-8695-a9238fbf4cf3",
       "Inputs": [
         {
-          "Id": "c135a5c9-21f2-4d5e-a56e-3712f288bbbd",
+          "Id": "eb410d7e-ea80-4bc5-96f0-626a0bdc7702",
           "Name": "",
           "Description": "Node to evaluate.",
           "Level": 2,
@@ -79,7 +79,7 @@
       ],
       "Outputs": [
         {
-          "Id": "105527bd-6265-4846-853d-ee46aace434b",
+          "Id": "dd402be0-9ce9-4ad0-a881-9d0eb561d35f",
           "Name": "",
           "Description": "Watch contents.",
           "Level": 2,
@@ -93,11 +93,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebRequest.ByUrl@string",
+      "FunctionSignature": "DynaWeb.WebRequest.ByUrl@string",
       "Id": "757e2c71-4c3d-47fd-8c33-25cdb4dcf3b7",
       "Inputs": [
         {
-          "Id": "9eedef3e-1bd6-4b0a-a25b-e9c40eb76ab1",
+          "Id": "4d6a2abe-3e81-43b9-b185-ce662d5c34b6",
           "Name": "url",
           "Description": "The URL to send the request to.\n\nstring",
           "Level": 2,
@@ -107,7 +107,7 @@
       ],
       "Outputs": [
         {
-          "Id": "69c8070c-2c75-4db5-ad51-d0f1013652b0",
+          "Id": "68096386-45fb-4019-9821-42fcd2a0041f",
           "Name": "WebRequest",
           "Description": "The request object, ready for execution.",
           "Level": 2,
@@ -126,7 +126,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "2b6c1c22-cd6c-4645-b766-a3cdce3edef4",
+          "Id": "89c0b425-ced8-4783-b9d9-2aa623d6d011",
           "Name": "",
           "Description": "String",
           "Level": 2,
@@ -140,24 +140,24 @@
   ],
   "Connectors": [
     {
-      "Start": "8b8b7af2-d4f7-4ea8-b737-ef56572900eb",
-      "End": "94b9a14f-e531-4ce7-a5ca-9c57c8537fbb",
-      "Id": "9d632f05-236b-4088-8cc0-e1e3e987c84c"
+      "Start": "6925ab2a-5e47-4565-b541-f4ca100ece34",
+      "End": "ad8ae025-d72e-465f-8763-2100edbbcb1a",
+      "Id": "59ce937a-3b2b-4287-8038-99b18a29944c"
     },
     {
-      "Start": "a7fab3d8-f1ca-409b-90ec-3e34b1864a4f",
-      "End": "c135a5c9-21f2-4d5e-a56e-3712f288bbbd",
-      "Id": "8ef4b285-4c5f-44b6-9769-b4f903247cfb"
+      "Start": "bcab06bf-d923-4352-ac47-b8cc826b0834",
+      "End": "eb410d7e-ea80-4bc5-96f0-626a0bdc7702",
+      "Id": "996bfdd5-829f-4793-a0d4-58cd44feaff0"
     },
     {
-      "Start": "69c8070c-2c75-4db5-ad51-d0f1013652b0",
-      "End": "dabe9693-e4c0-47f9-96af-81191ee50e38",
-      "Id": "346361bc-5327-458e-85d8-280a32418387"
+      "Start": "68096386-45fb-4019-9821-42fcd2a0041f",
+      "End": "1cd0777b-b8bf-439f-bea3-1dc6494fba1d",
+      "Id": "14ba1838-1058-4582-9449-c1fb500f42ce"
     },
     {
-      "Start": "2b6c1c22-cd6c-4645-b766-a3cdce3edef4",
-      "End": "9eedef3e-1bd6-4b0a-a25b-e9c40eb76ab1",
-      "Id": "ea02351b-e90b-44ac-b6d3-f5177a393989"
+      "Start": "89c0b425-ced8-4783-b9d9-2aa623d6d011",
+      "End": "4d6a2abe-3e81-43b9-b185-ce662d5c34b6",
+      "Id": "ba7be609-c9be-4e94-8bb6-dc29603f2987"
     }
   ],
   "Dependencies": [],

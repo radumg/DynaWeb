@@ -1,19 +1,19 @@
-<Workspace Version="1.3.1.1736" X="713.389029037767" Y="247.388319801468" zoom="0.262896972218895" ScaleFactor="1" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="1906.78714971269" Y="25.7431007896797" zoom="0.746630269394853" ScaleFactor="1" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap />
   <Elements>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="6776e092-6d6e-4c03-8c92-2247c00ca748" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="-1614.33663988464" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.ByUrl@string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="6776e092-6d6e-4c03-8c92-2247c00ca748" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="-1614.33663988464" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.ByUrl@string">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="cbcaabcf-e307-4a57-8751-f16375001e83" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="754.578542124363" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.Execute@var">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="cbcaabcf-e307-4a57-8751-f16375001e83" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="754.578542124363" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.Execute@var">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="efade3b7-fd67-4783-8d65-e930caca90a4" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.StatusCode" x="1005.57854212436" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebResponse.StatusCode">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="efade3b7-fd67-4783-8d65-e930caca90a4" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.StatusCode" x="1005.57854212436" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" function="DynaWeb.WebResponse.StatusCode">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="935883c4-8d61-48bc-8c83-93f2b1c205e8" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1030.07854212436" y="481.071471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebResponse.Content">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="935883c4-8d61-48bc-8c83-93f2b1c205e8" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1030.07854212436" y="481.071471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" function="DynaWeb.WebResponse.Content">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="dfee13b3-93d7-49ee-95bf-eede80122503" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.SetMethod" x="-1196.11705668969" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.SetMethod@string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="dfee13b3-93d7-49ee-95bf-eede80122503" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.SetMethod" x="-1196.11705668969" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.SetMethod@string">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
@@ -21,7 +21,7 @@
       <System.String>PUT</System.String>
       <System.String value="PUT" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="5b26fbe8-0927-469a-8725-90532677fe47" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddHeader" x="-635.50012484065" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.AddHeader@string,string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="5b26fbe8-0927-469a-8725-90532677fe47" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddHeader" x="-635.50012484065" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.AddHeader@string,string">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <PortInfo index="2" default="False" />
@@ -34,7 +34,7 @@
       <System.String>Authorization</System.String>
       <System.String value="Authorization" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="22874eda-6cd6-4b06-96b2-4463d047bd21" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddHeader" x="-69.4269224933817" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.AddHeader@string,string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="22874eda-6cd6-4b06-96b2-4463d047bd21" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddHeader" x="-69.4269224933817" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.AddHeader@string,string">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <PortInfo index="2" default="False" />
@@ -55,7 +55,7 @@
       <System.String>filename</System.String>
       <System.String value="filename" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="1029ea62-4657-4efa-9bae-23c05b12f986" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddFileAsBytes" x="407.108268473551" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.WebRequest.AddFileAsBytes@string,string,string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="1029ea62-4657-4efa-9bae-23c05b12f986" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.AddFileAsBytes" x="407.108268473551" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.AddFileAsBytes@string,string,string">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <PortInfo index="2" default="False" />
@@ -89,7 +89,7 @@
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="d5a9d991-7754-4b8a-a643-adbcb48532f7" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="203.986680728653" y="660.805542387919" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="filepath;" ShouldFocus="false">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.CodeBlockNodeModel>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="0fcc2171-8e39-46dc-bbbf-b5347ee0179e" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Helpers.DeserialiseAsDictionary" x="1338.44675023109" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\AppData\Roaming\Dynamo\Dynamo Core\1.3\packages\DynaWeb\bin\DynaWeb.dll" function="DynaWeb.Helpers.DeserialiseAsDictionary@string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="0fcc2171-8e39-46dc-bbbf-b5347ee0179e" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Helpers.DeserialiseAsDictionary" x="1338.44675023109" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.Helpers.DeserialiseAsDictionary@string">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <CoreNodeModels.Watch guid="3a18f202-9843-4853-8ea9-09e66a966b1f" type="CoreNodeModels.Watch" nickname="Watch" x="1585.82257640386" y="344.571471468609" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -173,7 +173,7 @@
     <Dynamo.Graph.Annotations.AnnotationModel guid="15900af2-6da6-48d8-a739-3a70a9c2d13b" annotationText="Upload file to Autodesk Forge" left="-2609.45568512961" top="20.159461830799" width="1509" height="184" fontSize="96" InitialTop="145.159461830799" InitialHeight="74.5" TextblockHeight="115" backgrouund="#FF848484">
       <Models ModelGuid="4075e6b7-0c8c-4265-87c1-27667c035e41" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="89973afa-f2c2-445b-b56a-71d4c506527f" annotationText="Deserialise JSON" left="1328.44675023109" top="298.571471468609" width="505.88377329771" height="155" fontSize="30" InitialTop="344.571471468609" InitialHeight="269.5" TextblockHeight="36" backgrouund="#FFFFAA45">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="89973afa-f2c2-445b-b56a-71d4c506527f" annotationText="Deserialise JSON" left="1328.44675023109" top="298.571471468609" width="716.88377329771" height="285.5" fontSize="30" InitialTop="344.571471468609" InitialHeight="269.5" TextblockHeight="36" backgrouund="#FFFFAA45">
       <Models ModelGuid="0fcc2171-8e39-46dc-bbbf-b5347ee0179e" />
       <Models ModelGuid="3a18f202-9843-4853-8ea9-09e66a966b1f" />
       <Models ModelGuid="2f313b38-3d21-4c5c-8cbe-392f68906638" />
