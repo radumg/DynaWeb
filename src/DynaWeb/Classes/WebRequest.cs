@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Collections.Specialized;
+using System.IO;
 
 namespace DynaWeb
 {
@@ -309,12 +310,35 @@ namespace DynaWeb
         /// <returns>This request</returns>
         public WebRequest AddFile(string name, string path, string contentType = null)
         {
-            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
+            if (this.restRequest.Method != Method.POST && this.restRequest.Method != Method.PUT)
                 throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
 
             this.restRequest.AddFile(name, path, contentType);
             return this;
         }
+
+        /// <summary>
+        /// Adds the raw bytes of a file to the body of the request. Useful for situations when multipart data is not supported by the server.
+        /// </summary>
+        /// <param name="name">The name of the parameter, usually the name of the file.</param>
+        /// <param name="filename">The file name.</param>
+        /// <param name="filepath">The full path to the file to be uploaded.</param>
+        /// <returns>The request updated.</returns>
+        public WebRequest AddFileAsBytes(string name, string filename, string filepath)
+        {
+            try
+            {
+                var bytes = File.ReadAllBytes(filepath);
+                this.restRequest.AddParameter("application/octet-stream", bytes, ParameterType.RequestBody);
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException(DynaWeb.Properties.Resources.WebIOFileNotRead);
+            }
+
+            return this;
+        }
+
 
         /// <summary>
         /// Serializes obj to data format specified by RequestFormat and adds it to the request body.
