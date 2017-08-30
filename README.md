@@ -48,6 +48,12 @@ As [reported](https://github.com/radumg/DynaWeb/issues/10) by users, Windows som
 
 ![image](https://user-images.githubusercontent.com/15014799/29770289-3c13172a-8be6-11e7-983e-6fb3c71ad136.png)
 
+## Updating from alpha-0.5 build ?
+The changes in `1.0` are breaking, meaning graphs using the previous version will not work. However, instead of re-creating them, you can simply open the `.dyn` files using Notepad (though i recommend SublimeText) and perform the following text find/replaces :
+- replace `DSCore.Web.` with `DynaWeb.`
+- replace `DynWWW.dll` with `DynaWeb.dll`
+- replace `WebClient.WebClient` with `WebClient.ByUrl`
+
 # Using DynaWeb
 Please consult the sample files provided in this repository and in the package's `extra` folder - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
