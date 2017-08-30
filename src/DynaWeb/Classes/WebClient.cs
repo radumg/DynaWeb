@@ -175,12 +175,12 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="url">The value to set BaseUrl to, has to be a valid URL.</param>
         /// <returns>The WebClient supplied with an updated BaseUrl property.</returns>
-        public static WebClient SetBaseURL(WebClient client, string url)
+        public WebClient SetBaseURL(string url)
         {
             if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
             if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
-            client.BaseUrl = Helpers.ParseUriFromString(url);
-            return client;
+            this.BaseUrl = Helpers.ParseUriFromString(url);
+            return this;
         }
 
         /// <summary>
@@ -189,11 +189,11 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="userAgent">The value to set the UserAgent to.</param>
         /// <returns>The WebClient supplied with the an UserAgent property.</returns>
-        public static WebClient SetUserAgent(WebClient client, string userAgent)
+        public WebClient SetUserAgent(string userAgent)
         {
             if (string.IsNullOrEmpty(userAgent)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUserAgentNullMessage);
-            client.UserAgent = userAgent;
-            return client;
+            this.UserAgent = userAgent;
+            return this;
         }
 
         /// <summary>
@@ -202,11 +202,11 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="timeout">The value to set timeout to, expressed in milliseconds.</param>
         /// <returns>The WebClient supplied with an updated Timeout property.</returns>
-        public static WebClient SetTimeout(WebClient client, int timeout)
+        public WebClient SetTimeout(int timeout)
         {
             if (timeout <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
-            client.Timeout = timeout;
-            return client;
+            this.Timeout = timeout;
+            return this;
         }
 
         /// <summary>
@@ -215,10 +215,10 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="followRedirects">True to follow redirects, false to end request.</param>
         /// <returns>The WebClient supplied with an updated FollowRedirects property.</returns>
-        public static WebClient SetFollowRedirects(WebClient client, bool followRedirects = true)
+        public WebClient SetFollowRedirects(bool followRedirects = true)
         {
-            client.FollowRedirects = followRedirects;
-            return client;
+            this.FollowRedirects = followRedirects;
+            return this;
         }
 
         /// <summary>
@@ -227,11 +227,11 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="maxRedirects">The value to set maximum to, expressed as an integer.</param>
         /// <returns>The WebClient supplied with an updated MaxRedirects property.</returns>
-        public static WebClient SetMaxRedirects(WebClient client, int maxRedirects)
+        public WebClient SetMaxRedirects(int maxRedirects)
         {
             if (maxRedirects <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
-            client.MaxRedirects = maxRedirects;
-            return client;
+            this.MaxRedirects = maxRedirects;
+            return this;
         }
 
         /// <summary>
@@ -240,11 +240,11 @@ namespace DynaWeb
         /// <param name="client">The WebClient to update.</param>
         /// <param name="jsonToken">The value to set JsonTokenOverride to.</param>
         /// <returns>The WebClient supplied with an updated JsonTokenOverride property.</returns>
-        public static WebClient SetJsonTokenOverride(WebClient client, string jsonToken)
+        public WebClient SetJsonTokenOverride(string jsonToken)
         {
             if (string.IsNullOrEmpty(jsonToken)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
-            client.JsonTokenOverride = jsonToken;
-            return client;
+            this.JsonTokenOverride = jsonToken;
+            return this;
         }
 
         #endregion
