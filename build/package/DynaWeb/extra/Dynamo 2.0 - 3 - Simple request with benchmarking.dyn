@@ -1,5 +1,5 @@
 {
-  "Uuid": "2cc5c896-aac1-4216-995a-5cbac68e51ba",
+  "Uuid": "bbee8d28-0875-4978-b36d-dde383937ff8",
   "IsCustomNode": false,
   "Description": "",
   "Name": "Home",
@@ -10,11 +10,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebRequest.Execute@var",
+      "FunctionSignature": "DynaWeb.WebRequest.Execute@var",
       "Id": "ec7e3928-7085-4d32-880b-cf1a08652ff3",
       "Inputs": [
         {
-          "Id": "b839712c-f02f-446d-9e51-56eab0fca3b4",
+          "Id": "2a2f9254-8d9e-459c-9062-c2728b7cd99b",
           "Name": "request",
           "Description": "The web request to execute.\n\nvar",
           "Level": 2,
@@ -24,7 +24,7 @@
       ],
       "Outputs": [
         {
-          "Id": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
+          "Id": "f545ff74-6566-4e59-98a7-851a1864706e",
           "Name": "var",
           "Description": "The response from the server as a WebResponse object.",
           "Level": 2,
@@ -38,11 +38,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebRequest.ByUrl@string",
+      "FunctionSignature": "DynaWeb.WebRequest.ByUrl@string",
       "Id": "757e2c71-4c3d-47fd-8c33-25cdb4dcf3b7",
       "Inputs": [
         {
-          "Id": "587ccc67-1d93-434c-a93f-a64ccb85b340",
+          "Id": "41031105-5ff5-4abf-8bb9-2b22f0df85f3",
           "Name": "url",
           "Description": "The URL to send the request to.\n\nstring",
           "Level": 2,
@@ -52,7 +52,7 @@
       ],
       "Outputs": [
         {
-          "Id": "ce94fe0c-692b-422f-bdba-fbdb98dd41f9",
+          "Id": "8843f6be-abd5-44de-8af3-7c7cbd9c1faf",
           "Name": "WebRequest",
           "Description": "The request object, ready for execution.",
           "Level": 2,
@@ -66,12 +66,12 @@
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "https://jsonplaceholder.typicode.com/users/1",
+      "InputValue": "http://www.dynamobim.org",
       "Id": "70402746-dcbf-4c3d-bffa-93e7ed6a5f98",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "89b33c47-5ee9-4ede-84b8-923fd917cd27",
+          "Id": "7a7fce24-9564-49c1-8f51-53bf438c4f83",
           "Name": "",
           "Description": "String",
           "Level": 2,
@@ -85,13 +85,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Content",
+      "FunctionSignature": "DynaWeb.WebResponse.Content",
       "Id": "2f50731e-2595-4f0a-b8cd-a737e2df5b8f",
       "Inputs": [
         {
-          "Id": "4c6bae27-5e26-4ccc-b79f-47addff67b06",
+          "Id": "19d8beb7-d326-424d-8c97-4cbfeed2f919",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -99,7 +99,7 @@
       ],
       "Outputs": [
         {
-          "Id": "61e4234b-8e89-43b7-9b7c-2d9e5f92dc83",
+          "Id": "0e5c06f9-414e-4320-b2b3-ddadc9cd3e39",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -116,7 +116,7 @@
       "Id": "d186a81c-fba2-478e-a986-02de30b474b9",
       "Inputs": [
         {
-          "Id": "3c59e088-dbb7-479e-b387-6e37b63f71c6",
+          "Id": "5bd05025-e3f3-4ff2-8e4c-b2b61a2f263b",
           "Name": "",
           "Description": "Node to evaluate.",
           "Level": 2,
@@ -126,7 +126,7 @@
       ],
       "Outputs": [
         {
-          "Id": "39e72b0b-0a96-4929-ae3e-9c9661af53be",
+          "Id": "e19477bd-8d03-439a-aaac-4b341edbea27",
           "Name": "",
           "Description": "Watch contents.",
           "Level": 2,
@@ -143,7 +143,7 @@
       "Id": "d71d3067-32bc-4159-851b-edab8fed5952",
       "Inputs": [
         {
-          "Id": "0b432e46-dd41-4988-a662-ea2d81c86f31",
+          "Id": "28affec0-f591-4cde-8fec-056b5f6014d5",
           "Name": "url",
           "Description": "The url for the web request.",
           "Level": 2,
@@ -153,7 +153,7 @@
       ],
       "Outputs": [
         {
-          "Id": "75a7909a-4ea7-4855-8d8d-247996b39057",
+          "Id": "c788f326-da1a-40b3-949b-add14852cd0d",
           "Name": "result",
           "Description": "The result of the web request.",
           "Level": 2,
@@ -170,7 +170,7 @@
       "Id": "ecc092e8-4d06-4ca8-aac3-a0c4e9f7bd46",
       "Inputs": [
         {
-          "Id": "76974b98-6a7d-4a08-b346-8b2b9a1a0c06",
+          "Id": "883a60c1-eb5c-43c7-b1f8-b3bb11b62f4d",
           "Name": "",
           "Description": "Node to evaluate.",
           "Level": 2,
@@ -180,7 +180,7 @@
       ],
       "Outputs": [
         {
-          "Id": "8322f206-3a58-44dd-ba6c-d3c821641ea4",
+          "Id": "3dfdfa6a-7d6d-42e3-aaff-2d91712d239e",
           "Name": "",
           "Description": "Watch contents.",
           "Level": 2,
@@ -198,7 +198,7 @@
       "Id": "b291b4e4-ea36-4cbf-b97a-c78686ce882a",
       "Inputs": [
         {
-          "Id": "a5059267-a847-4a9b-bcb5-cf57eb78c86d",
+          "Id": "a6a03e37-6993-451d-9251-84bff4d0aad2",
           "Name": "path0",
           "Description": "String to combine into a path.\n\nstring[]",
           "Level": 2,
@@ -206,7 +206,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "6d811b98-577f-4bc3-b179-bc3e07e20adc",
+          "Id": "bde50811-453d-4dfe-9634-8961873e46ef",
           "Name": "path1",
           "Description": "string[]",
           "Level": 2,
@@ -216,7 +216,7 @@
       ],
       "Outputs": [
         {
-          "Id": "fdd3ff89-43c4-4bdc-9e95-355daf29a04c",
+          "Id": "08ef6bde-28ad-43c4-9102-06f89064f3d8",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -234,7 +234,7 @@
       "Id": "f104c501-7437-46d0-bf6a-ab32006ed9ab",
       "Inputs": [
         {
-          "Id": "02c2a0ba-d464-45f0-8bf4-e9e9794dc620",
+          "Id": "b8eddbf5-9802-4191-9bf3-e0a00f1e68be",
           "Name": "path0",
           "Description": "String to combine into a path.\n\nstring[]",
           "Level": 2,
@@ -242,7 +242,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "1674561e-4b44-456d-837f-22e6f193e537",
+          "Id": "89a5cf00-d9ff-47e9-8b28-6458387e1f31",
           "Name": "path1",
           "Description": "string[]",
           "Level": 2,
@@ -252,7 +252,7 @@
       ],
       "Outputs": [
         {
-          "Id": "b699eb3d-2979-4ad1-b819-f8b7b33dfb08",
+          "Id": "425b60e8-fcab-46b1-b6ee-f94c627e9ee2",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -270,7 +270,7 @@
       "Id": "26da7059-1e7c-465b-90d9-f1ac66c4218a",
       "Inputs": [
         {
-          "Id": "36fd0240-147f-4b32-bf88-ea2076dc7741",
+          "Id": "5e529654-150c-4562-87ce-49bb03ea03ec",
           "Name": "filePath",
           "Description": "Path to write to\n\nstring",
           "Level": 2,
@@ -278,7 +278,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "927dd53f-cacf-4de9-b159-22f922272c38",
+          "Id": "3bd1ef49-45d6-4354-8d3e-418c5d8c8738",
           "Name": "text",
           "Description": "Text content\n\nstring",
           "Level": 2,
@@ -288,7 +288,7 @@
       ],
       "Outputs": [
         {
-          "Id": "cd1131ef-9d7a-41e5-bab8-423dfb7ff734",
+          "Id": "64536c02-ccf8-4235-8397-0db65965600a",
           "Name": "void",
           "Description": "void",
           "Level": 2,
@@ -306,7 +306,7 @@
       "Id": "11ff5836-52d0-4c56-bc67-25d5b8a02316",
       "Inputs": [
         {
-          "Id": "b889bdef-c8d4-42f6-bda5-8393ac87f209",
+          "Id": "717f4936-0d89-41a9-a920-a752317a4fd2",
           "Name": "filePath",
           "Description": "Path to write to\n\nstring",
           "Level": 2,
@@ -314,7 +314,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "a853d0cf-5488-403a-816f-a8b42bedb728",
+          "Id": "2ebf9c4f-c1c4-48bb-bb1d-2a7fbb20477a",
           "Name": "text",
           "Description": "Text content\n\nstring",
           "Level": 2,
@@ -324,7 +324,7 @@
       ],
       "Outputs": [
         {
-          "Id": "16178558-afb0-4760-ad59-1bbcba2651ff",
+          "Id": "0a42928a-cabb-4412-948a-c9f4570172ce",
           "Name": "void",
           "Description": "void",
           "Level": 2,
@@ -338,12 +338,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"Response-DynamoCore.txt\";\n\"Response-DynaWeb.txt\";",
+      "Code": "\"Response-DynamoCore.html\";\n\"Response-DynaWeb.html\";",
       "Id": "c4191324-0ce4-4849-b2e3-59306c44f4cf",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "5748fc24-09b5-4d4e-b9a7-8bfee14f5087",
+          "Id": "87bbd962-7095-419c-adbe-f2cad785dacc",
           "Name": "",
           "Description": "t6BBA4B28C5E54CF89F300D510499A00E_0",
           "Level": 2,
@@ -351,7 +351,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "60e53367-6c94-4653-9b63-9a22e7650de6",
+          "Id": "1987fcec-bff2-4245-9e47-ab75536cc95e",
           "Name": "",
           "Description": "t6BBA4B28C5E54CF89F300D510499A00E_1",
           "Level": 2,
@@ -371,7 +371,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "eadc5942-64e9-4a6f-bb00-595ac6f0cec9",
+          "Id": "7a5ba6fd-a6cc-479a-b76b-2e48b01e56fc",
           "Name": "",
           "Description": "Directory",
           "Level": 2,
@@ -385,13 +385,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Content",
+      "FunctionSignature": "DynaWeb.WebResponse.Content",
       "Id": "b37405a5-1e1b-4b39-9b93-3bdc50a88fae",
       "Inputs": [
         {
-          "Id": "6f3cad6f-6aa9-4219-8cb7-00f1c6cc59aa",
+          "Id": "9af2158e-d1d6-4def-aded-edae8150fa08",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -399,7 +399,7 @@
       ],
       "Outputs": [
         {
-          "Id": "74f367be-3a39-48e7-812b-317ddca2ef31",
+          "Id": "aca132f5-f5c1-484a-9b02-68181b18b3e9",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -416,7 +416,7 @@
       "Id": "1b2fa6a4-33c5-45e4-9e77-7173f0375d94",
       "Inputs": [
         {
-          "Id": "4256231c-83a1-4680-bbe5-da6ad78384a2",
+          "Id": "9e138143-c005-4476-a368-ebd0eb92d326",
           "Name": "",
           "Description": "Node to evaluate.",
           "Level": 2,
@@ -426,7 +426,7 @@
       ],
       "Outputs": [
         {
-          "Id": "1c45d51f-db07-4c00-9cb7-acfba99f3d7d",
+          "Id": "0439ea11-98ea-4d5d-abc6-69dea857073c",
           "Name": "",
           "Description": "Watch contents.",
           "Level": 2,
@@ -440,13 +440,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.StatusCode",
+      "FunctionSignature": "DynaWeb.WebResponse.StatusCode",
       "Id": "eea2d367-097e-4eb0-a81e-c15e30d64624",
       "Inputs": [
         {
-          "Id": "e1bdfe28-630b-4db5-b971-109585f4117e",
+          "Id": "123c5e1a-1c25-47e5-81a8-80fcdc29d1a7",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -454,7 +454,7 @@
       ],
       "Outputs": [
         {
-          "Id": "18e68b16-f4d3-4815-bf4e-d631426da51e",
+          "Id": "76a541b9-65df-45d9-b9cf-b0dd3cf25718",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -468,13 +468,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.StatusDescription",
+      "FunctionSignature": "DynaWeb.WebResponse.StatusDescription",
       "Id": "ecf88d92-6bf7-4dd8-898c-dd05f9c2bd76",
       "Inputs": [
         {
-          "Id": "e7ecf19e-d17a-4e6e-a336-1ce1ff89959b",
+          "Id": "69dd067b-042a-44ce-b339-844859ed662a",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -482,7 +482,7 @@
       ],
       "Outputs": [
         {
-          "Id": "65fabfd9-efcd-4e6e-aa55-b7acb39eba84",
+          "Id": "9d3d3f86-5bab-42ae-be9c-68f999f07dc8",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -496,13 +496,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.ResponseStatus",
+      "FunctionSignature": "DynaWeb.WebResponse.ResponseStatus",
       "Id": "3820b9cf-328b-4b74-a84a-3bc9659f35f9",
       "Inputs": [
         {
-          "Id": "b8640489-99a4-4838-9bfd-bc763d5b3be8",
+          "Id": "0d10931d-9dac-42ba-889e-dd3c8c2600fb",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -510,7 +510,7 @@
       ],
       "Outputs": [
         {
-          "Id": "deb2c1f8-831a-460c-8e47-ca9f4060924f",
+          "Id": "5fe771a3-ce0c-4dad-8dd0-8aca4d5ed9cf",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -524,13 +524,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.ResponseUri",
+      "FunctionSignature": "DynaWeb.WebResponse.ResponseUri",
       "Id": "6574ed32-8da9-4f65-9992-dc7d360d9e53",
       "Inputs": [
         {
-          "Id": "9df27118-ffff-437b-982d-899577739c18",
+          "Id": "cdc58502-4605-45bf-900f-231d1c187462",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -538,7 +538,7 @@
       ],
       "Outputs": [
         {
-          "Id": "08893f5b-50af-4599-ad6b-470c47a702f4",
+          "Id": "cfe4c84e-8959-48d3-8c10-9bbc9e1947bc",
           "Name": "var",
           "Description": "var",
           "Level": 2,
@@ -552,13 +552,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Server",
+      "FunctionSignature": "DynaWeb.WebResponse.Server",
       "Id": "adfb36d0-9f71-43ff-ba42-8cc9a778c402",
       "Inputs": [
         {
-          "Id": "7bccb698-56a5-4766-a7a7-d12174953060",
+          "Id": "508d2ca9-6289-403d-9071-50df174a7eb7",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -566,7 +566,7 @@
       ],
       "Outputs": [
         {
-          "Id": "a914c3d9-32d2-4ca4-aa49-392c2f570cd2",
+          "Id": "fdd87293-2b06-40d3-a67f-075176778eef",
           "Name": "string",
           "Description": "string",
           "Level": 2,
@@ -580,13 +580,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Headers",
+      "FunctionSignature": "DynaWeb.WebResponse.Headers",
       "Id": "a3387fba-5d78-412a-b6df-ec257b85355e",
       "Inputs": [
         {
-          "Id": "dd45723a-df94-4ba7-8aa3-ea9b98ee5396",
+          "Id": "70c9d544-6f63-42ae-9996-008d0a38eee7",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -594,7 +594,7 @@
       ],
       "Outputs": [
         {
-          "Id": "840d1df2-3430-4014-96c4-e41dae164ebf",
+          "Id": "8c2c5b81-73ee-4bb7-8855-b8115c8d9446",
           "Name": "string[][]",
           "Description": "string[][]",
           "Level": 2,
@@ -608,13 +608,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Cookies",
+      "FunctionSignature": "DynaWeb.WebResponse.Cookies",
       "Id": "064f41ba-0cd3-4036-83f0-d67c9c18defb",
       "Inputs": [
         {
-          "Id": "06779c01-afd3-4590-bc19-591b71141f2c",
+          "Id": "2a487a28-e174-4e7b-97f7-d75e1ceed5fc",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -622,7 +622,7 @@
       ],
       "Outputs": [
         {
-          "Id": "cc03cd51-bb21-4ad6-a13b-42c6b31903e4",
+          "Id": "775d91e1-7c12-4891-a712-f285de1195b1",
           "Name": "string[][]",
           "Description": "string[][]",
           "Level": 2,
@@ -639,7 +639,7 @@
       "Id": "4bae73c0-a789-4c41-b9f6-c2247737f15d",
       "Inputs": [
         {
-          "Id": "5d06072a-7c18-4b84-aee4-af008f169553",
+          "Id": "fcb77a28-b31b-411b-9b53-2926caef45c4",
           "Name": "",
           "Description": "Node to evaluate.",
           "Level": 2,
@@ -649,7 +649,7 @@
       ],
       "Outputs": [
         {
-          "Id": "656566ae-f366-4dd1-8ed7-4c9ef73017c3",
+          "Id": "d413ca5a-9e87-408b-809e-277ff5c9fbff",
           "Name": "",
           "Description": "Watch contents.",
           "Level": 2,
@@ -663,13 +663,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.Web.WebResponse.Time",
+      "FunctionSignature": "DynaWeb.WebResponse.Time",
       "Id": "73d92202-5823-44ee-80d2-483f8e9f74a1",
       "Inputs": [
         {
-          "Id": "2a5eef48-f928-4aa1-8e5e-c1c8b58ee836",
+          "Id": "15e5b1c2-d512-4674-8fb9-3ab52234f286",
           "Name": "webResponse",
-          "Description": "DSCore.Web.WebResponse",
+          "Description": "DynaWeb.WebResponse",
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -677,7 +677,7 @@
       ],
       "Outputs": [
         {
-          "Id": "3427789e-6709-461e-a3cd-4fb2903d01ab",
+          "Id": "7fbb3cc2-eaf9-4f9d-a5e5-bf524e382608",
           "Name": "var",
           "Description": "var",
           "Level": 2,
@@ -691,129 +691,129 @@
   ],
   "Connectors": [
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "6f3cad6f-6aa9-4219-8cb7-00f1c6cc59aa",
-      "Id": "c057060c-7a3e-4dac-bd87-9532f98750e4"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "9af2158e-d1d6-4def-aded-edae8150fa08",
+      "Id": "381b772f-818b-480c-85fe-23f433547f00"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "e1bdfe28-630b-4db5-b971-109585f4117e",
-      "Id": "526cf3ea-9ef7-4acb-a0cd-216b49b8ae7e"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "123c5e1a-1c25-47e5-81a8-80fcdc29d1a7",
+      "Id": "3359bb01-960e-477d-83ae-64f4432e0f16"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "e7ecf19e-d17a-4e6e-a336-1ce1ff89959b",
-      "Id": "7cabf3a8-e660-4466-b937-d6ba9fda943c"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "69dd067b-042a-44ce-b339-844859ed662a",
+      "Id": "76415146-8174-4a30-ba36-f70868d940fa"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "b8640489-99a4-4838-9bfd-bc763d5b3be8",
-      "Id": "55e76a63-9c15-4fb4-8ba9-343b8016ecbf"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "0d10931d-9dac-42ba-889e-dd3c8c2600fb",
+      "Id": "3ec8c93c-2136-4d11-92ba-73c7c3383d7e"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "9df27118-ffff-437b-982d-899577739c18",
-      "Id": "69c95342-1b69-4cdc-9e7c-071ad50c4f01"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "cdc58502-4605-45bf-900f-231d1c187462",
+      "Id": "6d35db59-af5f-4104-8d9d-61deed6523a4"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "7bccb698-56a5-4766-a7a7-d12174953060",
-      "Id": "79d8fcc2-f0ac-4c11-a51e-944f73463027"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "508d2ca9-6289-403d-9071-50df174a7eb7",
+      "Id": "61af38a1-7600-4b80-a915-d9ccb26394a6"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "dd45723a-df94-4ba7-8aa3-ea9b98ee5396",
-      "Id": "ae44d88f-c294-4279-aa79-3443b0a55c1f"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "70c9d544-6f63-42ae-9996-008d0a38eee7",
+      "Id": "ff05da46-32c9-4508-add2-7b960c1cb082"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "06779c01-afd3-4590-bc19-591b71141f2c",
-      "Id": "3b512407-1827-453a-b6b1-d6790ec41371"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "2a487a28-e174-4e7b-97f7-d75e1ceed5fc",
+      "Id": "765b4e24-2152-491b-a7c0-b72d655ce636"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "4c6bae27-5e26-4ccc-b79f-47addff67b06",
-      "Id": "a25c89e7-a6a0-4c05-b68f-e1669d54d19e"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "19d8beb7-d326-424d-8c97-4cbfeed2f919",
+      "Id": "50f518d1-4c1e-4a82-8f5c-a694dcdb1a20"
     },
     {
-      "Start": "e3e9aad3-bb0d-4592-9a6a-bf35c8e0256f",
-      "End": "2a5eef48-f928-4aa1-8e5e-c1c8b58ee836",
-      "Id": "64afd34d-48ea-45e3-9d9f-99e4bcb81ce8"
+      "Start": "f545ff74-6566-4e59-98a7-851a1864706e",
+      "End": "15e5b1c2-d512-4674-8fb9-3ab52234f286",
+      "Id": "68adc357-7a52-4b53-b883-21507f42854e"
     },
     {
-      "Start": "ce94fe0c-692b-422f-bdba-fbdb98dd41f9",
-      "End": "b839712c-f02f-446d-9e51-56eab0fca3b4",
-      "Id": "cd4779ab-e5b0-4d12-b016-0f42a800f243"
+      "Start": "8843f6be-abd5-44de-8af3-7c7cbd9c1faf",
+      "End": "2a2f9254-8d9e-459c-9062-c2728b7cd99b",
+      "Id": "90ff00b7-c067-44b9-b5d4-1eb867ee265b"
     },
     {
-      "Start": "89b33c47-5ee9-4ede-84b8-923fd917cd27",
-      "End": "587ccc67-1d93-434c-a93f-a64ccb85b340",
-      "Id": "ada38e00-cf68-4fbc-baf1-243593a908a5"
+      "Start": "7a7fce24-9564-49c1-8f51-53bf438c4f83",
+      "End": "41031105-5ff5-4abf-8bb9-2b22f0df85f3",
+      "Id": "ade9b145-2576-4712-a3d4-4d75495c47ee"
     },
     {
-      "Start": "89b33c47-5ee9-4ede-84b8-923fd917cd27",
-      "End": "0b432e46-dd41-4988-a662-ea2d81c86f31",
-      "Id": "727847c8-5a00-4f69-a40e-5f7adb2306e7"
+      "Start": "7a7fce24-9564-49c1-8f51-53bf438c4f83",
+      "End": "28affec0-f591-4cde-8fec-056b5f6014d5",
+      "Id": "5f9e106f-aa93-40f8-aa3b-07c46c16e8b2"
     },
     {
-      "Start": "61e4234b-8e89-43b7-9b7c-2d9e5f92dc83",
-      "End": "3c59e088-dbb7-479e-b387-6e37b63f71c6",
-      "Id": "53e1064b-a8cb-41e6-9747-4f9b9e4f432a"
+      "Start": "0e5c06f9-414e-4320-b2b3-ddadc9cd3e39",
+      "End": "5bd05025-e3f3-4ff2-8e4c-b2b61a2f263b",
+      "Id": "91ce2df9-2d56-4cf2-8e46-b34a7d8d632d"
     },
     {
-      "Start": "39e72b0b-0a96-4929-ae3e-9c9661af53be",
-      "End": "a853d0cf-5488-403a-816f-a8b42bedb728",
-      "Id": "4538707f-a7b8-41e3-8e13-2477db8f696b"
+      "Start": "e19477bd-8d03-439a-aaac-4b341edbea27",
+      "End": "2ebf9c4f-c1c4-48bb-bb1d-2a7fbb20477a",
+      "Id": "4ba1aaa7-8700-4910-981e-80139aee5d49"
     },
     {
-      "Start": "75a7909a-4ea7-4855-8d8d-247996b39057",
-      "End": "76974b98-6a7d-4a08-b346-8b2b9a1a0c06",
-      "Id": "70572dd1-df16-4348-9cb9-a5ae48289749"
+      "Start": "c788f326-da1a-40b3-949b-add14852cd0d",
+      "End": "883a60c1-eb5c-43c7-b1f8-b3bb11b62f4d",
+      "Id": "51fdb2fe-0bc3-45af-8775-c34c7e037ddd"
     },
     {
-      "Start": "8322f206-3a58-44dd-ba6c-d3c821641ea4",
-      "End": "927dd53f-cacf-4de9-b159-22f922272c38",
-      "Id": "3eb4c44a-433c-4d50-8cd2-a1c1d045a269"
+      "Start": "3dfdfa6a-7d6d-42e3-aaff-2d91712d239e",
+      "End": "3bd1ef49-45d6-4354-8d3e-418c5d8c8738",
+      "Id": "58c3376f-059b-43a5-a5cf-d33d1a8c85e3"
     },
     {
-      "Start": "fdd3ff89-43c4-4bdc-9e95-355daf29a04c",
-      "End": "36fd0240-147f-4b32-bf88-ea2076dc7741",
-      "Id": "cd77b06b-8614-49ae-a075-e912958be0fd"
+      "Start": "08ef6bde-28ad-43c4-9102-06f89064f3d8",
+      "End": "5e529654-150c-4562-87ce-49bb03ea03ec",
+      "Id": "3f6a9eb2-3f0f-4d6c-85b8-6337da7f468e"
     },
     {
-      "Start": "b699eb3d-2979-4ad1-b819-f8b7b33dfb08",
-      "End": "b889bdef-c8d4-42f6-bda5-8393ac87f209",
-      "Id": "a37e80ff-5897-4e7b-8cd2-ff5298484f64"
+      "Start": "425b60e8-fcab-46b1-b6ee-f94c627e9ee2",
+      "End": "717f4936-0d89-41a9-a920-a752317a4fd2",
+      "Id": "b7e97075-f62b-4090-b301-453438f67fe6"
     },
     {
-      "Start": "5748fc24-09b5-4d4e-b9a7-8bfee14f5087",
-      "End": "6d811b98-577f-4bc3-b179-bc3e07e20adc",
-      "Id": "8bf5bc81-37f7-48e4-8d8c-d35e90ec2e08"
+      "Start": "87bbd962-7095-419c-adbe-f2cad785dacc",
+      "End": "bde50811-453d-4dfe-9634-8961873e46ef",
+      "Id": "510e7087-250c-4290-85d9-3d22218c185f"
     },
     {
-      "Start": "60e53367-6c94-4653-9b63-9a22e7650de6",
-      "End": "1674561e-4b44-456d-837f-22e6f193e537",
-      "Id": "87c368cb-1304-429f-80e6-a20e17b0ce01"
+      "Start": "1987fcec-bff2-4245-9e47-ab75536cc95e",
+      "End": "89a5cf00-d9ff-47e9-8b28-6458387e1f31",
+      "Id": "6b6578c2-600b-4597-9b21-0d960d2282c4"
     },
     {
-      "Start": "eadc5942-64e9-4a6f-bb00-595ac6f0cec9",
-      "End": "a5059267-a847-4a9b-bcb5-cf57eb78c86d",
-      "Id": "b272a2bc-cf99-42cb-8db6-7208a180a364"
+      "Start": "7a5ba6fd-a6cc-479a-b76b-2e48b01e56fc",
+      "End": "a6a03e37-6993-451d-9251-84bff4d0aad2",
+      "Id": "34485126-3e27-40a5-8c9c-320e581c7717"
     },
     {
-      "Start": "eadc5942-64e9-4a6f-bb00-595ac6f0cec9",
-      "End": "02c2a0ba-d464-45f0-8bf4-e9e9794dc620",
-      "Id": "09748081-be51-4f21-b1ec-485dad4c6efa"
+      "Start": "7a5ba6fd-a6cc-479a-b76b-2e48b01e56fc",
+      "End": "b8eddbf5-9802-4191-9bf3-e0a00f1e68be",
+      "Id": "7e64ee49-8790-4886-a918-e918da6493ed"
     },
     {
-      "Start": "74f367be-3a39-48e7-812b-317ddca2ef31",
-      "End": "4256231c-83a1-4680-bbe5-da6ad78384a2",
-      "Id": "cd26362d-6261-4773-be3b-3d05e9302750"
+      "Start": "aca132f5-f5c1-484a-9b02-68181b18b3e9",
+      "End": "9e138143-c005-4476-a368-ebd0eb92d326",
+      "Id": "6c3fe4dd-0be0-4202-ab4b-e119fc6594e6"
     },
     {
-      "Start": "840d1df2-3430-4014-96c4-e41dae164ebf",
-      "End": "5d06072a-7c18-4b84-aee4-af008f169553",
-      "Id": "81682655-0fe6-40e2-826b-97abcb8ab043"
+      "Start": "8c2c5b81-73ee-4bb7-8855-b8115c8d9446",
+      "End": "fcb77a28-b31b-411b-9b53-2926caef45c4",
+      "Id": "d531b1f6-7e51-4e87-b72d-d0f507db7cb3"
     }
   ],
   "Dependencies": [],
@@ -848,7 +848,7 @@
         "Id": "70402746-dcbf-4c3d-bffa-93e7ed6a5f98",
         "IsUpstreamVisible": true,
         "X": 188.457576048944,
-        "Y": -166.509173425669
+        "Y": -35.1717884740285
       },
       {
         "ShowGeometry": true,
@@ -879,7 +879,7 @@
         "Name": "Watch",
         "Id": "ecc092e8-4d06-4ca8-aac3-a0c4e9f7bd46",
         "IsUpstreamVisible": true,
-        "X": 1131.338792271,
+        "X": 1435.61987588303,
         "Y": -306.709444951015
       },
       {
@@ -1021,16 +1021,10 @@
     ],
     "Notes": [
       {
-        "Id": "934bf4dc-cfd6-4210-8e0b-f2b8c8e62af4",
-        "X": 111.831192722863,
-        "Y": -306.709444951015,
-        "Text": "I suggest using something like JsonPlaceholder to test out the package and web responses.\r\n\r\nhttps://jsonplaceholder.typicode.com\r\n\r\nVisit the site to generate a fresh URL, this one will likely be out of date."
-      },
-      {
         "Id": "b1965ad6-7050-48d6-a1c5-ffc2dc7c8953",
         "X": 108.831192722863,
         "Y": -651.318555151519,
-        "Text": "All web requests start with a web address, also known as a URL.\r\n\r\nThis is what you typically type into the address bar of your web browser."
+        "Text": "All web requests start with a web address, also known as a URL.\r\n\r\nThis is what you typically type into the address bar of your web browser.\r\n\r\nIn this sample, we'll retrieve the contents of the DynamoBIM homepage and save it to our computer."
       },
       {
         "Id": "7ceee1b2-887f-4de2-a06a-475563f9e0da",
@@ -1052,8 +1046,8 @@
       },
       {
         "Id": "147a8f0a-4cae-4f69-adc9-985590a3acb8",
-        "X": 460.389258850889,
-        "Y": -218.889524250544,
+        "X": 780.841141176222,
+        "Y": -306.709444951015,
         "Text": "The \"Web Request\" node in the Core Dynamo library : \r\n- builds a web request to the URL provided\r\n- executes it as well.\r\n\r\nThe node always executes a GET request."
       },
       {
@@ -1076,7 +1070,7 @@
       },
       {
         "Id": "7e2b85d9-6919-4fc5-803a-875537a9817f",
-        "X": 1436.73968361586,
+        "X": 1131.338792271,
         "Y": -306.709444951015,
         "Text": "The \"Web Request\" node from the Core Dynamo library returns the content of the web response by default and none of the metadata.\r\n\r\nThis means the response does not need to be unwrapped using a Response node and can be plugged straight into any other node, such as a Watch."
       },
@@ -1084,7 +1078,7 @@
         "Id": "4969f7d8-9efe-4577-88de-2a14e51f3c9c",
         "X": 1130.21898453817,
         "Y": 308.318928636519,
-        "Text": "The Execute node from the DynaWeb package returns a WebResponse object. This object contains all the metadata of the response as well as the content itself.\r\n\r\nThe WebResponse.Content node returns the actual content returned from the server. Try adding another query node (marked with ?) from the WebResponse part of the library.\r\n\r\nIn this example, it's the HTML content of the page requested. A brower would take this HTML markup and represent it graphically as a webpage.\r\n\r\nIn this example, the server does not return HTML to us, but a custom \"user\" object encoded as JSON.\r\n\r\nThis type of response is returned by web services, APIs, etc and is intended to be converted into usable values by whoever made the request. The process of converting this text to actual values is known as Deserialising, which is demonstrated in the REST API sample."
+        "Text": "The Execute node from the DynaWeb package returns a WebResponse object. This object contains all the metadata of the response as well as the content itself.\r\n\r\nThe WebResponse.Content node returns the actual content returned from the server. Try adding another query node (marked with ?) from the WebResponse part of the library.\r\n\r\nIn this example, it's the HTML content of the page requested. A brower would take this HTML markup and represent it graphically as a webpage."
       },
       {
         "Id": "89b28dd8-3de6-4fe5-86d0-1b9ddabef1b1",
@@ -1097,6 +1091,12 @@
         "X": 1751.17025674531,
         "Y": 392.752880118936,
         "Text": "The built-in nodes do not offer any metadata for the request or response, such as timing.\r\n\r\n\r\nIf you would like to time both the Core and DynaWeb nodes, you will have to use a node from a package to time the requests. When timing the DynaWeb nodes, start the timer before the WebRequest.Execute node and stop it right after.\r\n"
+      },
+      {
+        "Id": "b018eceb-956f-495f-90d5-a2d100b27226",
+        "X": 2127.42527199724,
+        "Y": -651.318555151519,
+        "Text": "Note : \r\nThe output of these requests is raw HTML, meaning we can save this to a *.html file and open that with our browsers. \r\nGive it a try, open these files with your web browser!"
       }
     ],
     "Annotations": [
@@ -1123,14 +1123,13 @@
         "Id": "f32bbdab-52b5-48b7-8f8b-8b33bc24ba1f",
         "Title": "1. Input\r\n",
         "Nodes": [
-          "934bf4dc-cfd6-4210-8e0b-f2b8c8e62af4",
           "70402746-dcbf-4c3d-bffa-93e7ed6a5f98",
           "b1965ad6-7050-48d6-a1c5-ffc2dc7c8953"
         ],
         "Left": 98.831192722863,
         "Top": -776.318555151519,
-        "Width": 303.126383326081,
-        "Height": 708.80938172585,
+        "Width": 318.49999999999994,
+        "Height": 809.14676667749052,
         "FontSize": 48.0,
         "InitialTop": -651.318555151519,
         "InitialHeight": 597.794015902292,
@@ -1147,8 +1146,8 @@
         ],
         "Left": 1120.21898453817,
         "Top": 162.533815629149,
-        "Width": 615.40089134486016,
-        "Height": 506.78511300737,
+        "Width": 404.40089134486016,
+        "Height": 362.78511300737,
         "FontSize": 30.0,
         "InitialTop": 208.533815629149,
         "InitialHeight": 334.528626955774,
@@ -1164,8 +1163,8 @@
         ],
         "Left": 450.389258850889,
         "Top": -352.709444951015,
-        "Width": 281.5,
-        "Height": 250.31992070047096,
+        "Width": 601.95188232533292,
+        "Height": 162.5,
         "FontSize": 30.0,
         "InitialTop": -306.709444951015,
         "InitialHeight": 123.0,
@@ -1181,8 +1180,8 @@
         ],
         "Left": 1121.338792271,
         "Top": -352.709444951015,
-        "Width": 610.40089134485993,
-        "Height": 424.0,
+        "Width": 403.28108361203,
+        "Height": 191.0,
         "FontSize": 30.0,
         "InitialTop": -306.709444951015,
         "InitialHeight": 139.0,
@@ -1233,7 +1232,8 @@
           "11ff5836-52d0-4c56-bc67-25d5b8a02316",
           "c4191324-0ce4-4849-b2e3-59306c44f4cf",
           "d1242f8b-05f6-4c47-8243-baf68aae79b0",
-          "89b28dd8-3de6-4fe5-86d0-1b9ddabef1b1"
+          "89b28dd8-3de6-4fe5-86d0-1b9ddabef1b1",
+          "b018eceb-956f-495f-90d5-a2d100b27226"
         ],
         "Left": 1810.74367616223,
         "Top": -776.318555151519,
@@ -1279,7 +1279,7 @@
         ],
         "Left": 1126.63262673064,
         "Top": 676.110594344636,
-        "Width": 610.05784305369,
+        "Width": 399.05784305369,
         "Height": 1188.7091344438741,
         "FontSize": 30.0,
         "InitialTop": 722.110594344636,
@@ -1288,8 +1288,8 @@
         "Background": "#FFFFAA45"
       }
     ],
-    "X": 376.573979183469,
-    "Y": 262.192180844227,
-    "Zoom": 0.272389924033859
+    "X": 212.554252940673,
+    "Y": 252.416027498862,
+    "Zoom": 0.299263741155844
   }
 }

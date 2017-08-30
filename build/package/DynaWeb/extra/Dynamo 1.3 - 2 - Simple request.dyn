@@ -5,29 +5,29 @@
       <System.String>https://jsonplaceholder.typicode.com/users/1</System.String>
       <System.String value="https://jsonplaceholder.typicode.com/users/1" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="ec7e3928-7085-4d32-880b-cf1a08652ff3" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="865.341141176222" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebRequest.Execute@var">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="ec7e3928-7085-4d32-880b-cf1a08652ff3" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="865.341141176222" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.Execute@var">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="1f333422-c596-4bf2-82f6-29cb5ed54940" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1131.338792271" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebResponse.Content">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="1f333422-c596-4bf2-82f6-29cb5ed54940" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1131.338792271" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebResponse.Content">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <CoreNodeModels.Watch guid="3066a7d4-7762-4861-8695-a9238fbf4cf3" type="CoreNodeModels.Watch" nickname="Watch" x="1436.73968361586" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="757e2c71-4c3d-47fd-8c33-25cdb4dcf3b7" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="460.389258850889" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebRequest.ByUrl@string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="757e2c71-4c3d-47fd-8c33-25cdb4dcf3b7" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="460.389258850889" y="-28.6228728704681" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.ByUrl@string">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <CoreNodeModels.Input.StringInput guid="70402746-dcbf-4c3d-bffa-93e7ed6a5f98" type="CoreNodeModels.Input.StringInput" nickname="String" x="225.10423832794" y="-155.166158910742" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>http://www.google.com/</System.String>
       <System.String value="http://www.google.com/" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="456451aa-6d60-478c-a347-cb01b273c9ff" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="865.341141176222" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebRequest.Execute@var">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="456451aa-6d60-478c-a347-cb01b273c9ff" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.Execute" x="865.341141176222" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.Execute@var">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="e3e055e5-e9b0-4046-9c6f-9cc788677f3c" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="461.687759200873" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebRequest.ByUrl@string">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="e3e055e5-e9b0-4046-9c6f-9cc788677f3c" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebRequest.ByUrl" x="461.687759200873" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebRequest.ByUrl@string">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="2f50731e-2595-4f0a-b8cd-a737e2df5b8f" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1131.338792271" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="..\..\..\..\Desktop\testing\DynWWW.dll" function="DSCore.Web.WebResponse.Content">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="2f50731e-2595-4f0a-b8cd-a737e2df5b8f" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="WebResponse.Content" x="1131.338792271" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" function="DynaWeb.WebResponse.Content">
       <PortInfo index="0" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <CoreNodeModels.Watch guid="d186a81c-fba2-478e-a986-02de30b474b9" type="CoreNodeModels.Watch" nickname="Watch" x="1436.73968361586" y="358.588051828109" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
