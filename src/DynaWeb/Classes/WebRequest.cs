@@ -240,11 +240,11 @@ namespace DynaWeb
         /// <param name="request">The request to update.</param>
         /// <param name="method">The string that represents the http method.</param>
         /// <returns>The WebRequest updated with set method if input was valid, the unchanged WebRequest otherwise.</returns>
-        public static WebRequest SetMethod(WebRequest request, string method)
+        public WebRequest SetMethod(string method)
         {
             if (Enum.TryParse<Method>(method, true, out Method reqMethod))
-                request.restRequest.Method = reqMethod;
-            return request;
+                this.restRequest.Method = reqMethod;
+            return this;
         }
 
         /// <summary>
@@ -254,11 +254,11 @@ namespace DynaWeb
         /// <param name="format">The serialiser to use as case-insensitive string.
         /// Valid inputs : JSON, XML</param>
         /// <returns>The updated request if supplied format was valid, the unchanged request if not.</returns>
-        public static WebRequest SetRequestFormat(WebRequest request, string format)
+        public WebRequest SetRequestFormat(string format)
         {
             if (Enum.TryParse<DataFormat>(format, true, out DataFormat dataFormat))
-                request.restRequest.RequestFormat = dataFormat;
-            return request;
+                this.restRequest.RequestFormat = dataFormat;
+            return this;
         }
 
         /// <summary>
@@ -267,10 +267,10 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="url">The URL to set for the request.</param>
         /// <returns>The request with an updated URL.</returns>
-        public static WebRequest SetUrl(WebRequest request, string url)
+        public WebRequest SetUrl(string url)
         {
-            request.URL = url;
-            return request;
+            this.URL = url;
+            return this;
         }
 
         /// <summary>
@@ -280,10 +280,10 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="resource">The resource to set for the request.</param>
         /// <returns>The request with an updated URL.</returns>
-        public static WebRequest SetResource(WebRequest request, string resource)
+        public WebRequest SetResource(string resource)
         {
-            request.Resource = resource;
-            return request;
+            this.Resource = resource;
+            return this;
         }
 
         /// <summary>
@@ -293,10 +293,10 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="forceSecurity">True or False</param>
         /// <returns>The request</returns>
-        public static WebRequest SetSecurityProtocol(WebRequest request, bool forceSecurity)
+        public WebRequest SetSecurityProtocol(bool forceSecurity)
         {
-            request.ForceSecurityProtocol = forceSecurity;
-            return request;
+            this.ForceSecurityProtocol = forceSecurity;
+            return this;
         }
 
         /// <summary>
@@ -307,13 +307,13 @@ namespace DynaWeb
         /// <param name="path">Full path to file to upload</param>
         /// <param name="contentType">The MIME type of the file to upload</param>
         /// <returns>This request</returns>
-        public static WebRequest AddFile(WebRequest request, string name, string path, string contentType = null)
+        public WebRequest AddFile(string name, string path, string contentType = null)
         {
-            if (request.restRequest.Method != Method.POST || request.restRequest.Method != Method.PUT)
+            if (this.restRequest.Method != Method.POST || this.restRequest.Method != Method.PUT)
                 throw new InvalidOperationException("Can only add a file to a POST or PUT request.");
 
-            request.restRequest.AddFile(name, path, contentType);
-            return request;
+            this.restRequest.AddFile(name, path, contentType);
+            return this;
         }
 
         /// <summary>
@@ -323,12 +323,12 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="obj">The object to serialize</param>
         /// <returns>This request</returns>
-        public static WebRequest AddBody(WebRequest request, object obj)
+        public WebRequest AddBody(object obj)
         {
-            if (request.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
 
-            request.restRequest.AddBody(obj);
-            return request;
+            this.restRequest.AddBody(obj);
+            return this;
         }
 
         /// <summary>
@@ -337,12 +337,12 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="obj">The object to serialize</param>
         /// <returns>This request</returns>
-        public static WebRequest AddJsonBody(WebRequest request, object obj)
+        public WebRequest AddJsonBody(object obj)
         {
-            if (request.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
 
-            request.restRequest.AddJsonBody(obj);
-            return request;
+            this.restRequest.AddJsonBody(obj);
+            return this;
         }
 
         /// <summary>
@@ -351,12 +351,12 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="obj">The object to serialize</param>
         /// <returns>This request</returns>
-        public static WebRequest AddXmlBody(WebRequest request, object obj)
+        public WebRequest AddXmlBody(object obj)
         {
-            if (request.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
+            if (this.restRequest.Method == Method.GET) throw new InvalidOperationException("Cannot add a body parameter to a GET request");
 
-            request.restRequest.AddXmlBody(obj);
-            return request;
+            this.restRequest.AddXmlBody(obj);
+            return this;
         }
 
         /// <summary>
@@ -365,14 +365,14 @@ namespace DynaWeb
         /// <param name="request">The request to update</param>
         /// <param name="obj">The object with properties to add as parameters</param>
         /// <returns>This request</returns>
-        public static WebRequest AddObject(WebRequest request, object obj)
+        public WebRequest AddObject(object obj)
         {
             var hash = obj.GetHashCode().ToString();
-            if (request.parameters.ContainsKey(hash)) return request;
+            if (this.parameters.ContainsKey(hash)) return this;
 
-            request.parameters.Add(hash, obj);
-            request.restRequest.AddObject(obj);
-            return request;
+            this.parameters.Add(hash, obj);
+            this.restRequest.AddObject(obj);
+            return this;
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace DynaWeb
         /// <param name="parameterType">The type of the parameter to add.
         /// Valid inputs: Cookie, GetOrPost, HttpHeader, QueryString, RequestBody, UrlSegment</param>
         /// <returns>The request with the added parameter.</returns>
-        public static WebRequest AddParameter(WebRequest request, string name, object value, string parameterType)
+        public WebRequest AddParameter(string name, object value, string parameterType)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("Name parameter cannot be null.");
@@ -396,9 +396,9 @@ namespace DynaWeb
 
             try
             {
-                request.parameters.Add(name, value);
+                this.parameters.Add(name, value);
                 // if the item was added, we should also add it to the wrapped RestRequest
-                request.restRequest.AddParameter(name, value, pType);
+                this.restRequest.AddParameter(name, value, pType);
             }
             catch (Exception e)
             {
@@ -406,7 +406,7 @@ namespace DynaWeb
                 // TODO : add warning bubble on node without throwing Exception
                 // as that would stop downstream nodes from executing
             }
-            return request;
+            return this;
         }
 
         /// <summary>
@@ -416,13 +416,13 @@ namespace DynaWeb
         /// <param name="name">Name of the header to add</param>
         /// <param name="value">Value of the header to add</param>
         /// <returns></returns>
-        public static WebRequest AddHeader(WebRequest request, string name, string value)
+        public WebRequest AddHeader(string name, string value)
         {
             try
             {
-                request.headers.Add(name, value);
+                this.headers.Add(name, value);
                 // if the header was added, we should also add it to the wrapped RestRequest
-                request.restRequest.AddHeader(name, value);
+                this.restRequest.AddHeader(name, value);
             }
             catch (Exception e)
             {
@@ -430,7 +430,7 @@ namespace DynaWeb
                 // TODO : add warning bubble on node without throwing Exception
                 // as that would stop downstream nodes from executing
             }
-            return request;
+            return this;
         }
 
         /// <summary>
@@ -440,10 +440,10 @@ namespace DynaWeb
         /// <param name="name">Name of the cookie to add</param>
         /// <param name="value">Value of the cookie to add</param>
         /// <returns></returns>
-        public static WebRequest AddCookie(WebRequest request, string name, string value)
+        public WebRequest AddCookie(string name, string value)
         {
-            request.restRequest.AddCookie(name, value);
-            return request;
+            this.restRequest.AddCookie(name, value);
+            return this;
         }
 
         /// <summary>
@@ -453,9 +453,9 @@ namespace DynaWeb
         /// <param name="name">Name of the segment to add</param>
         /// <param name="value">Value of the segment to add</param>
         /// <returns></returns>
-        public static WebRequest AddUrlSegment(WebRequest request, string name, string value)
+        public WebRequest AddUrlSegment(string name, string value)
         {
-            return AddParameter(request, name, value, ParameterType.UrlSegment.ToString());
+            return AddParameter(name, value, ParameterType.UrlSegment.ToString());
         }
 
         /// <summary>
@@ -465,9 +465,9 @@ namespace DynaWeb
         /// <param name="name">Name of the parameter to add</param>
         /// <param name="value">Value of the parameter to add</param>
         /// <returns></returns>
-        public static WebRequest AddQueryParameter(WebRequest request, string name, string value)
+        public WebRequest AddQueryParameter(string name, string value)
         {
-            return AddParameter(request, name, value, ParameterType.QueryString.ToString());
+            return AddParameter(name, value, ParameterType.QueryString.ToString());
         }
 
         #endregion
