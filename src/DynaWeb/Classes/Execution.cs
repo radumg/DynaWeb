@@ -11,16 +11,10 @@ namespace DynaWeb
     /// <summary>
     /// Provides support for executing WebRequests
     /// </summary>
-    internal static class Execution
+    public static class Execute
     {
-        /// <summary>
-        /// Execute the given request, on a client if one is supplied.
-        /// </summary>
-        /// <param name="webClient">The client that will execute the request.
-        /// Note : the WebClient can be NULL when executing a WebRequest directly.</param>
-        /// <param name="webRequest">The request to be executed.</param>
-        /// <returns>The WebResponse from the server.</returns>
-        internal static WebResponse ByClientRequest(WebClient webClient, WebRequest webRequest)
+        #region internal methods
+        private static WebResponse ClientRequestMethod(WebClient webClient, WebRequest webRequest)
         {
             if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
             // build a client & request to execute
@@ -32,7 +26,7 @@ namespace DynaWeb
             {
                 // in that case, an empty WebClient will be constructed with the WebRequest URL as its baseUrl.
                 // the request Resource also needs to be reset, otherwise the URL would be concatenating to itself.
-                client = new WebClient(webRequest.URL);
+                client = WebClient.ByUrl(webRequest.URL);
                 request.Resource = "";
             }
             else
@@ -44,7 +38,7 @@ namespace DynaWeb
             // validate the Uri before attempting to execute the request
             try
             {
-                var uri = client.BuildUri(request);
+                var uri = WebClient.BuildUri(client, request);
                 if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
                 {
                     //TODO : error handling here is limited, needs checking and expanding.  
@@ -69,7 +63,7 @@ namespace DynaWeb
 
             // Execute using the wrapped client and wrapped request objects.
             var startTime = DateTime.Now;
-            var responseFromServer = client.restClient.Execute(webRequest.GetInternalRequest());
+            var responseFromServer = client.restClient.Execute(webRequest.restRequest);
             var endTime = DateTime.Now;
 
             // the server response needs to be handled based on status and any errors raised in UI
@@ -77,18 +71,12 @@ namespace DynaWeb
             {
                 case ResponseStatus.None:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
-                    break;
-                case ResponseStatus.Completed:
-                    break;
                 case ResponseStatus.Error:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
-                    break;
                 case ResponseStatus.TimedOut:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
-                    break;
                 case ResponseStatus.Aborted:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
-                    break;
                 default:
                     break;
             }
@@ -99,5 +87,126 @@ namespace DynaWeb
 
             return webRequest.response;
         }
+        #endregion
+
+        #region extension methods
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied.
+        /// </summary>
+        /// <param name="webClient">The client that will execute the request.
+        /// Note : the WebClient can be NULL when executing a WebRequest directly.</param>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="method">The string that represents the http method.
+        /// Valid input : GET, DELETE, HEAD, OPTIONS, POST, PUT, MERGE.</param>
+        /// <returns>The WebResponse from the server.</returns>
+        public static WebResponse ByClientRequestMethod(WebClient webClient, WebRequest webRequest, string method = null)
+        {
+            // initialise method with GET as default 
+            webRequest.restRequest.Method = Method.GET;
+            // then try to parse value given (if any). If this fails, method is not changed.
+            if (!string.IsNullOrEmpty(method) && Enum.TryParse<Method>(method, true, out Method reqMethod))
+                webRequest.restRequest.Method = reqMethod;
+
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http GET method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse GET(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.GET;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http POST method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse POST(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.POST;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http PUT method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse PUT(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.PUT;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http DELETE method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse DELETE(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.DELETE;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http HEAD method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse HEAD(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.HEAD;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http MERGE method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse MERGE(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.MERGE;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http OPTIONS method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse OPTIONS(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.OPTIONS;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        /// <summary>
+        /// Execute the given request, on a client if one is supplied, using the standard http PATCH method.
+        /// </summary>
+        /// <param name="webRequest">The request to be executed.</param>
+        /// <param name="webClient">(optional) The client that will execute the request.</param>
+        /// <returns>The response from the server.</returns>
+        public static WebResponse PATCH(WebRequest webRequest, WebClient webClient = null)
+        {
+            webRequest.restRequest.Method = Method.PATCH;
+            return ClientRequestMethod(webClient, webRequest);
+        }
+
+        #endregion
     }
 }

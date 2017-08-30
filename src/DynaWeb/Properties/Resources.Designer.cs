@@ -79,6 +79,15 @@ namespace DynaWeb.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided WebClient cannot be null..
+        /// </summary>
+        internal static string WebClientNullMessage {
+            get {
+                return ResourceManager.GetString("WebClientNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided request cannot be null..
         /// </summary>
         internal static string WebClientRequestNullMessage {
@@ -147,6 +156,15 @@ namespace DynaWeb.Properties {
         internal static string WebRequestEndpointNullMessage {
             get {
                 return ResourceManager.GetString("WebRequestEndpointNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided WebRequest cannot be null..
+        /// </summary>
+        internal static string WebRequestNullMessage {
+            get {
+                return ResourceManager.GetString("WebRequestNullMessage", resourceCulture);
             }
         }
         

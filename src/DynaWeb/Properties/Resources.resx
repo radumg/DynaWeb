@@ -123,6 +123,9 @@
   <data name="WebClientMaxRedirectsInvalidMessage" xml:space="preserve">
     <value>The value for MaxRedirects cannot be negative or equal to zero.</value>
   </data>
+  <data name="WebClientNullMessage" xml:space="preserve">
+    <value>The provided WebClient cannot be null.</value>
+  </data>
   <data name="WebClientRequestNullMessage" xml:space="preserve">
     <value>The provided request cannot be null.</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="WebRequestEndpointNullMessage" xml:space="preserve">
     <value>The resource/endpoint provided cannot be null.</value>
+  </data>
+  <data name="WebRequestNullMessage" xml:space="preserve">
+    <value>The provided WebRequest cannot be null.</value>
   </data>
   <data name="WebRequestParameterNullMessage" xml:space="preserve">
     <value>The parameter provided cannot be null.</value>

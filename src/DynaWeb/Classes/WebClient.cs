@@ -99,11 +99,9 @@ namespace DynaWeb
         /// <param name="baseUrl">The URL to use for all future requests made by this client.
         /// Should include scheme (ex: http://) and domain (ex: www.dynamobim.org) without trailing slash (/).
         /// </param>
-        public WebClient(string baseUrl)
+        public static WebClient ByUrl(string baseUrl)
         {
-            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
-
-            Initialize(baseUrl, "");
+            return new WebClient(baseUrl, "");
         }
 
         /// <summary>
@@ -117,16 +115,17 @@ namespace DynaWeb
         /// <param name="token">The auth token is used to authenticate requests made by the client.
         /// Use it as the private store for OAuth tokens for example.
         /// Once the client is created, this cannot be changed.</param>
-        public WebClient(string baseUrl, string token)
+        public static WebClient ByUrlToken(string baseUrl, string token)
         {
-            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
             if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
 
-            Initialize(baseUrl, token);
+            return new WebClient(baseUrl, token);
         }
 
-        private void Initialize(string baseUrl, string token)
+        private WebClient(string baseUrl, string token="")
         {
+            if (string.IsNullOrEmpty(baseUrl)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
+
             this.restClient = new RestClient(baseUrl);
             this.authToken = token;
             this.UserAgent = "DynamoDS";
@@ -139,101 +138,112 @@ namespace DynaWeb
         /// <summary>
         /// Executes a WebRequest in the context of the client and returns the response from the server.
         /// </summary>
-        /// <param name="request">The web request to execute.</param>
+        /// <param name="client">The WebClient to use for execution of request.</param>
+        /// <param name="request">The web WebRequest to execute.</param>
         /// <returns>The response from the server as a WebResponse object.</returns>
         [CanUpdatePeriodically(true)]
-        public DynaWeb.WebResponse Execute(DynaWeb.WebRequest request)
+        public static WebResponse Execute(WebClient client, WebRequest request)
         {
-            request.response = Execution.ByClientRequest(this, request);
+            if (client==null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientNullMessage);
+            if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebRequestNullMessage);
+
+            request.response = DynaWeb.Execute.ByClientRequestMethod(client, request);
             return request.response;
         }
 
         #endregion
 
-        #region public methods
+        #region public static methods
 
         /// <summary>
         /// Assembles the URL to call based on parameters, method and resource.
         /// Not needed to run the request, but useful for debugging purposes.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="request">The request to execute</param>
         /// <returns>A string representation of the assembly Uri</returns>
-        public string BuildUri(WebRequest request)
+        public static string BuildUri(WebClient client, WebRequest request)
         {
             if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
 
-            return this.restClient.BuildUri(request.GetInternalRequest()).ToString();
+            return client.restClient.BuildUri(request.restRequest).ToString();
         }
 
         /// <summary>
         /// Set the base URL for this client.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="url">The value to set BaseUrl to, has to be a valid URL.</param>
         /// <returns>The WebClient supplied with an updated BaseUrl property.</returns>
         public WebClient SetBaseURL(string url)
         {
             if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
             if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
-            BaseUrl = Helpers.ParseUriFromString(url);
+            this.BaseUrl = Helpers.ParseUriFromString(url);
             return this;
         }
 
         /// <summary>
         /// Set the user agent communicated with requests this client sends.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="userAgent">The value to set the UserAgent to.</param>
         /// <returns>The WebClient supplied with the an UserAgent property.</returns>
         public WebClient SetUserAgent(string userAgent)
         {
             if (string.IsNullOrEmpty(userAgent)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUserAgentNullMessage);
-            UserAgent = userAgent;
+            this.UserAgent = userAgent;
             return this;
         }
 
         /// <summary>
         /// Set the timeout in milliseconds to use for requests made by this client instance
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="timeout">The value to set timeout to, expressed in milliseconds.</param>
         /// <returns>The WebClient supplied with an updated Timeout property.</returns>
         public WebClient SetTimeout(int timeout)
         {
             if (timeout <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
-            Timeout = timeout;
+            this.Timeout = timeout;
             return this;
         }
 
         /// <summary>
         /// Sets the FollowRedirects setting of the client. This controls whether or not requests that result in HTTP status codes of 3xx should follow returned redirect. Default is true.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="followRedirects">True to follow redirects, false to end request.</param>
         /// <returns>The WebClient supplied with an updated FollowRedirects property.</returns>
         public WebClient SetFollowRedirects(bool followRedirects = true)
         {
-            FollowRedirects = followRedirects;
+            this.FollowRedirects = followRedirects;
             return this;
         }
 
         /// <summary>
         /// Set the maximum number of redirects to follow if FollowRedirects is true.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="maxRedirects">The value to set maximum to, expressed as an integer.</param>
         /// <returns>The WebClient supplied with an updated MaxRedirects property.</returns>
         public WebClient SetMaxRedirects(int maxRedirects)
         {
             if (maxRedirects <= 0) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTimeoutInvalidMessage);
-            MaxRedirects = maxRedirects;
+            this.MaxRedirects = maxRedirects;
             return this;
         }
 
         /// <summary>
         /// Set the JsonTokenOverride that is used for deserialisation purposes.
         /// </summary>
+        /// <param name="client">The WebClient to update.</param>
         /// <param name="jsonToken">The value to set JsonTokenOverride to.</param>
         /// <returns>The WebClient supplied with an updated JsonTokenOverride property.</returns>
         public WebClient SetJsonTokenOverride(string jsonToken)
         {
             if (string.IsNullOrEmpty(jsonToken)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientTokenNullMessage);
-            JsonTokenOverride = jsonToken;
+            this.JsonTokenOverride = jsonToken;
             return this;
         }
 
