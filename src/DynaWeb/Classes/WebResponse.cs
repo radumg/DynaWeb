@@ -78,6 +78,11 @@ namespace DynaWeb
         #endregion
 
         #region constructor
+        /// <summary>
+        /// Represents data returned by the server, contains both meta-data about the response/server as well the content of the response itself.
+        /// </summary>
+        /// <param name="res">Extract the response after the execution of a WebRequest.
+        /// Connect the output of "Execute" nodes to this as input.</param>
         public WebResponse(IRestResponse res)
         {
             this.response = res;
