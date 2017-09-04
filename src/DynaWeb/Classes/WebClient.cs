@@ -147,7 +147,7 @@ namespace DynaWeb
             if (client==null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientNullMessage);
             if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebRequestNullMessage);
 
-            request.response = DynaWeb.Execute.ByClientRequestMethod(client, request);
+            request.response = DynaWeb.Execute.ByClientRequestMethod(client, request, request.Method.ToString());
             return request.response;
         }
 
