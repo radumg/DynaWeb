@@ -225,7 +225,7 @@ namespace DynaWeb
         [CanUpdatePeriodically(true)]
         public static WebResponse Execute(WebRequest request)
         {
-            request.response = DynaWeb.Execute.ByClientRequestMethod(null, request);
+            request.response = DynaWeb.Execute.ByClientRequestMethod(null, request, request.Method.ToString());
             return request.response;
         }
 
@@ -245,6 +245,8 @@ namespace DynaWeb
         {
             if (Enum.TryParse<Method>(method, true, out Method reqMethod))
                 this.restRequest.Method = reqMethod;
+            else throw new InvalidDataException("Could not parse the method!");
+
             return this;
         }
 
