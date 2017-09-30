@@ -60,7 +60,7 @@ Please consult the sample files provided in this repository and in the package's
 Feel free to submit PR if you want to add some documentation in the meantime.
 
 ## Samples
-There are 7 sample Dynamo graphs included with the package, check out the `extra` folder in the downloaded package or the [samples folder](https://github.com/radumg/DynaWeb/tree/master/samples) of this repository. Also note the DYN samples are offered in both Dynamo 1.3 file format and Dynamo 2.0 new format.
+There are 8 sample Dynamo graphs included with the package, check out the `extra` folder in the downloaded package or the [samples folder](https://github.com/radumg/DynaWeb/tree/master/samples) of this repository. Also note the DYN samples are offered in both Dynamo 1.3 file format and Dynamo 2.0 new format.
 
 The samples start from super-simple and increase in complexity :
 
@@ -79,11 +79,14 @@ this introduces the use of the `WebClient` class and some of the basic priciples
 __Sample 5 - REST API advanced__
 Introduces POST-ing to a REST API service and handling JSON payloads. Once the request is submitted, the response is deserialised too.
 
-__Sample 6 - Comples POST request__
+__Sample 6 - Complex POST request__
 further expands on the above example, building a complex `WebRequest` with 6 steps before its execution.
 
 __Sample 7 - Upload file to Autodesk Forge__
 this example builds a `WebRequest` and attaches a file to it, to upload directly to the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/11).
+
+__Sample 8 - Autodesk Forge request token__
+this example builds a POST `WebRequest`, used to request an authorisation token from the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/13).
 
 
 ## Class structure
