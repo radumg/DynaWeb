@@ -1,0 +1,1 @@
+This folder houses all external tools and utilities required for running, building or maintaining the DynWWW package. You know, the meta stuff.
