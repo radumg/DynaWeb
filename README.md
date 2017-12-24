@@ -78,12 +78,12 @@ The changes in `1.0` are breaking, meaning graphs using the previous version wil
 - replace `WebClient.WebClient` with `WebClient.ByUrl`
 
 # Using DynaWeb
-Please consult the sample files provided in this repository and in the package's `extra` folder - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
+Please consult the [sample files](https://github.com/radumg/DynWWW/tree/master/build/package/DynaWeb/extra) provided in this repository and in the package's `extra` folder - they contain notes and instructions on how to use the nodes. I'm not providing extensive documentation on this page on purpose - to see how intuitive the design of the package & nodes is to first-time users.
 
 Feel free to submit PR if you want to add some documentation in the meantime.
 
 ## Samples
-There are 8 sample Dynamo graphs included with the package, check out the `extra` folder in the downloaded package or the [samples folder](https://github.com/radumg/DynaWeb/tree/master/samples) of this repository. Also note the DYN samples are offered in both Dynamo 1.3 file format and Dynamo 2.0 new format.
+There are 8 sample Dynamo graphs included with the package, check out the `extra` folder in the downloaded package or the [samples folder](https://github.com/radumg/DynWWW/tree/master/build/package/DynaWeb/extra) of this repository. Also note the DYN samples are offered in both Dynamo 1.3 file format and Dynamo 2.0 new format.
 
 The samples start from super-simple and increase in complexity :
 
