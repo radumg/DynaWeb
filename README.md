@@ -11,6 +11,9 @@ It helps you
 - everything in between (PUT, DELETE, PATCH, etc).
 - the package also includes some rather nifty JSON `de/serialisation` nodes, so you can use the information you get from the web directly in Dynamo graphs, as native types.
 
+![DynaWeb package screenshot](https://raw.githubusercontent.com/radumg/DynaWeb/master/samples/DynaWeb.png)
+
+
 ### How it came about
 
 __DynaWeb__ was designed as a package to make other packages, so it provides building blocks enabling you to build Dynamo integrations with just about any web service out there. After making DynaSlack & DynAsana, it became clear that writing a ZeroTouch-based package for every web service I or the community would want to integrate with was simply not scalable or sustainable, no matter how much code was re-used. DynAsana is an abstracted DynaSlack and DynaWeb is an even more abstracted & modularised DynAsana.
@@ -28,8 +31,6 @@ This brings me to a few identified challenges in making this part of the core li
 - Verbosity / Atomicitiy : the package has many nodes and building a complex request can require chaining as many as 10 nodes. Whilst this is great for flexibility and power-users, it's intimidating and creates a steep learning curve for new users. See the [issue](https://github.com/radumg/DynWWW/issues/40)
 
 - Caching & Repeated execution : repeated execution of the same graph can have unintended consequences and may send malformed requests (doubled up headers for example) or fail to send an identical request a second time. These shortcomings can be tackled by using `NodeModels` so a discussion around this is needed, see the [issue](https://github.com/radumg/DynWWW/issues/41)
-
-![DynaWeb package screenshot](https://raw.githubusercontent.com/radumg/DynaWeb/master/samples/DynaWeb.png)
 
 ## Class structure
 There's 5 main namespaces you'll find in DynaWeb : 
