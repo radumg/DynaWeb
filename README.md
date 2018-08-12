@@ -61,7 +61,7 @@ This example builds a `WebRequest` and attaches a file to it, to upload directly
 This example builds a POST `WebRequest`, used to request an authorisation token from the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/13).
 
 
-## Class structure
+## Structure
 There's 5 main components in DynaWeb :
 - `WebRequest` : the web request that gets executed
 - `WebClient` : the context in which a request is executed
@@ -72,7 +72,9 @@ There's 5 main components in DynaWeb :
 Simply put, use `WebRequest` nodes for one-off requests and start using a `WebClient` when you are interacting with REST APIs and/or have multiple request to similar endpoints/URLs.
 When using a `WebClient`, the `WebRequest` is still what gets executed, but it allows you more control over how that occurs (custom timeouts, etc)
 
-*Fun fact : When executing a `WebRequest` on its own, the DynaWeb package constructs an empty `WebClient` in the background anyway as it's needed for execution.*
+#### Fun facts
+- when executing a `WebRequest` on its own, the DynaWeb package constructs an empty `WebClient` in the background anyway as it's needed for execution
+- the strucuture of the source code shows up directly in Dynamo
 
 ## Alternative installation methods
 
