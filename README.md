@@ -36,29 +36,29 @@ You can find the samples in this repository's [`samples folder`](https://github.
 
 The samples start from super-simple and progressively increase in complexity :
 
-__Sample 1 - A first request__
+#### Sample 1 - A first request
 3 nodes, similar to out-of-the-box (OOTB) Dynamo experience today.
 
-__Sample 2 - A simple request__
-introduces the 3 stages of performing web requests and explains quite a few things. Also show how to achieve same thing with the OOTB node.
+#### Sample 2 - A simple request
+Introduces the 3 stages of performing web requests and explains quite a few things. Also show how to achieve same thing with the OOTB node.
 
-__Sample 3 - Requst + benchmarking__
-same as sample 2 but with added nodes that provide more information about the request (timing, etc) and output the results to text files.
+#### Sample 3 - Requst + benchmarking
+Same as sample 2 but with added nodes that provide more information about the request (timing, etc) and output the results to text files.
 
-__Sample 4 - REST API example__
-this introduces the use of the `WebClient` class and some of the basic priciples of interacting with REST services. Uses a REST API that is freely accessible and returns JSON reponses. Contrasts using a `WebClient` and a `WebRequest` to achieve same thing and also introduces `Deserialisation`.
+#### Sample 4 - REST API example
+This introduces the use of the `WebClient` class and some of the basic priciples of interacting with REST services. Uses a REST API that is freely accessible and returns JSON reponses. Contrasts using a `WebClient` and a `WebRequest` to achieve same thing and also introduces `Deserialisation`.
 
-__Sample 5 - REST API advanced__
+#### Sample 5 - REST API advanced
 Introduces POST-ing to a REST API service and handling JSON payloads. Once the request is submitted, the response is deserialised too.
 
-__Sample 6 - Complex POST request__
-further expands on the above example, building a complex `WebRequest` with 6 steps before its execution.
+#### Sample 6 - Complex POST request
+Further expands on the above example, building a complex `WebRequest` with 6 steps before its execution.
 
-__Sample 7 - Autodesk Forge - Upload file__
-this example builds a `WebRequest` and attaches a file to it, to upload directly to the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/11).
+#### Sample 7 - Autodesk Forge - Upload file
+This example builds a `WebRequest` and attaches a file to it, to upload directly to the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/11).
 
-__Sample 8 - Autodesk Forge - Request auth token__
-this example builds a POST `WebRequest`, used to request an authorisation token from the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/13).
+#### Sample 8 - Autodesk Forge - Request auth token
+This example builds a POST `WebRequest`, used to request an authorisation token from the `Autodesk Forge` service. See the issue that sparked this sample [here](https://github.com/radumg/DynaWeb/issues/13).
 
 
 ## Class structure
