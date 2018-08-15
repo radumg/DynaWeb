@@ -1,0 +1,26 @@
+{
+  "license": "AGPL-3.0",
+  "file_hash": null,
+  "name": "www",
+  "version": "2017.0.1.0",
+  "description": "Dynamo support for interaction with the Web & REST APIs.",
+  "group": "radugidei",
+  "keywords": [
+    "web",
+    "integration",
+    "rest api",
+    "api",
+    "request"
+  ],
+  "dependencies": [],
+  "contents": "",
+  "engine_version": "1.2.1.3083",
+  "engine": "dynamo",
+  "engine_metadata": "",
+  "site_url": "www.radugidei.com",
+  "repository_url": "www.github.com/radumg/DynWWW",
+  "contains_binaries": true,
+  "node_libraries": [
+    "DynWWW, Version=2017.0.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

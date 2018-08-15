@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Asana>
+  <token>INSERT YOU API KEY HERE</token>
+  <then>rename this file to keys.xml</then>
+  <exampleToken>Bearer 0/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</exampleToken>
+</Asana>
