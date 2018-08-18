@@ -66,13 +66,14 @@ namespace DynaWeb
             switch (responseFromServer.ResponseStatus)
             {
                 case ResponseStatus.None:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                 case ResponseStatus.Error:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(Resources.WebResponseNetworkErrorMessage);
                 case ResponseStatus.TimedOut:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
+                    throw new InvalidOperationException(Resources.WebRequestTimedOutMessage);
                 case ResponseStatus.Aborted:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
+                    throw new InvalidOperationException(Resources.WebResponseAbortedMessage);
+                default:
+                    break;
             }
 
             // update the request properties with response data
