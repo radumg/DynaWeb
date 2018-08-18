@@ -61,7 +61,7 @@ namespace DynaWeb.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource..
+        ///   Looks up a localized string similar to Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource. Inner exception : {0}.
         /// </summary>
         internal static string WebClientBuildUrlFailed {
             get {
@@ -174,6 +174,15 @@ namespace DynaWeb.Properties {
         internal static string WebRequestParameterNullMessage {
             get {
                 return ResourceManager.GetString("WebRequestParameterNullMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not parse the supplied value into a valid Parameter Type..
+        /// </summary>
+        internal static string WebRequestParameterValueInvalid {
+            get {
+                return ResourceManager.GetString("WebRequestParameterValueInvalid", resourceCulture);
             }
         }
         

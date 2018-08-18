@@ -8,6 +8,9 @@ using Newtonsoft.Json.Linq;
 
 namespace DynaWeb
 {
+    /// <summary>
+    /// A set of utility methods used throughout the DynaWeb package.
+    /// </summary>
     public static class Helpers
     {
         #region URL & Uri handling
@@ -38,7 +41,7 @@ namespace DynaWeb
         /// <summary>Check the URI is valid</summary>
         /// <param name="uriToCheck">The URI to check</param>
         /// <returns>True if is valid, False otherwise</returns>
-        public static Boolean CheckURI(Uri uriToCheck)
+        public static Boolean IsUrlValid(Uri uriToCheck)
         {
             if (uriToCheck.IsFile || uriToCheck.IsUnc) throw new Exception(Resources.WebUrlIsLocal);
 

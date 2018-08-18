@@ -1,6 +1,7 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using RestSharp;
 using System;
+using DynaWeb.Properties;
 
 namespace DynaWeb
 {
@@ -164,7 +165,7 @@ namespace DynaWeb
         /// <returns>A string representation of the assembly Uri</returns>
         public static string BuildUri(WebClient client, WebRequest request)
         {
-            if (request == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
+            if (request == null) throw new ArgumentNullException(Resources.WebClientRequestNullMessage);
 
             return client.restClient.BuildUri(request.restRequest).ToString();
         }
@@ -178,7 +179,7 @@ namespace DynaWeb
         public WebClient SetBaseURL(string url)
         {
             if (string.IsNullOrEmpty(url)) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientUrlNullMessage);
-            if (!Helpers.CheckURI(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
+            if (!Helpers.IsUrlValid(Helpers.ParseUriFromString(url))) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
             this.BaseUrl = Helpers.ParseUriFromString(url);
             return this;
         }

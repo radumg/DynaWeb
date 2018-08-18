@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Collections.Specialized;
 using System.IO;
+using DynaWeb.Properties;
 
 namespace DynaWeb
 {
@@ -414,11 +415,11 @@ namespace DynaWeb
         public WebRequest AddParameter(string name, object value, string parameterType)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("Name parameter cannot be null.");
+                throw new ArgumentNullException("name");
             if (value.Equals(null))
-                throw new ArgumentNullException("Value parameter cannot be null.");
+                throw new ArgumentNullException("value");
             if (Enum.TryParse<ParameterType>(parameterType, true, out ParameterType pType) == false)
-                throw new ArgumentException("Could not parse the supplied value into a valid Parameter Type.");
+                throw new ArgumentException("value", Resources.WebRequestParameterValueInvalid);
 
             try
             {

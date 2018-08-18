@@ -36,10 +36,9 @@ namespace DynaWeb
             try
             {
                 var uri = WebClient.BuildUri(client, request);
-                if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
+                if (string.IsNullOrEmpty(uri) || !Helpers.IsUrlValid(Helpers.ParseUriFromString(uri)))
                 {
-                    //TODO : error handling here is limited, needs checking and expanding.  
-                    throw new InvalidOperationException("Malformed URL.");
+                    throw new InvalidOperationException();
                 }
             }
             catch (Exception e)
@@ -74,8 +73,6 @@ namespace DynaWeb
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
                 case ResponseStatus.Aborted:
                     throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
-                default:
-                    break;
             }
 
             // update the request properties with response data
