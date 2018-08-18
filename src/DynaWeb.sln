@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaWeb", "DynaWeb\DynaWeb.csproj", "{CE19C882-1AAC-434C-99AF-4A285DA053BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaWeb.Tests", "DynaWeb.Tests1\DynaWeb.Tests.csproj", "{86015C9C-DEBA-4C2E-B9EF-872C88ED7D6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaWeb.Tests", "..\test\DynaWeb.Tests\DynaWeb.Tests.csproj", "{86015C9C-DEBA-4C2E-B9EF-872C88ED7D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
