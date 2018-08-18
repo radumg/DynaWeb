@@ -1,10 +1,7 @@
-﻿using RestSharp;
+﻿using DynaWeb.Properties;
+using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynaWeb
 {
@@ -16,7 +13,7 @@ namespace DynaWeb
         #region internal methods
         private static WebResponse ClientRequestMethod(WebClient webClient, WebRequest webRequest)
         {
-            if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
+            if (webRequest == null) throw new ArgumentNullException(Resources.WebClientRequestNullMessage);
             // build a client & request to execute
             WebClient client;
             WebRequest request = webRequest;
@@ -48,7 +45,7 @@ namespace DynaWeb
             catch (Exception e)
             {
                 throw new InvalidOperationException(
-                    DynaWeb.Properties.Resources.WebClientBuildUrlFailed +
+                    Resources.WebClientBuildUrlFailed +
                     Environment.NewLine +
                     "Error returned was :" + Environment.NewLine +
                     e.Message);

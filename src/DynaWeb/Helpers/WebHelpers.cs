@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DynaWeb.Properties;
 using Autodesk.DesignScript.Runtime;
-using DynaWeb;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
-using Newtonsoft.Json.Converters;
-using System.Dynamic;
 
 namespace DynaWeb
 {
@@ -26,17 +20,16 @@ namespace DynaWeb
         {
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentException(DynaWeb.Properties.Resources.WebUrlNullMessage);
+                throw new ArgumentException(Resources.WebUrlNullMessage);
             }
 
             Uri uriResult;
             var result = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
-                          && (uriResult.Scheme == Uri.UriSchemeHttp
-                              || uriResult.Scheme == Uri.UriSchemeHttps);
+                          && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 
             if (!result)
             {
-                throw new UriFormatException(DynaWeb.Properties.Resources.WebUrlInvalidMessage);
+                throw new UriFormatException(Resources.WebUrlInvalidMessage);
             }
 
             return uriResult;
@@ -47,7 +40,7 @@ namespace DynaWeb
         /// <returns>True if is valid, False otherwise</returns>
         public static Boolean CheckURI(Uri uriToCheck)
         {
-            if (uriToCheck.IsFile || uriToCheck.IsUnc) throw new Exception("URI is file or is UNC pointing to internal network");
+            if (uriToCheck.IsFile || uriToCheck.IsUnc) throw new Exception(Resources.WebUrlIsLocal);
 
             if (!Uri.CheckSchemeName(uriToCheck.Scheme))
                 return false;
@@ -56,7 +49,7 @@ namespace DynaWeb
 
         #endregion
 
-        #region deserialisation
+        #region Deserialisation
 
         /// <summary>
         /// Recursively parse a JSON token into native data types.
@@ -74,7 +67,7 @@ namespace DynaWeb
         /// </summary>
         /// <param name="json">The JSON string that needs to be deserialised.</param>
         /// <returns>The response deserialised as an object.</returns>
-        public static dynamic DeserializeAsObject(string json)
+        public static dynamic DeserialiseAsObject(string json)
         {
             /// We don't want the deserialisation to break if some properties are empty.
             /// So we need to specify the behaviour when such values are encountered.
@@ -93,7 +86,7 @@ namespace DynaWeb
         /// <param name="json">The JSON string that needs to be deserialised.</param>
         /// <param name="obj">The object that will be used to determine what type to deserialise to.</param>
         /// <returns>The response deserialised as same type as supplied object.</returns>
-        public static dynamic DeserializeByObjectType(string json, object obj)
+        public static dynamic DeserialiseByObjectType(string json, object obj)
         {
             /// We don't want the deserialisation to break if some properties are empty.
             /// So we need to specify the behaviour when such values are encountered.
@@ -105,6 +98,7 @@ namespace DynaWeb
 
             return JsonConvert.DeserializeObject(json, type, settings);
         }
+
      /// <summary>
         /// Deserialises a JSON string into a dictionary of string keys and object values.
         /// Note : Does not handle deserialisation of nested objects.
@@ -131,7 +125,7 @@ namespace DynaWeb
         /// </summary>
         /// <param name="obj">The object that will be serialised.</param>
         /// <returns>Object serialised as JSON string.</returns>
-        public static string SerializeToJSON(object obj)
+        public static string SerialiseToJSON(object obj)
         {
             /// We don't want the serialisation to break if some properties are empty.
             /// So we need to specify the behaviour when such values are encountered.
@@ -178,36 +172,6 @@ namespace DynaWeb
             }
         }
 
-        #endregion
-
-        #region Type support
-
-        /// <summary>
-        /// Gets only non-null properties and their values from a Type using Reflection.
-        /// </summary>
-        /// <param name="obj">The object to extract type properties from.</param>
-        /// <returns>A dictionary of properties and their values.</returns>
-        internal static Dictionary<string, string> GetValidProperties(object obj)
-        {
-            var parameters = new Dictionary<string, string>();
-            Type type = obj.GetType();
-            foreach (PropertyInfo prop in type.GetProperties())
-            {
-                var value = prop.GetValue(obj).ToString();
-                if (!string.IsNullOrEmpty(value)) parameters.Add(prop.Name, value);
-            }
-            return parameters;
-        }
-
-        internal static dynamic WrapObject(object obj)
-        {
-            var wrapper = new
-            {
-                data = obj
-            };
-            var json = JsonConvert.SerializeObject(wrapper);
-            return ParseObject(JToken.Parse(json));
-        }
         #endregion
     }
 }

@@ -177,6 +177,9 @@
   <data name="WebUrlInvalidMessage" xml:space="preserve">
     <value>The URL provided is not a valid URL.</value>
   </data>
+  <data name="WebUrlIsLocal" xml:space="preserve">
+    <value>URI is file or is UNC pointing to internal network</value>
+  </data>
   <data name="WebUrlNullMessage" xml:space="preserve">
     <value>The URL cannot be null.</value>
   </data>
