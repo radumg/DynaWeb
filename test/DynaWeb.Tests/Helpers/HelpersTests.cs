@@ -8,53 +8,53 @@ using System.Threading.Tasks;
 
 namespace DynaWeb.Tests
 {
-    [TestFixture()]
-    public class HelpersTests
+    [TestFixture]
+    public static class HelpersTests
     {
-        [Test()]
-        public void ParseUriFromStringTest()
+        [Test]
+        public static void ParseUriFromStringTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void CheckURITest()
+        [Test]
+        public static void CheckURITest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void DeserialiseTest()
+        [Test]
+        public static void DeserialiseTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void DeserializeAsObjectTest()
+        [Test]
+        public static void DeserializeAsObjectTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void DeserializeByObjectTypeTest()
+        [Test]
+        public static void DeserializeByObjectTypeTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void DeserialiseAsDictionaryTest()
+        [Test]
+        public static void DeserialiseAsDictionaryTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SerializeToJSONTest()
+        [Test]
+        public static void SerializeToJSONTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SelectJsonRootTest()
+        [Test]
+        public static void SelectJsonRootTest()
         {
             Assert.Fail();
         }

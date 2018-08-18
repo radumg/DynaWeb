@@ -8,65 +8,65 @@ using System.Threading.Tasks;
 
 namespace DynaWeb.Tests
 {
-    [TestFixture()]
-    public class WebClientTests
+    [TestFixture]
+    public static class WebClientTests
     {
-        [Test()]
-        public void ByUrlTest()
+        [Test]
+        public static void ByUrlTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void ByUrlTokenTest()
+        [Test]
+        public static void ByUrlTokenTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void ExecuteTest()
+        [Test]
+        public static void ExecuteTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void BuildUriTest()
+        [Test]
+        public static void BuildUriTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetBaseURLTest()
+        [Test]
+        public static void SetBaseURLTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetUserAgentTest()
+        [Test]
+        public static void SetUserAgentTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetTimeoutTest()
+        [Test]
+        public static void SetTimeoutTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetFollowRedirectsTest()
+        [Test]
+        public static void SetFollowRedirectsTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetMaxRedirectsTest()
+        [Test]
+        public static void SetMaxRedirectsTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetJsonTokenOverrideTest()
+        [Test]
+        public static void SetJsonTokenOverrideTest()
         {
             Assert.Fail();
         }

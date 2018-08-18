@@ -8,59 +8,59 @@ using System.Threading.Tasks;
 
 namespace DynaWeb.Tests
 {
-    [TestFixture()]
-    public class ExecuteTests
+    [TestFixture]
+    public static class ExecuteTests
     {
-        [Test()]
-        public void ByClientRequestMethod_Test()
+        [Test]
+        public static void ByClientRequestMethod_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void GET_Test()
+        [Test]
+        public static void GET_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void POST_Test()
+        [Test]
+        public static void POST_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void PUT_Test()
+        [Test]
+        public static void PUT_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void DELETE_Test()
+        [Test]
+        public static void DELETE_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void HEAD_Test()
+        [Test]
+        public static void HEAD_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void MERGE_Test()
+        [Test]
+        public static void MERGE_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void OPTIONS_Test()
+        [Test]
+        public static void OPTIONS_Test()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void PATCH_Test()
+        [Test]
+        public static void PATCH_Test()
         {
             Assert.Fail();
         }

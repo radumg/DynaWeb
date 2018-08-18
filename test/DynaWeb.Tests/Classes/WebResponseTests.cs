@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DynaWeb.Tests
 {
-    [TestFixture()]
-    public class WebResponseTests
+    [TestFixture]
+    public static class WebResponseTests
     {
-        [Test()]
-        public void WebResponseTest()
+        [Test]
+        public static void WebResponseTest()
         {
             Assert.Fail();
         }

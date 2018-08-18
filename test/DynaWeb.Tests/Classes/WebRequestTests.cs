@@ -8,119 +8,119 @@ using System.Threading.Tasks;
 
 namespace DynaWeb.Tests
 {
-    [TestFixture()]
-    public class WebRequestTests
+    [TestFixture]
+    public static class WebRequestTests
     {
-        [Test()]
-        public void ByUrlTest()
+        [Test]
+        public static void ByUrlTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void ByEndpointTest()
+        [Test]
+        public static void ByEndpointTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void ExecuteTest()
+        [Test]
+        public static void ExecuteTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetMethodTest()
+        [Test]
+        public static void SetMethodTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetRequestFormatTest()
+        [Test]
+        public static void SetRequestFormatTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetUrlTest()
+        [Test]
+        public static void SetUrlTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetResourceTest()
+        [Test]
+        public static void SetResourceTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void SetSecurityProtocolTest()
+        [Test]
+        public static void SetSecurityProtocolTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddFileTest()
+        [Test]
+        public static void AddFileTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddFileAsBytesTest()
+        [Test]
+        public static void AddFileAsBytesTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddBodyTest()
+        [Test]
+        public static void AddBodyTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddJsonBodyTest()
+        [Test]
+        public static void AddJsonBodyTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddXmlBodyTest()
+        [Test]
+        public static void AddXmlBodyTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddObjectTest()
+        [Test]
+        public static void AddObjectTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddParameterTest()
+        [Test]
+        public static void AddParameterTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddHeaderTest()
+        [Test]
+        public static void AddHeaderTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddCookieTest()
+        [Test]
+        public static void AddCookieTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddUrlSegmentTest()
+        [Test]
+        public static void AddUrlSegmentTest()
         {
             Assert.Fail();
         }
 
-        [Test()]
-        public void AddQueryParameterTest()
+        [Test]
+        public static void AddQueryParameterTest()
         {
             Assert.Fail();
         }
