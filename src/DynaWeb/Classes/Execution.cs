@@ -1,10 +1,7 @@
-﻿using RestSharp;
+﻿using DynaWeb.Properties;
+using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynaWeb
 {
@@ -16,7 +13,7 @@ namespace DynaWeb
         #region internal methods
         private static WebResponse ClientRequestMethod(WebClient webClient, WebRequest webRequest)
         {
-            if (webRequest == null) throw new ArgumentNullException(DynaWeb.Properties.Resources.WebClientRequestNullMessage);
+            if (webRequest == null) throw new ArgumentNullException(Resources.WebClientRequestNullMessage);
             // build a client & request to execute
             WebClient client;
             WebRequest request = webRequest;
@@ -39,16 +36,15 @@ namespace DynaWeb
             try
             {
                 var uri = WebClient.BuildUri(client, request);
-                if (string.IsNullOrEmpty(uri) || DynaWeb.Helpers.CheckURI(Helpers.ParseUriFromString(uri)) != true)
+                if (string.IsNullOrEmpty(uri) || !Helpers.IsUrlValid(Helpers.ParseUriFromString(uri)))
                 {
-                    //TODO : error handling here is limited, needs checking and expanding.  
-                    throw new InvalidOperationException("Malformed URL.");
+                    throw new InvalidOperationException();
                 }
             }
             catch (Exception e)
             {
                 throw new InvalidOperationException(
-                    DynaWeb.Properties.Resources.WebClientBuildUrlFailed +
+                    Resources.WebClientBuildUrlFailed +
                     Environment.NewLine +
                     "Error returned was :" + Environment.NewLine +
                     e.Message);
@@ -70,13 +66,12 @@ namespace DynaWeb
             switch (responseFromServer.ResponseStatus)
             {
                 case ResponseStatus.None:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
                 case ResponseStatus.Error:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseNetworkErrorMessage);
+                    throw new InvalidOperationException(Resources.WebResponseNetworkErrorMessage);
                 case ResponseStatus.TimedOut:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebRequestTimedOutMessage);
+                    throw new InvalidOperationException(Resources.WebRequestTimedOutMessage);
                 case ResponseStatus.Aborted:
-                    throw new InvalidOperationException(DynaWeb.Properties.Resources.WebResponseAbortedMessage);
+                    throw new InvalidOperationException(Resources.WebResponseAbortedMessage);
                 default:
                     break;
             }

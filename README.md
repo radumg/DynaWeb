@@ -1,5 +1,5 @@
 # DynaWeb
-[![Build Status](https://travis-ci.org/radumg/DynWWW.svg?branch=master)](https://travis-ci.org/radumg/DynWWW) [![GitHub version](https://badge.fury.io/gh/radumg%2FDynaWeb.svg)](https://badge.fury.io/gh/radumg%2FDynaWeb) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/radumg/DynaWeb/blob/master/CONTRIBUTING.md)
+[![Build Status](https://travis-ci.org/radumg/DynaWeb.svg?branch=master)](https://travis-ci.org/radumg/DynaWeb) [![GitHub version](https://badge.fury.io/gh/radumg%2FDynaWeb.svg)](https://badge.fury.io/gh/radumg%2FDynaWeb) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/radumg/DynaWeb/blob/master/CONTRIBUTING.md) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f482d6c8bb27468e916bba4471511615)](https://www.codacy.com/project/radugidei/DynaWeb/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=radumg/DynaWeb&amp;utm_campaign=Badge_Grade_Dashboard)
 ---
 __DynaWeb__ is a [Dynamo](http://www.dynamobim.org) package providing support for interaction with the interwebz in general and with REST APIs in particular.
 

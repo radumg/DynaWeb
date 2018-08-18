@@ -19,7 +19,7 @@ namespace DynaWeb.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,7 +61,7 @@ namespace DynaWeb.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource..
+        ///   Looks up a localized string similar to Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource. Inner exception : {0}.
         /// </summary>
         internal static string WebClientBuildUrlFailed {
             get {
@@ -178,6 +178,15 @@ namespace DynaWeb.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not parse the supplied value into a valid Parameter Type..
+        /// </summary>
+        internal static string WebRequestParameterValueInvalid {
+            get {
+                return ResourceManager.GetString("WebRequestParameterValueInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string WebRequestPortDataResultToolTip {
@@ -237,6 +246,15 @@ namespace DynaWeb.Properties {
         internal static string WebUrlInvalidMessage {
             get {
                 return ResourceManager.GetString("WebUrlInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URI is file or is UNC pointing to internal network.
+        /// </summary>
+        internal static string WebUrlIsLocal {
+            get {
+                return ResourceManager.GetString("WebUrlIsLocal", resourceCulture);
             }
         }
         

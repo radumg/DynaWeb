@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WebClientBuildUrlFailed" xml:space="preserve">
-    <value>Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource.</value>
+    <value>Could not build a valid Uri for the request. Please double-check the WebClient baseUrl and the WebRequest resource. Inner exception : {0}</value>
   </data>
   <data name="WebClientMaxRedirectsInvalidMessage" xml:space="preserve">
     <value>The value for MaxRedirects cannot be negative or equal to zero.</value>
@@ -156,6 +156,9 @@
   <data name="WebRequestParameterNullMessage" xml:space="preserve">
     <value>The parameter provided cannot be null.</value>
   </data>
+  <data name="WebRequestParameterValueInvalid" xml:space="preserve">
+    <value>Could not parse the supplied value into a valid Parameter Type.</value>
+  </data>
   <data name="WebRequestPortDataResultToolTip" xml:space="preserve">
     <value />
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="WebUrlInvalidMessage" xml:space="preserve">
     <value>The URL provided is not a valid URL.</value>
+  </data>
+  <data name="WebUrlIsLocal" xml:space="preserve">
+    <value>URI is file or is UNC pointing to internal network</value>
   </data>
   <data name="WebUrlNullMessage" xml:space="preserve">
     <value>The URL cannot be null.</value>

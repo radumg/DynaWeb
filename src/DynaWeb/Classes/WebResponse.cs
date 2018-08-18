@@ -67,7 +67,7 @@ namespace DynaWeb
                     values.Add(cookie.Value);
                     values.Add(cookie.TimeStamp.ToString());
 
-                    result.Add(new List<string>() { "Name", "Value", "TimeStamp" });
+                    result.Add(new List<string> { "Name", "Value", "TimeStamp" });
                     result.Add(values);
                 }
 
